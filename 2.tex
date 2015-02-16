@@ -1,0 +1,256 @@
+\chapter{Definicja ekstremum lokalnego funkcji wielu zmiennych. Warunki konieczne i dostateczne do istnienia ekstremum lokalnego.}
+
+\section{Ekstrema lokalne}
+
+O ekstremach lokalnych można najogólniej mówić dla dowolnych funkcji, których dziedzina jest przestrzenią topologiczną, a przeciwdziedzina zbiorem co najmniej częściowo uporządkowanym. Z praktycznego punktu widzenia najczęstszym przypadkiem z jakim mamy do czynienia są funkcje postaci $f:\mathbb{R}^n\supset X\rightarrow\mathbb{R}$.
+
+\begin{df}
+Niech $f:\mathbb{R}^n\supset X\rightarrow\mathbb{R}$. Mówimy, że $f$ ma w punkcie $\textbf{x}=(x_1,\ldots,x_n)\in X$ \textbf{maksimum lokalne} (odpowiednio \textbf{minimum lokalne}) $\Leftrightarrow$
+\begin{enumerate}[\rm 1.]
+\item
+$\textbf{x}\in Int(X)\ \textrm{gdzie } Int(x)\ \textrm{oznacza wnętrze zbioru } X,\ \textrm{czyli } \exists_{r>0}\ B(\textbf{x},r)\subset X$,
+\item
+$\exists_{\delta>0}\ \forall_{\textbf{y}\in B(\textbf{x},\delta)}\ f(\textbf{y})\leq f(\textbf{x})$ (dla minimum odpowiednio $\exists_{\delta>0}\ \forall_{\textbf{y}\in B(\textbf{x},\delta)}\ f(\textbf{y})\geq f(\textbf{x})$).
+\end{enumerate}
+Mówimy, że $f$ ma w $\textbf{x}$ \textbf{właściwe} maksimum lokalne (odpowiednio minimum lokalne) $\Leftrightarrow$
+\begin{enumerate}[\rm 1.]
+\item
+$\textbf{x}\in Int(X),\ \textrm{czyli } \exists_{r>0}\ B(\textbf{x},r)\subset X$,
+\item
+$\exists_{\delta>0}\ \forall_{\textbf{y}\in B(\textbf{x},\delta)}\ \textbf{x}\neq\textbf{y}\Rightarrow f(\textbf{y})<f(\textbf{x})$ (dla minimum odpowiednio $\exists_{\delta>0}\ \forall_{\textbf{y}\in B(\textbf{x},\delta)}\ f(\textbf{y})>f(\textbf{x})$).
+\end{enumerate}
+Mówimy, że f ma \textbf{ekstremum lokalne} w $\textbf{x}\ \Leftrightarrow\ f$ ma maksimum lub minimum lokalne w $\textbf{x}$
+\end{df}
+
+\section{Warunek konieczny}
+
+\begin{tw}{(Warunek konieczny istnienia ekstremum lokalnego)}
+Jeśli funkcja $f:\mathbb{R}^n\supset X\rightarrow\mathbb{R}$ ma w punkcie $\textbf{x}=(x_1,\ldots,x_n)\in X$ ekstremum lokalne, wówczas:
+\begin{enumerate}[\rm 1.]
+\item
+$\exists_{1\leq i\leq n}\ \dfrac{\partial f}{\partial x_i}(\textbf{x})$ nie istnieje, lub
+\item
+$\forall_{1\leq i\leq n}\ \dfrac{\partial f}{\partial x_i}(\textbf{x})=0$ (czyli gradient $\bigtriangledown f(\textbf{x})=\Big[\dfrac{\partial f}{\partial x_1}(\textbf{x}),\ldots,\dfrac{\partial f}{\partial x_n}(\textbf{x})\Big]=[0,\ldots,0]=\textbf{0}$, w skrócie $\bigtriangledown f(\textbf{x})=\textbf{0}$ lub inaczej \textbf{x} jest \textbf{punktem stacjonarnym} funkcji $f$).
+\end{enumerate}
+\end{tw}
+
+\begin{uwg}
+Jeśli $\textbf{x}=(x_1,\ldots,x_n)\in Int(X)$ oraz $f:\mathbb{R}^n\supset X\rightarrow\mathbb{R}$ to $f$ nie ma ekstremum lokalnego w $\textbf{x}\ \Leftrightarrow$ $$\forall_{\delta>0}\ \exists_{\textbf{p},\textbf{q}\in B(\textbf{x},\delta)}\ f(\textbf{p})<f(\textbf{x})<f(\textbf{q})$$ a to w przestrzeni metrycznej $\mathbb{R}^n$ jest równoważne temu, że istnieją ciągi $\big(\textbf{p}^{(k)}\big)_{k=1}^\infty,\ \big(\textbf{q}^{(k)}\big)_{k=1}^\infty$ elementów zbioru $X$ takie, że: $$\lim_{n \to \infty}\ \textbf{p}^{(k)}=\lim_{n \to \infty}\ \textbf{q}^{(k)}=\textbf{x}\textrm{, oraz }\forall_k\ f\big(\textbf{p}^{(k)}\big)<f(\textbf{x})<f\big(\textbf{q}^{(k)}\big).$$
+\end{uwg}
+
+\begin{przyk}{(Na to, że warunek konieczny nie jest wystarczający)}\\
+Weźmy funkcję $f(x_1,x_2)=x_1^2-x_2^2$ i punkt $\textbf{x}=(0,0)$. Mamy następujące pochodne cząstkowe: $$\dfrac{\partial f}{\partial x_1}=2x_1,\quad \dfrac{\partial f}{\partial x_2}=2x_2,\quad\textbf{x}=(0,0)\ \Rightarrow\ \dfrac{\partial f}{\partial x_1}(\textbf{x})=0=\dfrac{\partial f}{\partial x_2}(\textbf{x})$$ zatem warunek konieczny jest spełniony, ale $f$ nie ma ekstremum w punkcie $\textbf{x}=(0,0)$. Weźmy bowiem ciągi: $$\textbf{p}^{(k)}=\Big(\dfrac{1}{k},0\Big)\xrightarrow{k\rightarrow \infty}(0,0)=\textbf{x},\quad f(\textbf{p}^{(k)})=\dfrac{1}{k^2}>f(\textbf{x})=0$$ $$\textbf{q}^{(k)}=\Big(0,\dfrac{1}{k}\Big)\xrightarrow{k\rightarrow \infty}(0,0)=\textbf{x},\quad f(\textbf{q}^{(k)})=-\dfrac{1}{k^2}<f(\textbf{x})=0$$ zatem na mocy powyższej uwagi funkcja $f(x_1,x_2)=x_1^2-x_2^2$ nie ma ekstremum w punkcie $\textbf{x}=(0,0)$ pomimo, iż spełniony jest warunek konieczny.
+
+\end{przyk}
+
+\section{Kryterium Sylvestra}
+
+\begin{df}
+Niech $A_{n\times n}$ będzie macierzą o współczynnikach rzeczywistych. Wówczas:
+\begin{enumerate}[\rm 1.]
+\item
+Mówimy, że $A$ jest macierzą \textbf{dodatnio określoną} $\Leftrightarrow$ $A$ jest macierzą symetryczną (tzn. $A=A^T$) i dla każdego niezerowego wektora $\textbf{x}\in\mathbb{R}^n,\ \textbf{x}\neq\textbf{0}=(0,\ldots,0)$ zachodzi $\textbf{x}^TA\textbf{x}>0$, czyli po wymnożeniu $\sum_{i,j=1}^n a_{ij}x_ix_j>0$ (równoważna definicja: $A$ jest dodatnio określona $\Leftrightarrow$ $A$ ma wszystkie wartości własne $>0$).
+\item
+Mówimy, że $A$ jest macierzą \textbf{ujemnie określoną} $\Leftrightarrow$ $A$ jest macierzą symetryczną (tzn. $A=A^T$) i dla każdego niezerowego wektora $\textbf{x}\in\mathbb{R}^n,\ \textbf{x}\neq\textbf{0}=(0,\ldots,0)$ zachodzi $\textbf{x}^TA\textbf{x}<0$, czyli po wymnożeniu $\sum_{i,j=1}^n a_{ij}x_ix_j<0$ (równoważna definicja: $A$ jest ujemnie określona $\Leftrightarrow$ $A$ ma wszystkie wartości własne $<0$).
+\item
+Mówimy, że $A$ jest macierzą \textbf{nieokreśloną} $\Leftrightarrow$ $A$ jest macierzą symetryczną (tzn. $A=A^T$) i istnieją takie wektory $\textbf{x},\textbf{y}\in\mathbb{R}^n$, że zachodzi $\textbf{x}^TA\textbf{x}>0$ i $\textbf{y}^TA\textbf{y}<0$, czyli po wymnożeniu $\sum_{i,j=1}^n a_{ij}x_ix_j>0$ i $\sum_{i,j=1}^n a_{ij}y_iy_j<0$.
+\end{enumerate}
+\end{df}
+
+\begin{tw}{(Kryterium Sylvestra)}\\
+Niech $A_{n\times n}$ będzie macierzą symetryczną (tzn. $A=A^T$) o współczynnikach rzeczywistych. Wówczas:
+\begin{enumerate}[\rm 1.]
+\item
+$A$ jest dodatnio określona $\Leftrightarrow\ \forall_{1\leq k\leq n}\ det(A_k)>0$.
+\item
+$A$ jest ujemnie określona $\Leftrightarrow\ \forall_{1\leq k\leq n}\ (-1)^kdet(A_k)>0$ (czyli gdy $k$ jest parzyste to $det(A_k)>0$, zaś gdy $k$ nieparzyste to $det(A_k)<0$).
+\item
+$A$ jest nieokreślona $\Leftrightarrow\ \forall_{1\leq k\leq n}\ det(A_k)\neq 0$ i jednocześnie $A$ nie jest ani dodatnio, ani ujemnie określona.
+\end{enumerate}
+\end{tw}
+
+\begin{przyk}
+Dla macierzy $A_{2\times 2}$ ($n=2$) mamy z kryterium Sylvestra:
+\begin{enumerate}[\rm 1.]
+\item
+$A$ jest dodatnio określona $\Leftrightarrow\ a_{11}>0$ i 
+$ \left| \begin{array}{cc}
+a_{11} & a_{12} \\
+a_{21} & a_{22} \end{array} \right|>0$.
+\item
+$A$ jest ujemnie określona $\Leftrightarrow\ a_{11}<0$ i 
+$ \left| \begin{array}{cc}
+a_{11} & a_{12} \\
+a_{21} & a_{22} \end{array} \right|>0$.
+\item
+$A$ jest niekreślona $\Leftrightarrow\ $
+$ \left| \begin{array}{cc}
+a_{11} & a_{12} \\
+a_{21} & a_{22} \end{array} \right|<0$.
+\end{enumerate}
+\end{przyk}
+
+\section{Warunek wystarczający}
+
+\begin{df}
+Niech $f:\mathbb{R}^n\supset X\rightarrow\mathbb{R}$ będzie funkcją klasy co najmniej $C^2$ w pewnym otoczeniu punktu $\textbf{x}^{(0)}\in X$. Wówczas \textbf{macierzą Hessego} funkcji $f$ w punkcie $\textbf{x}^{(0)}$ nazywamy macierz:
+$$H\big(\textbf{x}^{(0)}\big)=\left[ \begin{array}{cccc}
+\dfrac{\partial^2f}{\partial x_1^2}\big(\textbf{x}^{(0)}\big) & \dfrac{\partial^2f}{\partial x_1\partial x_2}\big(\textbf{x}^{(0)}\big) & \ldots & \dfrac{\partial^2f}{\partial x_1\partial x_n}\big(\textbf{x}^{(0)}\big)\\
+\dfrac{\partial^2f}{\partial x_2\partial x_1}\big(\textbf{x}^{(0)}\big) & \dfrac{\partial^2f}{\partial x_2^2}\big(\textbf{x}^{(0)}\big) & \ldots & \dfrac{\partial^2f}{\partial x_2\partial x_n}\big(\textbf{x}^{(0)}\big)\\
+\\
+\vdots & \vdots & \ddots & \vdots\\
+\\
+\dfrac{\partial^2f}{\partial x_n\partial x_1}\big(\textbf{x}^{(0)}\big) & \dfrac{\partial^2f}{\partial x_n\partial x_2}\big(\textbf{x}^{(0)}\big) & \ldots & \dfrac{\partial^2f}{\partial x_n^2}\big(\textbf{x}^{(0)}\big)
+\end{array} \right]$$
+Jest to macierz kwadratowa drugich pochodnych cząstkowych funkcji $f$. Wyznacznik podmacierzy stopnia $1\leqslant k\leqslant n$ macierzy Hessego postaci:
+$$H_k=\left| \begin{array}{cccc}
+\dfrac{\partial^2f}{\partial x_1^2}\big(\textbf{x}^{(0)}\big) & \dfrac{\partial^2f}{\partial x_1\partial x_2}\big(\textbf{x}^{(0)}\big) & \ldots & \dfrac{\partial^2f}{\partial x_1\partial x_k}\big(\textbf{x}^{(0)}\big)\\
+\dfrac{\partial^2f}{\partial x_2\partial x_1}\big(\textbf{x}^{(0)}\big) & \dfrac{\partial^2f}{\partial x_2^2}\big(\textbf{x}^{(0)}\big) & \ldots & \dfrac{\partial^2f}{\partial x_2\partial x_k}\big(\textbf{x}^{(0)}\big)\\
+\\
+\vdots & \vdots & \ddots & \vdots\\
+\\
+\dfrac{\partial^2f}{\partial x_k\partial x_1}\big(\textbf{x}^{(0)}\big) & \dfrac{\partial^2f}{\partial x_k\partial x_2}\big(\textbf{x}^{(0)}\big) & \ldots & \dfrac{\partial^2f}{\partial x_k^2}\big(\textbf{x}^{(0)}\big)
+\end{array} \right|$$
+nazywamy \textbf{hesjanem}.
+\end{df}
+
+\begin{tw}{(Warunek wystarczający/dostateczny istnienia ekstremum lokalnego)}\\
+Niech $f:\mathbb{R}^n\supset X\rightarrow\mathbb{R}$ będzie funkcją klasy co najmniej $C^2$ w pewnym otoczeniu punktu $\textbf{x}^{(0)}\in X$ i niech $\dfrac{\partial f}{\partial x_1}\big(\textbf{x}^{(0)}\big)=0,\ldots,\dfrac{\partial f}{\partial x_n}\big(\textbf{x}^{(0)}\big)=0$ (czyli $\bigtriangledown f(\textbf{x}^{(0)})=\textbf{0}$). Wówczas:
+\begin{enumerate}[\rm 1.]
+\item
+Jeżeli $\forall_{1\leq k\leq n}\ H_k>0$, to $f$ ma właściwe minimum lokalne w punkcie $\textbf{x}^{(0)}$.
+\item
+Jeżeli $\forall_{1\leq k\leq n}\ (-1)^kH_k>0$, to $f$ ma właściwe maksimum lokalne w punkcie $\textbf{x}^{(0)}$.
+\item
+Jeżeli $\forall_{1\leq k\leq n}\ H_k\neq 0$, ale $\neg(\forall_k\ H_k>0\ \vee\ \forall_k\ (-1)^kH_k>0)$, to $f$ nie ma ekstremum lokalnego w punkcie $\textbf{x}^{(0)}$.
+\end{enumerate}
+\end{tw}
+
+\begin{uwg}
+Jeżeli $\exists_{1\leq k\leq n}\ H_k=0$, to istnienie bądź nieistnienie ekstremum lokalnego funkcji $f$ w punkcie $\textbf{x}^{(0)}$ należy badać z definicji.
+\end{uwg}
+
+\begin{tw}{(Szczególny przypadek powyższego twierdzenia - warunek wystarczający/dostateczny istnienia ekstremum lokalnego dla funkcji dwóch zmiennych rzeczywistych)}\\
+Niech $f:\mathbb{R}^2\supset X\rightarrow\mathbb{R}$ będzie funkcją klasy co najmniej $C^2$ w pewnym otoczeniu punktu $\textbf{x}^{(0)}=\big(x_1^{(0)},x_2^{(0)}\big)\in Int(X)$ i niech $\dfrac{\partial f}{\partial x_1}\big(\textbf{x}^{(0)}\big)=\dfrac{\partial f}{\partial x_2}\big(\textbf{x}^{(0)}\big)=0$ (czyli $\bigtriangledown f(\textbf{x}^{(0)})=\textbf{0}$) oraz 
+$$H=\left| \begin{array}{cc}
+\dfrac{\partial^2f}{\partial x_1^2}\big(\textbf{x}^{(0)}\big) & \dfrac{\partial^2f}{\partial x_1\partial x_2}\big(\textbf{x}^{(0)}\big)\\
+\dfrac{\partial^2f}{\partial x_2\partial x_1}\big(\textbf{x}^{(0)}\big) & \dfrac{\partial^2f}{\partial x_2^2}\big(\textbf{x}^{(0)}\big)
+\end{array} \right|$$
+niech będzie hesjanem funkcji $f$. Wówczas:
+\begin{enumerate}[\rm 1.]
+\item
+Jeżeli $H>0$, to $f$ ma ekstremum lokalne w punkcie $\textbf{x}^{(0)}=\big(x_1^{(0)},x_2^{(0)}\big)$, przy czym jeśli $\dfrac{\partial^2f}{\partial x_1^2}\big(\textbf{x}^{(0)}\big)>0$ to $f$ ma właściwe minimum lokalne.
+\item
+Jeżeli $H>0$, to $f$ ma ekstremum lokalne w punkcie $\textbf{x}^{(0)}=\big(x_1^{(0)},x_2^{(0)}\big)$, przy czym jeśli $\dfrac{\partial^2f}{\partial x_1^2}\big(\textbf{x}^{(0)}\big)<0$ to $f$ ma właściwe maksimum lokalne.
+\item
+Jeżeli $H<0$, to $f$ nie ma ekstremum lokalnego w punkcie $\textbf{x}^{(0)}=\big(x_1^{(0)},x_2^{(0)}\big)$.
+\end{enumerate}
+\end{tw}
+
+\begin{uwg}
+Jeżeli $H=0$, to istnienie bądź nieistnienie ekstremum lokalnego funkcji $f$ w punkcie $\textbf{x}^{(0)}$ należy badać z definicji.
+\end{uwg}
+
+\begin{przyk}{(Dla funkcji dwóch zmiennych)}\\
+\begin{enumerate}[\rm 1.]
+\item
+$f(x,y)=x^2+y^2,\ f:\mathbb{R}^2\supset X\rightarrow\mathbb{R}$ może mieć ekstremum tylko w punktach stacjonarnych, więc musimy je wyznaczyć. Mamy:\\
+\\
+$\left\{\begin{array}{l}
+f'_x=2x\\
+\\
+f'_y=2y
+\end{array}\wedge\right.$
+$\left\{\begin{array}{l}
+f'_x=0\\
+\\
+f'_y=0
+\end{array}\Rightarrow\right.$
+$\left\{\begin{array}{l}
+2x=0\ \Leftrightarrow\ x=0\\
+\\
+2y=0\ \Leftrightarrow\ y=0
+\end{array}\right.$\\
+\\
+Zatem $f$ ma jeden punkt stacjonarny: $(0,0)$ podejrzany o istnienie ekstremum. Obliczmy pochodne cząstkowe: $f''_{xx}=2,\ f''_{yy}=2,\ f''_{xy}=0=f''_{yx}$. Hesjan ma zatem postać:
+$H(x,y)=\left| \begin{array}{cc}
+2 & 0\\
+0 & 2
+\end{array}\right|=4$. Stąd mamy:\\
+\\
+$\left\{\begin{array}{l}
+H(0,0)=4>0\\
+\\
+f''_{xx}(0,0)=2>0
+\end{array}\Rightarrow\right.$
+$f$ ma właściwe minimum lokalne w $(0,0)$.
+\item
+$f(x,y)=2x^3+xy^2+5x^2+y^2,\ f:\mathbb{R}^2\supset X\rightarrow\mathbb{R}$ może mieć ekstremum tylko w punktach stacjonarnych, więc musimy je wyznaczyć. Mamy:\\
+\\
+$\left\{\begin{array}{l}
+f'_x=6x^2+y^2+10x\\
+\\
+f'_y=2xy+2y
+\end{array}\wedge\right.$
+$\left\{\begin{array}{l}
+f'_x=0\\
+\\
+f'_y=0
+\end{array}\Rightarrow\right.$
+$\left\{\begin{array}{l}
+6x^2+y^2+10x=0\\
+\\
+2y(x+1)=0\ \Leftrightarrow\ y=0\vee x=-1
+\end{array}\right.$\\
+$\left\{\begin{array}{l}
+y=0\\
+\\
+6x^2+10x=0\ \Rightarrow\ x=0\vee x=-\dfrac{5}{3}
+\end{array}\vee\right.$
+$\left\{\begin{array}{l}
+x=-1\\
+\\
+y^2-4=0\ \Rightarrow\ y=2\vee y=-2
+\end{array}\right.$\\
+\\
+Zatem $f$ ma cztery punkty stacjonarne: $P_1\Big(-\dfrac{5}{3},0\Big),\ P_2(0,0),\ P3(-1,2),\ P_4(-1,-2)$ podejrzane o istnienie ekstremum. Obliczmy pochodne cząstkowe: $f''_{xx}=12x+10,\ f''_{yy}=2x+2,\ f''_{xy}=2y=f''_{yx}$. Hesjan ma zatem postać:
+$H(x,y)=\left| \begin{array}{cc}
+12x+10 & 2y\\
+2y & 2x+2
+\end{array} \right|$. Stąd mamy:\\
+\\
+$\left\{\begin{array}{l}
+H\Big(-\dfrac{5}{3},0\Big)=\left| \begin{array}{cc}
+-20 & 0\\
+0 & -2
+\end{array}\right|>0\\
+\\
+f''_{xx}\Big(-\dfrac{5}{3},0\Big)=-20<0
+\end{array}\Rightarrow\right.$
+$f$ ma właściwe maksimum lokalne w $\Big(-\dfrac{5}{3},0\Big)$,\\
+\\
+\\
+$\left\{\begin{array}{l}
+H(0,0)=\left|\begin{array}{cc}
+10 & 0\\
+0 & 2
+\end{array}\right|>0\\
+\\
+f''_{xx}(0,0)=10>0
+\end{array}\Rightarrow\right.$
+$f$ ma właściwe minimum lokalne w $(0,0)$,\\
+\\
+\\
+$\left\{\begin{array}{l}
+H(-1,2)=\left|\begin{array}{cc}
+-2 & 4\\
+4 & 0
+\end{array}\right|<0\\
+\\
+H(-1,-2)=\left|\begin{array}{cc}
+-2 & -4\\
+-4 & 0
+\end{array}\right|<0\end{array}\Rightarrow\right.$
+$f$ nie ma ekstremum w punktach $(-1,2)$ i $(-1,-2)$.
+\end{enumerate}
+\end{przyk}

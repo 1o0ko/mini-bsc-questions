@@ -1,0 +1,188 @@
+\chapter{Przeliczalność i nieprzeliczalność}
+\section{Konstrukcja von Neumanna liczb naturalnych}
+	\begin{axm}[Aksjomat nieskończoności]
+		Istnieje zbiór $X$ o następujących właściwościach:
+		\begin{itemize}
+			\item $\emptyset \in X$
+			\item $\forall_{y \in X} \left( S(y) \in X\right)$
+		\end{itemize}
+		gdzie $S(y)$ jest następnikiem porządkowym zbioru $y$, tj. $S(y) = y \cup \{y\}$. Zbiór spełniający powyższe właściwości nazywać będziemy \textit{zbiorem induktywnym}.
+	\end{axm}
+	\begin{lem}
+		Niech $\mathcal{P} = \{ Y \subset X : Y \; \text{jest zbiorem induktywnym}\}$, wtedy zbiór
+		$\cap_{P \in \mathcal{P}} P$ jest zbiorem induktywnym.
+	\end{lem}
+	\begin{tw}
+		Istnieje najmniejszy, pod względem inkluzji, zbiór induktywny.
+	\end{tw}
+	\begin{df}
+		Najmniejszy pod względem inkluzji zbiór induktywny nazywamy \textit{zbiorem liczb naturalnych} i oznaczamy przez $\mathbb{N}$.
+		Korzystając z induktywności $\mathbb{N}$:
+		\begin{itemize}
+			\item $\emptyset \in \mathbb{N}$ oznaczamy jako $0$,
+			\item $S(\emptyset) = \{\emptyset\}$ oznaczamy jako $1$,
+			\item $S(\{\emptyset\}) = \{\emptyset, \{\emptyset\} \}$ oznaczamy jako $2$,
+			\item i tak dalej $\ldots$
+		\end{itemize}
+		Elementy tego zbioru nazywamy \textit{liczbami naturalnymi}.
+	\end{df}
+
+	\section{Teoria mocy}
+	\subsection{Zbiory przeczliczalne}
+	\begin{df}
+		Zbiory $A$ i $B$ nazywamy \textit{równolicznymi}, gdy istnieje bijekcja $f:A\rightarrow B$. Równoliczność zbiorów oznaczamy przez $A \sim B$.
+	\end{df}
+	
+	\begin{tw}\label{rownolicznosc}
+		Dla dowolnych zbiorów $X,Y,Z$ zachodzą następujące wzory:
+		\begin{enumerate}
+			\item $X \sim X$,
+			\item $X \sim Y \implies Y \sim X$,
+			\item $(X \sim Y) \wedge (Y \sim Z) \implies X \sim Z$.
+		\end{enumerate}
+	\end{tw}	
+
+	\begin{uwg}
+		Z twierdzenia \ref{rownolicznosc} wynika, iż relacja równoliczności jest relacją równoważności.
+	\end{uwg}
+	
+	\begin{df}
+		Zbiór $A$ nazywamy \textit{skończonym}, gdy $A \sim n$, dla $n \in \mathbb{N}$.
+	\end{df}
+	
+	\begin{df}
+		Zbiór $A$ nazywamy \textit{nieskończonym}, gdy $A$ nie jest skończony.
+	\end{df}
+	
+	\begin{df}
+		\textit{Zbiorami przeliczalnymi} nazywamy zbiory skończone lub równoliczne ze zbiorem $\mathbb{N}$ wszystkich liczb naturalnych.
+	\end{df}
+	
+	\begin{lem}
+		Własności zbiorów przeliczalnych:
+		\begin{itemize}
+			\item podzbiór przeliczalnego zbioru jest przeliczalny,
+			\item suma dowolnej skończonej ilości zbiorów przeliczalnych, jest zbiorem przeliczalnym,
+			\item iloczyn kartezjański skończonej ilości zbiorów przeliczalnych jest przeliczalny.
+			\item dla każdej przeliczalnej rodziny indeksowanej zbiorów $(A_n)_{n \in \mathbb{N}}$, takiej, że $A_n$ jest zbiorem przeliczalnym dla każdego $n \in \mathbb{N}$, suma uogólniona $\cup_{n \in \mathbb{N}} A_n$ jest zbiorem przeliczalnym.
+			\item zbiór wszystkich ciągów skończonych o wyrazach należących do ustalonego zbioru przeliczalnego jest zbiorem przeliczalnym.
+		\end{itemize}	
+	\end{lem}
+	
+	\begin{przyk}
+		Zbiór wszystkich liczb całkowitych ujemnych $\mathbb{Z}^-$ jest zbiorem przeliczalnym, ponieważ istnieje bijekcja $f:\mathbb{N} \to \mathbb{Z}^-$ określona wzorem $f(n) = -n$.
+	\end{przyk}
+	
+	\begin{przyk}
+		Zbiór wszystkich liczb całkowitych $\mathbb{Z}$, jako suma skończonej ilości zbiorów przeliczalnych $\mathbb{Z}^- \cup \{0\} \cup \mathbb{Z}^+$, jest zbiorem przeliczalnym.
+	\end{przyk}
+	
+	\begin{przyk}
+		Zbiór liczb pierwszych, jako podzbiór zbioru liczb naturalnych, jest przeliczany.
+	\end{przyk}
+	
+	\begin{przyk}
+		Zbiór $\mathbb{Q}$ wszystkich liczb wymiernych jest zbiorem przeliczalnym.
+		\begin{proof}
+			Niech $\mathbb{Z}^{*} = \mathbb{Z}/\{0\}$.
+			Zbiór $\mathbb{Z} \times \mathbb{Z}^*$, jako iloczyn kartezjański zbiorów przeliczalnych, jest zbiorem przeliczalnym. Istnieje zatem bijekcja $f:\mathbb{N} \to \mathbb{Z} \times \mathbb{Z}^*$. \\
+			Każda liczba wymierna da się przedstawić w postaci $\frac{m}{n}$, gdzie $m \in \mathbb{Z}, \; m \in \mathbb{Z}^*$. Niech funkcja $g:\mathbb{Z} \times \mathbb{Z}^* \to \mathbb{Q}$ dana będzie następującym wzorem: $g(m,n) = \frac{m}{n}$ dla każdego elementu $(m,n) \in \mathbb{Z} \times \mathbb{Z}^*$. \\
+			Niech $h= g \circ f$. Wówczas  $h: \mathbb{N} \to  \mathbb{Q}$, jako złożenie dwóch bijekcji, jest bijekcją. Wnioskujemy stąd, że zbiór liczb wymiernych jest przeliczalny.
+		\end{proof}		 
+	\end{przyk}
+	
+	
+	\subsection{Zbiory nieprzeliczalne}
+	\begin{df}
+		Zbiór nazywamy \textit{nieprzeliczalnym}, gdy nie jest przeliczalny.
+	\end{df}		
+	
+	\begin{tw}[Cantora]\label{tw.Cantora}
+		Zbiór liczb rzeczywistych nie jest przeliczalny.
+	\end{tw}	
+	
+	\begin{przyk}
+		Zbiór $2^{\mathbb{N}}$ jest zbiorem nieprzeliczalnym.
+	\end{przyk}
+	
+	\begin{przyk}
+		Zbiór $\mathbb{N}^{\mathbb{N}}$ jest zbiorem nieprzeliczalnym.
+	\end{przyk}
+	
+	\begin{przyk}
+		Zbiór $\mathbb{Q}^* = \{ x \in \mathbb{R}: x \not \in \mathbb{Q} \}$ liczby niewymiernych jest nieprzeliczalny.
+		\begin{proof}
+			Gdyby zbiór $\mathbb{Q}^*$ był przeliczalny, to zbiór liczb rzeczywistych $\mathbb{R} = \mathbb{Q} \cup \mathbb{Q}^*$, jako suma dwóch zbiorów przeliczalnych, również byłby zbiorem przeliczalnym, co przeczy twierdzeniu \ref{tw.Cantora}.
+		\end{proof}
+	\end{przyk}
+
+	\subsection{Zbiory mocy continuum}	
+	\begin{df}
+		Mówimy, że zbiór jest \textit{mocy continuum}, gdy jest równoliczny z  $\mathbb{R}$.
+	\end{df}
+	
+	\begin{tw}
+		Jeżeli $A \subset \mathbb{R}$ i $A$ zawiera pewien przedział otwarty, to $A$ jest mocy continuum.
+	\end{tw}
+	
+	\begin{tw}
+	Jeżeli $B \subset A$ jest przeliczalnym podzbiorem zbioru $A$ mocy continuum, to	$A \setminus B$ jest mocy continuum.
+	\end{tw}
+	
+	\begin{tw}
+		Jeżeli $B$ jest przeliczalnym, a  $A$ jest mocy continuum, to $A \cup B$ jest mocy continuum.
+	\end{tw}
+
+	\begin{przyk}
+		Zbiór wszystkich funkcji $f: \mathbb{N} \to \{0,1\}$, tj. zbiór wszystkich ciągów $(a_n)_{n \in \mathbb{N}}$, takich że $a_n \in \{0,1\}$ dla każdego $n \in \mathbb{N}$, jest mocy continuum.
+	\end{przyk}
+	
+	\begin{przyk}
+		Zbiór $ 2^{\mathbb{N}}$ jest mocy continuum.
+	\end{przyk}
+	
+	\begin{przyk}
+		Każdy przedział otwarty $(a, b) \subset \mathbb{R}$, gdzie $a < b$, jest mocy continuum.
+	\end{przyk}
+	
+	\begin{przyk}
+		Przedział otwarty $(-\frac{1}{2}\pi, \; \frac{1}{2}\pi) \subset \mathbb{R}$ jest mocy continuum. 				
+		\begin{proof}
+			Funkcja $f:(-\frac{1}{2}\pi, \; \frac{1}{2}\pi) \to \mathbb{R}$ określona wzorem $f(x) = \tg(x)$ jest różnowartościowa i~przekształca swoją dziedzinę na $\mathbb{R}$, ustala więc równoliczność tych zbiorów.
+		\end{proof}
+	\end{przyk}
+	
+	\section{Nierówności dla liczb kardynalnych}
+	\begin{df}
+		Niech $|A|= n$ oraz $|B| = m$. Przyjmujemy, że liczba kardynalna $n$ jest nie większa od liczby kardynalnej $m$, wtedy i tylko wtedy, kiedy istnieje iniekcja $f:A \to B$, co oznaczamy poprzez $A <_m B$.
+	\end{df}
+	
+	\begin{df}
+	 Jeżeli $A  \leq_m  B$ i nieprawda, że $A  \sim_m  B$, to mówimy, że liczba kardynalna zbioru $A$ jest \textit{mniejsza} od liczby kardynalnej zbioru $B$, co oznaczamy poprzez $A <_m B$.
+	\end{df}
+	
+	\begin{tw}
+		Następujące warunki są równoważne:
+		\begin{itemize}
+			\item	Dla dowolnych zbiorów $A,B$ zachodzi $A  \leq_m  B$ i $B  \leq_m  A$, to $ A  \sim_m  B$.
+			\item	Dla dowolnych zbiorów $A,B$ zachodzi $A  \leq_m  B$ i $B \subset  A$, to $ A  \sim_m  B$.
+			\item	Dla dowolnych zbiorów $A,B,C$ zachodzi $A  <_m  B$ i  $B <_m C$, to $A  <_m  C$.
+		\end{itemize}
+	\end{tw}
+	
+	\begin{tw}[Cantora - Bernsteina]
+		Jeżeli $A  \leq_m  B$ i $B  \leq_m  A$ to $A  \sim_m  B$.
+	\end{tw}
+	
+	\begin{tw}[Cantora]
+		$A  <_m  \mathcal{P} (A)$.
+	\end{tw}
+	
+	\begin{tw}
+		Nie istnieje zbiór wszystkich zbiorów.
+	\end{tw}
+	
+	\begin{tw}
+		$\mathbb{N}  <_m   \mathcal{P} (\mathbb{N})  \sim_m  2^{\mathbb{N}}  \sim_m  \mathbb{R}$.
+	\end{tw}
+	\textbf{Hipoteza continuum}: czy istnieje taki zbiór, którego moc dałoby się ulokować pomiędzy mocą zbioru liczb naturalnych a mocą continuum. Czyli, czy istnieje $A$ takie, że $\mathbb{N}  <_m  A  <_m  \mathbb{R}$?

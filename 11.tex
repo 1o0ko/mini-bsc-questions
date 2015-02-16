@@ -1,0 +1,201 @@
+\chapter{Metody estymacji nieznanych parametrów rozkładu zmiennych losowych}
+\section{Podstawowe definicje rachunku prawdopodobieństwa}
+	\begin{df}
+		Niech $(\Omega, \mathcal{F})$ oraz $(E, \mathcal{E})$ będą dwoma przestrzeniami mierzalnymi. Odwzorowanie $f: \Omega \rightarrow E$ nazywamy \textit{$(\mathcal{F}, \mathcal{E})$-mierzalnym}, jeżeli przeciwobraz każdego zbioru $A \in \mathcal{E}$ względem $f$ należy do $\mathcal{F}$, tj.
+		\[
+		\{ \omega \in \Omega \:| \: f(\omega) \in A\} \in \mathcal{F}, \quad \forall A \in \mathcal{E}.
+		\]
+	\end{df}
+		
+	\begin{uwg}
+		Jeżeli $\sigma$-ciała $\mathcal{F}$ oraz $\mathcal{E}$ są jasne z kontekstu to mówić będziemy po prostu o odwzorowaniach mierzalnych.
+	\end{uwg}	
+		
+	\begin{df}\label{df:random-element}
+		Niech $(\Omega, \mathcal{F}, P)$ będzie przestrzenią probabilistyczną, a  $(E, \mathcal{E})$ przestrzenią mierzalną. 
+		$(\mathcal{F}, \mathcal{E})$-mierzalne odwzorowanie $X:\Omega\rightarrow E$ nazywamy \textit{elementem losowym\\ o wartościach w E}, bądź \textit{zmienną losową o wartościach w E}.
+	\end{df}	
+
+\section{Model statystyczny i statystyki dostateczne}
+
+\begin{df}
+	Zbiór wartości elementu losowego $X$ będziemy oznaczali przez $\mathcal{X}$ i nazywali \textit{przestrzenią próby}. 	
+\end{df}
+
+\begin{df}
+	Niech $\mathcal{P}=\{P_\theta : \theta \in \Theta\}$ będzie rodziną rozkładów prawdopodobieństwa określonych na przestrzeni próby $\mathcal{X}$, indeksowaną parametrem $\theta$. Parę $(\mathcal{X},\{P_\theta \colon \theta \in \Theta\})$ nazywamy \textit{modelem statystycznym}. Zbiór $\mathcal{X}$	nazywamy \textit{przestrzenią obserwacji}, zaś $\Theta$ nazywamy \textit{przestrzenią parametrów}.
+\end{df}
+
+\begin{df}
+	Niech $\mathcal{X}$ będzie przestrzenią obserwacji, a $(\mathcal{T}, \mathcal{U})$  będzie przestrzenią mierzalną.	
+	Wówczas \textit{statystyką} nazywamy mierzalną funkcję $T: \mathcal{X} \to \mathcal{T}$.
+\end{df}
+
+\begin{df}
+ $T$  jest \textit{statystyką dostateczną} dla rodziny rozkładów $\mathcal{P}=\{P_\theta : \theta \in \Theta\}$ (dla parametru $\theta$), jeżeli dla każdej wartości $t$ rozkład warunkowy $P_\theta(\; \cdot \; | \; T=t)$ nie zależy od $\theta$.
+\end{df}
+
+\begin{przyk}
+	Niech $X = (X_1, \ldots, X_n)$ będzie próbą z populacji o rozkładzie Poissona opisanym funkcją prawdopodobieństwa
+	\begin{equation*}
+		p_{\lambda}(x) = \frac{\text{e}^{-\lambda}\lambda^x}{x!}, \quad x =0,1,2,\ldots,
+	\end{equation*}
+	gdzie $\lambda > 0$  jest parametrem. Wówczas statystyka
+	\begin{equation*}
+		T(X) = \sum_{k=1}^{n} X_k
+	\end{equation*}
+	jest dostateczna dla parametru $\lambda$.
+\end{przyk}
+
+\begin{tw}[Twierdzenie o faktoryzacji] Statystka $T$ jest dostateczna dla rodziny rozkładów $\mathcal{P}=\{P_\theta : \theta \in \Theta\}$ wtedy i tylko wtedy, gdy funkcję gęstości próby $X$ można przedstawić w postaci 
+	\begin{equation*}
+		p_{\theta}(x) = g_{\theta}(T(x))h(x),
+	\end{equation*}
+	gdzie funkcja $h$ nie zależy od parametru $\theta,$, a funkcja $g$ zależy of $x$ tylko poprzez wartości funkcji $T$.
+\end{tw}
+
+\begin{df}
+	Statystykę dostateczną $S$ nazywamy \textit{minimalną statystyką dostateczną} jeżeli dla każdej statystyki dostatecznej $T$ istnieje funkcja $H$ taka, że $S=H(T)$.
+\end{df}
+
+\begin{przyk}
+	Niech $X = (X_1, \ldots, X_n)$ będzie próbą z populacji o rozkładzie Poissona z parametrem $\lambda$. Wówczas, statystyka $T(X) = \sum_{k=1}^{n} X_k$ jest minimalną statystyką dostateczną dla parametru $\lambda$. 
+\end{przyk}
+
+\begin{df}
+	 Statystka $T$ jest \textit{zupełna} dla rodziny rozkładów $\mathcal{P}=\{P_\theta : \theta \in \Theta\}$ (dla parametru $\theta$), gdy z warunku
+	 \begin{equation*}
+	 	\forall \theta \in \Theta \  \mathbb{E}_{\theta}[h(T)] = 0
+	 \end{equation*}
+	 wynika, że $h \equiv 0 $ prawie wszędzie względem $\mathcal{P}$.
+\end{df}
+
+\begin{tw}
+	Jeżeli statystyka $T$ jest dostateczna i zupełna dla rodziny rozkładów $\mathcal{P}=\{P_\theta : \theta \in \Theta\}$, to $T$ jest minimalna statystką dostateczną dla rodziny $\mathcal{P}$.
+\end{tw}
+
+\section{Estymatory}
+	\begin{df}
+		Niech $\mathcal{P}=\{P_\theta : \theta \in \Theta\}$ będzie rodziną rozkładów określonych na przestrzeni próby $\mathcal{X}$, gdzie $P_\theta$ opisuje wielowymiarowy rozkład łączny wszystkich obserwacji w~próbie $X$. \textit{Estymatorem parametru} $\theta$ nazywamy statystykę $\hat{\theta}(X):\mathcal{X} \to \Theta$.
+	\end{df}
+	
+	\begin{df}
+		Niech $\mathcal{P}=\{P_\theta : \theta \in \Theta\}$ będzie rodziną rozkładów określonych na przestrzeni próby $\mathcal{X}$, gdzie $P_\theta$ opisuje wielowymiarowy rozkład łączny wszystkich obserwacji w~próbie $X$. Dodatkowo, niech $g(\theta): X \times \Theta \to (\mathcal{T}, \mathcal{S})$ będzie funkcją mierzalną.  \textit{Estymatorem funkcji parametrycznej funkcji} $g(\theta)$ nazywamy statystykę $\hat{\theta}(X):\mathcal{X} \to \mathcal{T}$.
+	\end{df}
+	
+\subsection{Kryteria oceny jakości estymatorów}
+\subsubsection{Zgodność}
+	
+	\begin{df}
+			Estymator $T_n = T(X_1, \ldots, X_n)$ wielkości $g(\theta)$ jest \textit{zgodny}, jeśli jest stochastycznie zbieżny do szacowanej funkcji parametru, tj.
+			\begin{equation*}				
+			\displaystyle\mathop{\mathlarger{\mathlarger{\mathlarger{\forall}}}}_{\epsilon > 0} \lim_{n \to \infty} \ 
+			P ( | T_n- g(\theta)|\; < \epsilon ) = 1.
+			\end{equation*}
+	\end{df}
+
+
+\subsubsection{Nieobciążoność}
+	\begin{df}
+		Esytmator $T = T(X_1, \ldots, X_n)$ funkcji $g(\theta)$ jest \textit{nieobciążany}, jeśli
+		
+		\begin{equation*}
+			\mathbb{E}_{\theta}(T(X_1, \ldots, X_n)) = g(\theta), \quad \forall \theta \in \Theta.
+		\end{equation*}
+	\end{df}
+	\begin{uwg}
+		Estymator nieobciążony nie zawsze istnieje.
+	\end{uwg}
+	
+	\begin{przyk}
+			Niech $X = (X_1, \ldots, X_n)$ będzie próbą z populacji o rozkładzie ze skończoną wartością oczekiwaną $\mu$. Wówczas statystyka 
+			\begin{equation*}
+				\hat{\mu}(X) = \frac{1}{n} \sum\limits_{k=1}^{n} X_k
+			\end{equation*}
+			jest nieobciążonym estymatorem wartości oczekiwanej $\mu$.
+	\end{przyk}
+	
+	\begin{przyk}
+			Niech $X = (X_1, \ldots, X_n), \; n >1$ będzie próbą z populacji o rozkładzie ze skończoną i niezerową wariancją $\sigma^2$. Wówczas statystyka
+			\begin{equation*}
+				T(X) = \frac{1}{n-1} \sum\limits_{k=1}^{n}(X_k - \hat{\mu}(X))^2
+			\end{equation*}
+			jest nieobciążonym estymatorem wariancji $\sigma^2$.
+	\end{przyk}
+	
+%\subsubsection{Efektywność}
+%\subsubsection{Dostateczność}
+
+\subsection{Metody wyznaczania estymatorów}
+\subsubsection{Metoda największej wiarogodności}
+	W poniższej sekcji rozważamy model statystyczny $(\mathcal{X},\{P_\theta \colon \theta \in \Theta\})$ taki, że wszystkie rozkłady z rodziny $\mathcal{P}$ mają gęstości względem tej samej miary. Przez $p_{\theta}(x)$ oznaczamy gęstość rozkładu $P_{\theta}$\footnote{Należy pamiętać, że dla rozkładów dyskretnych funkcję gęstości definiuje się przy użyciu funkcji masy prawdopodobieństwa.}
+
+	\begin{df}
+		Dla ustalonego $x \in \mathcal{X}$ wielkość
+		\begin{equation*}
+			L(\theta; x) = p_{\theta}(x), \quad \theta \in \Theta,
+		\end{equation*}
+		nazywamy wiarogodnością $\theta$, gdy zaobserwowano $x$.
+	\end{df}
+	
+	\begin{df}
+		\textit{Estymatorem największej wiarogodności} parametru $\theta$ nazywamy statystykę $\hat{\theta}: \mathcal{X} \to \Theta$, której wartości $\hat{\theta}(x), \ x \in \mathcal{X}$ spełniają warunek:
+		\begin{equation*}
+			L(\hat{\theta}(x); x) = \sup_{\theta \in \Theta} L(\theta; x), \quad x \in \mathcal{X}.
+		\end{equation*}		
+		Zamiast "estymator największej wiarogodności" będziemy pisali krótko ENW, a zamiast "estymator największej wiarogodności parametru $\theta$" będziemy pisali ENW($\theta$).
+		
+	\end{df}
+	\begin{uwg}
+		Dla danego parametru $\theta$ ENW może nie istnieć lub może być wyznaczony niejednoznacznie.
+	\end{uwg}
+	\begin{uwg}
+		Przyjmujemy, że estymatorem największej wiarogodności funkcji parametrycznej $g(\theta)$ jest statystyka $g(\hat{\theta}(X))$, gdzie $\hat{\theta}(X)$ jest ENW parametru $\theta$.
+	\end{uwg}
+
+	Zazwyczaj, podczas wyznaczania ENW, wygodniej jest operować funkcją $\log L$, niż funkcją $L$. Stosujemy wówczas oznaczenie $\ell(\theta) = \log L(\theta)$.
+	
+	\begin{przyk}
+		Niech $X = X_1, \ldots, X_n$ będzie próbą z rozkładu wykładniczego o parametrze $\theta$. Wówczas funkcja wiarogodności zadana jest wzorem
+		\begin{equation*}
+			L(\theta; X) = \prod_{k=i}^{n}(\theta \exp(-\theta X_i)),
+		\end{equation*}
+		zatem
+		\begin{equation*}
+			\ell(\theta;  X) = n \log \theta - \theta \sum_{i=1}^{n} X_i.
+		\end{equation*}
+		Następnie przyrównując pochodną funkcji $\ell$ do zera
+		\begin{equation*}
+			\ell'(\theta; X) = \frac{n}{\theta} - \sum_{i=1}^{n} X_i = 0.
+		\end{equation*}
+		otrzymujemy ENW($\theta$) równy $\hat{\theta} = 1/\bar{X}$, gdzie $\bar{X}$ oznacza średnią z próby $X$.
+
+	\end{przyk}
+	
+\subsubsection{Metoda momentów}
+	Metoda momentów polega na przyrównaniu $k$ pierwszych momentów empirycznych z $k$ pierwszymi momentami (zwykłymi, bądź centralnymi) rozkładu teoretycznego. Z powstałych w ten sposób równań wyliczamy szukane parametry. Układamy tyle równań, ile jest niewiadomych parametrów.
+	
+	\begin{przyk}
+			Niech $X = X_1, \ldots, X_n$ będzie próbą z rozkładu o ciągłej funkcji gęstości $f_{\theta}, \ \theta \in \mathbb{R}^k$, to EMM znajdujemy rozwiązując poniższy układ równań
+		\begin{equation}
+			\begin{dcases}
+			\hat{\mu}  = \mu(\theta), \quad &\text{gdzie} \  \mu(\theta) = \int_{\mathbb{R}} x f_{\theta}(x)dx \\
+			\vdots\\
+			\hat{m}_k  = m_k, \quad &\text{gdzie} \  m_k = \int_{\mathbb{R}} (x - \mu(\theta))^k f_{\theta}(x)dx, \\
+			\end{dcases}
+		\end{equation}
+		przy czym $\hat{\mu}$ to średnia z próby $X$ a $m_k$ oraz $\hat{m}_k$ oznaczają odpowiednio $k$-ty moment teoretyczny i empiryczny.
+	\end{przyk}
+
+	
+
+	\begin{przyk}
+	Niech $X = X_1, \ldots, X_n$ będzie próbą z rozkładu wykładniczego o parametrze $\theta$. Z własności rozkładu wykładniczego wiemy, iż $\mu(\theta) = \frac{1}{\theta}$. Interesujący nas układ równań przestawia się zatem następującą:
+	\begin{equation*}
+		\frac{1}{\theta} = \frac{1}{n} \sum_{i=1}^{n}X_i.
+	\end{equation*}
+	Estymator parametru $\theta$ otrzymany metodą momentów jest zatem równy $\hat{\theta} = 1/\bar{X}$, gdzie $\bar{X}$ oznacza średnią z próby $X$.
+	\end{przyk}
+
+%\subsubsection{Uogólniona metoda momentów}
+

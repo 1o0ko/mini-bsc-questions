@@ -1,0 +1,100 @@
+\chapter{Relacja równoważności}
+	\section{Relacja równoważności}
+	\begin{df}
+		Jeśli dane są dwa zbiory $X$ i $Y$, to każdy podzbiór $R \subset X \times Y $ nazywamy \textbf{relacją dwuargumentową} (binarną) między elementami zbiorów $X$ i $Y$.
+	\end{df}
+	Jeżeli dla pary uporządkowanej $(x,y)$ takiej, że: $x \in X, \; y \in Y$ mamy $(x,y) \in R$, to piszemy również $ x R y$ i mówimy, że $x$ jest w relacji z $y$.
+
+	\subsection*{Przykłady}
+	\begin{enumerate}
+		\item Dla każdej funkcji $f: X \rightarrow Y$ można rozpatrzeć jej \textit{wykres}: jest to podzbiór
+		\begin{equation}
+			\Gamma(f) = \{ (x,y) \; | \; x \in  X, \; y = f(x) \} \subset X \times Y,
+		\end{equation}
+		a więc pewna relacja pomiędzy elementami zbiorów $X$ i $Y$. 
+		\begin{uwg}
+			Nie każda relacja $R$ jest wykresem pewnego odwzorowania $f: X \rightarrow Y$. \\Warunek konieczny i wystarczający jest następujący: dla każdego $x \in X$ istnieje dokładnie jeden element $y \in Y$ taki, że $xRy$.  
+		\end{uwg}
+		\item 
+			$
+				 R = \{ (x,y) \; | \; x \in  \mathbb{N}, \; y \in \mathbb{N}, \; x + y \textnormal{ jest liczbą parzystą} \}.
+			$
+	\end{enumerate}
+	%
+	\begin{df} Relacja dwuargumentowa $\sim$ w zbiorze $X$ jest \textbf{relacją równoważności}, jeśli dla dowolnych $x, x', x'' \in X$ spełnione są następujące warunki:
+		\begin{enumerate}
+			\item $x \sim x$ (\textit{zwrotność});
+			\item $x \sim x' \implies x' \sim x$ (\textit{symetria});
+			\item $x \sim x'$ i $x' \sim x'' \implies x \sim x''$ (\textit{przechodniość}).
+		\end{enumerate}
+	\end{df}
+	Zapis $a \not \sim b$ oznacza, że elementy $a,b \in X$ nie są w relacji $\sim$.
+	%
+	\begin{df}
+	Dla danego $x \in X$ podzbiór
+	\begin{equation}
+	[x]_{\sim}  = \{ x' \in X \; | \; x' \sim x \} \subset X
+	\end{equation}
+	złożony z wszystkich elementów równoważnych z $x$ nazywamy \textbf{klasą równoważności} (lub \textbf{abstrakcji}) elementu $x$. Jeżeli relacja równoważności znana jest z kontekstu, pisze się zwykle po prostu $[x]$. \\
+	Każdy element $x' \in [x]_{\sim}$ nazywamy \textbf{reprezentantem} klasy $[x]_{\sim}$.
+	\end{df}
+	
+	\begin{stw}
+	Zbiór klas równoważności względem relacji $\sim$ stanowi rozkład zbioru $X$ w~tym sensie, że różne klasy abstrakcji są rozłączne  i $X$ jest ich sumą.
+	\end{stw}
+	
+	\begin{stw}
+		Jeśli dany jest rozkład zbioru $X$ na parami rozłączne podzbiory $C_{\alpha}$, to istnieje taka relacja równoważności w $X$, że $C_{\alpha}$ są jej klasami.
+	\end{stw}
+	
+	\section{Faktoryzacja odwzorowań}
+	\begin{df}
+		Zbiór klas równoważności dla relacji równoważności $\sim$ w zbiorze $X$ oznaczamy przez $X/_{\sim}$ i nazywamy \textbf{zbiorem ilorazowym} zbioru $X$ względem relacji $\sim$.
+	\end{df}
+	
+	\begin{df}Niech $X$ będzie zbiorem, na którym określono relację równoważności $\sim$. \\Wtedy odwzorowanie $p: X \rightarrow X/_{\sim}$ zadane wzorem
+		 \begin{equation}\label{rzut_kanoniczny}
+		 p(x) = [x]_{\sim}
+		 \end{equation}
+		 nazywamy \textbf{odwzorowaniem kanonicznym} (lub \textbf{rzutem kanonicznym}) zbioru $X$ na zbiór ilorazowy $X/_{\sim}$.
+	\end{df}
+	\begin{uwg}
+		Odwzorowanie kanoniczne jest \textit{suriekcją}.
+	\end{uwg}
+	
+	Dla danych zbiorów $X$ i $Y$ oraz odwzorowania $f: X \rightarrow Y$ definiujemy teraz następującą relację $R_f$ w zbiorze $X$:
+	\begin{equation}\label{Rf}
+	xR_{f}x' \Leftrightarrow f(x) = f(x'), \quad x,x' \in X.
+	\end{equation}
+	Relacja z równania \ref{Rf} jest relacją równoważności o następujących klasach abstrakcji: 
+	$$[x]_{R_f}  = \{ x' \in X: f(x') = f(x)\}.$$
+	Odwzorowanie $f: X \rightarrow Y$ \textit{indukuje} odwzorowanie $\bar{f}: X/R_f \rightarrow Y$, określone wzorem:
+	\begin{equation}
+		\bar{f}([x]_{R_f})	= f(x)
+	\end{equation}
+	lub, co na jedno wychodzi,
+	\begin{equation}
+		(\bar{f} \circ p)(x) = f(x),
+	\end{equation}
+	gdzie $p$ jest odwzorowaniem kanonicznym (\ref{rzut_kanoniczny}) zbioru $X$ na zbiór ilorazowy $ X/R_f$.
+	\begin{uwg}
+		Odwzorowanie $\bar{f}$ jest injekcją.
+	\end{uwg}
+	
+	Diagram przemienny
+	\begin{center}
+		\begin{tikzpicture}[description/.style={fill=white,inner sep=2pt}]
+		\matrix (m) [matrix of math nodes, row sep=3em,
+		column sep=2.5em, text height=1.5ex, text depth=0.25ex]
+		{ X &  & Y \\
+			& X/R_f & \\ };
+		\path[-,font=\scriptsize]
+		(m-1-1) edge node[auto] {$ f $} 
+		(m-1-3)	edge node[auto, swap] {$ p $} (m-2-2)
+		(m-1-3) edge node[auto] {$ \bar{f} $} (m-2-2);
+		\end{tikzpicture}
+	\end{center}	
+	ilustruje \textit{faktoryzację} (rozkład) odwzorowania $f$ na złożenie surjekcji $p$ i injekcji $\bar{f}$
+		$$
+		f = \bar{f}p.
+		$$

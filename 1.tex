@@ -1,0 +1,151 @@
+\chapter{Kryteria zbieżności szeregów o wyrazach rzeczywistych.}
+
+\section{Podstawowe informacje}
+
+\subsection{Definicja szeregu liczbowego i jego sumy}
+
+\begin{df}{(\textbf{Szereg liczbowy})}
+Mając dany ciąg liczb $a_{1}, a_{2},\ldots , a_{n},\ldots,$ gdzie $a_{i}\in\mathbb{R}$ wyrażenie $\sum_{n=1}^{\infty}a_{n}=a_{1}+a_{2}+\ldots +a_{n}+\ldots$ nazywamy \textit{szeregiem nieskończonym}, lub krótko \textit{szeregiem} o wyrazach $a_{1}, a_{2},\ldots , a_{n},\ldots$
+\end{df}
+
+\begin{df}{(\textbf{Suma szeregu})}
+Ciąg $s_{1}=a_{1},\ s_{2}=a_{1}+a_{2},\ \ldots,\ s_{n}=a_{1}+\ldots +a_{n},\ \ldots$ nazywamy \textit{sumami cząstkowymi} szeregu. Jeżeli $\lbrace s_{n}\rbrace$ jest zbieżny do $s$, to mówimy, że szereg jest \textit{zbieżny} i ma sumę $s$. Gdy $\lbrace s_{n}\rbrace$ nie jest zbieżny to szereg nazywamy \textit{rozbieżnym}. Szereg rozbieżny nie ma sumy.
+\end{df}
+
+\begin{przyk}{(\textbf{Szereg geometryczny})}
+$$\sum_{n=0}^{\infty}aq^n=a+aq+aq^2+\ldots+aq^n+\ldots$$ $a, q\in\mathbb{R}$, zbieżny dla $\mid q\mid<1$, rozbieżny dla $\mid q\mid\geq1,\ a\neq 0$
+\end{przyk}
+
+\begin{przyk}{(\textbf{Szereg harmoniczny rzędu $\alpha\in\mathbb{R}$})}
+$$\sum_{n=1}^{\infty}\frac{1}{n^{\alpha}}=1+\frac{1}{2^{\alpha}}+\frac{1}{3^{\alpha}}+\ldots+\frac{1}{n^{\alpha}}+\ldots$$
+zbieżny dla $\alpha>1$, rozbieżny dla $\alpha\leq 1$
+\end{przyk}
+
+\subsection{Warunek konieczny zbieżności}
+
+\begin{df}{(\textbf{Warunek konieczny})}
+$$\text{Szereg} \sum_{n=1}^{\infty}a_{n}\ \text{jest zbieżny} \Rightarrow \lim_{n \to \infty} a_n=0$$
+\end{df}
+\begin{przyk}
+$$\sum_{n=1}^{\infty}\frac{1}{2^n}=\frac{1}{2}+\frac{1}{4}+\ldots+\frac{1}{2^n}+\ldots=1$$
+$$\sum_{n=1}^{\infty}\frac{1}{n}=1+\frac{1}{2}+\frac{1}{3}+\ldots+\frac{1}{n}+\ldots=\infty$$
+Euler obliczył, że $s_{1000000}=14,39$
+\end{przyk}
+
+\section{Kryteria zbieżności}
+
+\subsection{Kryterium porównawcze}
+
+\begin{df}{(\textbf{Kryterium porównawcze})}
+$$\exists m\ \forall (n\geq m) \ \ 0\leq a_n \leq b_n \Rightarrow $$ 
+$$\text{Jeżeli} \sum_{n=1}^{\infty}b_n\ \text{jest zbieżny, to}\ \sum_{n=1}^{\infty}a_n\ \text{jest zbieżny}$$
+$$\text{Jeżeli} \sum_{n=1}^{\infty}a_n\ \text{jest rozbieżny, to}\ \sum_{n=1}^{\infty}b_n\ \text{jest rozbieżny}$$
+\end{df}
+
+\begin{przyk}
+$$0\leq\sum_{n=1}^{\infty} \frac{(sin(n))^2}{n\sqrt{n}} \leq \sum_{n=1}^{\infty} \frac{1}{n^{\frac{3}{2}}}$$
+$$a_n\in\mathbb{Z},\ 0\leq a_n \leq 9, \quad 0\leq\sum_{n=1}^{\infty} \frac{a_n}{10^n} \leq \sum_{n=1}^{\infty} \frac{9}{10^n}$$
+$$\alpha\leq 1, \quad 0\leq\sum_{n=1}^{\infty} \frac{1}{n} \leq  \sum_{n=1}^{\infty} \frac{1}{n^\alpha}\ \text{zatem } \sum_{n=1}^{\infty} \frac{1}{n^\alpha}\ \text{rozbieżny}$$
+\end{przyk}
+
+\subsection{Graniczne kryterium porównawcze}
+
+\begin{df}{(\textbf{Graniczne kryterium porównawcze})}
+$$\text{Jeżeli} \ \exists m\ \forall (n\geq m) \ \ b_n\geq 0 \ \text{oraz} \lim_{n \to \infty} \frac{a_n}{b_n}=g>0 \Rightarrow $$ 
+$$\sum_{n=1}^{\infty}a_n\ \text{jest zbieżny}\ \Leftrightarrow \sum_{n=1}^{\infty}b_n\ \text{jest zbieżny}$$
+\end{df}
+
+\begin{przyk}{Graniczne kryterium porównawcze}
+$$\sum_{n=1}^{\infty} \frac{sin(\frac{1}{n})}{\sqrt[3]{n}} \rightarrow a_n=\frac{sin(\frac{1}{n})}{\sqrt[3]{n}}, \ b_n=\frac{\frac{1}{n}}{\sqrt[3]{n}}=\frac{1}{n^{\frac{4}{3}}}\geq 0$$
+$$\lim_{n \to \infty} \frac{a_n}{b_n}=\lim_{n \to \infty} \frac{sin(\frac{1}{n})}{\frac{1}{n}}=1>0$$
+$$\text{Ponieważ}\ \sum_{n=1}^{\infty} \frac{1}{n^{\frac{4}{3}}}\ \text{jest zbieżny (bo harmoniczny rzędu $\alpha=\frac{4}{3}> 1$)}$$
+$$\text{zatem też}\ \sum_{n=1}^{\infty} \frac{sin(\frac{1}{n})}{\sqrt[3]{n}}\ \text{jest zbieżny.}$$
+\end{przyk}
+
+\subsection{Kryterium całkowe}
+
+\begin{df}{(\textbf{Kryterium całkowe})}
+Niech $f: [n_0,\infty)\rightarrow\mathbb{R},\ n_0\in \mathbb{N},$ je{\,s}li funkcja f jest:
+\begin{itemize}
+\item
+$\forall (x\geq n_0)\quad f(x)\geq 0$ (nieujemna dla $x\geq n_0$)
+\item
+$f$ jest nierosnąca na $[n_0,\infty)$
+\item
+$\forall [a,b]\subset[n_0,\infty)\quad f\in R[a,b]$ ($f$ jest całkowalna w sensie Riemanna na $[a,b]$)
+\end{itemize}
+to wówczas:
+$$\int\limits_{n_0}^{\infty} f(x)dx\ \text{jest zbieżna} \Leftrightarrow \sum_{n=n_0}^{\infty}f(n)\ \text{jest zbieżny}$$
+\end{df}
+
+\begin{przyk}{Kryterium całkowe}
+$$\sum_{n=1}^{\infty} \frac{2^{-\sqrt{n}}}{\sqrt{n}} \rightarrow f(x)=\frac{2^{-\sqrt{x}}}{\sqrt{x}}>0,\ \forall x\geq1$$
+Ponadto funkcja jest malejąca dla $x\geq 1$, oraz ciągła w $[1,\infty)$ zatem $\forall[a,b]\subset [1,\infty)\quad f\in R[a,b]$
+$$\int\limits_{1}^{\infty} f(x)dx=\int\limits_{1}^{\infty} \frac{1}{\sqrt{x}\cdot 2^{\sqrt{x}}}dx=\frac{1}{ln(2)},\ \text{zatem szereg jest zbieżny}$$
+\end{przyk}
+
+\begin{przyk}{Kryterium całkowe}
+$$\sum_{n=2}^{\infty} \frac{1}{n\sqrt[3]{ln(n)}} \rightarrow f(x)=\frac{1}{x\sqrt[3]{ln(x)}}>0,\ \forall x>1$$
+Ponadto funkcja jest malejąca dla $x>1$, oraz ciągła w $(1,\infty)$ zatem $\forall[a,b]\subset (1,\infty)\quad f\in R[a,b]$
+$$\int\limits_{2}^{\infty} f(x)dx=\int\limits_{2}^{\infty} \frac{1}{x} (ln(x))^{- \frac{1}{3}}dx=\infty,\ \text{zatem szereg jest rozbieżny}$$
+%\Bigg|\begin{array}{ll}
+%\displaystyle ln(x)=y
+%\\
+%\displaystyle \frac{dx}{x}=dy
+%\end{array} \Bigg|
+\end{przyk}
+
+\subsection{Kryterium d'Alemberta (kryterium ilorazowe)}
+
+\begin{df}{(\textbf{Zbieżność bezwzględna})}
+$$\text{Mówimy, że szereg } \sum_{n=1}^{\infty}a_{n}\ \text{jest } \textit{zbieżny bezwzględnie} \Leftrightarrow$$ $$\sum_{n=1}^{\infty}|a_{n}|\text{ jest zbieżny.}$$
+\end{df}
+\begin{df}{(\textbf{Zbieżność warunkowa})}
+$$\text{Szereg}\ \sum_{n=1}^{\infty}a_{n}\ \text{jest } \textit{warunkowo zbieżny} \Leftrightarrow$$ $$\text{jest on zbieżny i nie jest zbieżny bezwzględnie}$$ 
+%np. \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}
+\end{df}
+
+\begin{df}{(\textbf{Kryterium d'Alemberta})}
+$$\text{Jeżeli} \ \exists m\ \forall (n\geq m) \ \ a_n\neq 0 \ \text{oraz} \lim_{n \to \infty} \Big| \frac{a_{n+1}}{a_n} \Big| =g\Rightarrow $$ 
+$$\text{Jeżeli } g<1 \ \text{to szereg } \sum_{n=1}^{\infty}a_n\ \text{jest zbieżny bezwzględnie}$$
+$$\text{Jeżeli } g>1 \ \text{to szereg } \sum_{n=1}^{\infty}a_n\ \text{jest rozbieżny}$$
+\end{df}
+
+\begin{przyk}{Kryterium d'Alemberta}
+$$\sum_{n=1}^{\infty}\frac{2n-1}{2^n},\ \frac{|a_{n+1}|}{|a_n|}=\bigg|\frac{2n+1}{2^{n+1}}\frac{2^n}{2n-1}\bigg|=\frac{2n+1}{2n-1}\cdot\frac{1}{2}\rightarrow\frac{1}{2}<1$$
+$$\sum_{n=1}^{\infty}\frac{2^{n}n!}{n^n},\ \frac{|a_{n+1}|}{|a_n|}=\bigg|\frac{2^{n+1}(n+1)!}{(n+1)^{n+1}}\frac{n^n}{2^{n}n!}\bigg|=2\cdot\bigg(\frac{1}{1+\frac{1}{n}}\bigg)^n\rightarrow\frac{2}{e}<1$$
+\end{przyk}
+
+\subsection{Kryterium Cauchy'ego}
+
+\begin{df}{(\textbf{Kryterium Cauchy'ego})}
+$$\text{Jeżeli istnieje (właściwa lub niewłaściwa) granica } \lim_{n \to \infty}\sqrt[n]{|a_n|}=g $$ 
+$$\text{Jeżeli } g<1 \ \text{to szereg } \sum_{n=1}^{\infty}a_n\ \text{jest zbieżny bezwzględnie}$$
+$$\text{Jeżeli } g>1 \ \text{to szereg } \sum_{n=1}^{\infty}a_n\ \text{jest rozbieżny}$$
+\end{df}
+
+\begin{przyk}{Kryterium Cauchy'ego}
+$$\sum_{n=1}^{\infty} \bigg(1-\frac{1}{n} \bigg)^{n^2},\ \sqrt[n]{|a_n|}=\bigg(1-\frac{1}{n} \bigg)^n=\bigg[\bigg(1+\frac{-1}{n} \bigg)^{-n}\bigg]^{-1}\rightarrow\frac{1}{e}<1$$
+$$\sum_{n=1}^{\infty} \bigg(n^{\frac{1}{n}}-\frac{1}{1000}\bigg)^n,\ \sqrt[n]{|a_n|}=\bigg(n^{\frac{1}{n}}-\frac{1}{1000}\bigg)\rightarrow \bigg(1-\frac{1}{1000}\bigg)<1$$
+\end{przyk}
+
+\subsection{Kryterium Leibniza}
+
+\begin{df}{(\textbf{Szereg naprzemienny})}
+Szereg liczbowy $\sum_{n=1}^{\infty}a_n$ nazywamy \textit{naprzemiennym} $\Leftrightarrow$ $\forall n\quad a_n\cdot a_{n+1}<0$ (są to szeregi postaci $\sum_{n=1}^{\infty}(-1)^n b_n$ bądź $\sum_{n=1}^{\infty}(-1)^{n-1} b_n$ gdzie $\forall n\ b_n>0$)
+
+Jeżeli $\sum_{n=1}^{\infty}a_n$ jest naprzemienny, oraz:
+\begin{itemize}
+\item
+$\lim_{n \to \infty}|a_n|=0$
+\item
+$\exists n_0\ \forall (n\geq n_0)\quad |a_{n+1}|\leq|a_n|$
+\end{itemize}
+to wówczas $\sum_{n=1}^{\infty}a_n$ jest zbieżny
+\end{df}
+
+\begin{przyk}{Kryterium Leibniza}
+$$\sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt[3]{n}}\rightarrow \sum_{n=1}^{\infty}|a_{n}|=\sum_{n=1}^{\infty} \frac{1}{\sqrt[3]{n}}\ \text{ nie jest zbieżny bezwzględnie}$$
+$$\lim_{n \to \infty}|a_n|=0\ \text{pierwszy warunek kryterium Leibniza spełniony}$$
+$$\forall n\in\mathbb{N}\quad \frac{1}{\sqrt[3]{n+1}} \leq \frac{1}{\sqrt[3]{n}}\ \text{zatem szereg jest zbieżny warunkowo}$$
+\end{przyk}

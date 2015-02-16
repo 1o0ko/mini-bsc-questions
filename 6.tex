@@ -1,0 +1,139 @@
+\chapter{Twierdzenia i wzory całkowe Cauchy'ego.}
+
+\section{Podstawowe informacje}
+
+\subsection{Funkcje holomorficzne}
+
+\begin{df}{Funkcja holomorficzna}
+Mówimy, że funkcja $f:\mathbb{C}\rightarrow \mathbb{C}$ jest \textit{holomorficzna w punkcie} $z\in \mathbb{C}$, jeżeli jest ona określona w pewnym otoczeniu tego punktu i ma pochodną w każdym punkcie tego otoczenia. Mówimy, że funkcja $f$ jest \textit{holomorficzna w zbiorze} $D\subseteq \mathbb{C}$ jeżeli jest holomorficzna w każdym punkcie tego zbioru.
+\end{df}
+
+\begin{df}{Równania Cauchy'ego - Riemanna}
+Funkcja $f:D\rightarrow\mathbb{C}$ której rozkład na część rzeczywistą i urojoną jest postaci $f(x+iy)=u(x,y)+iv(x,y)$ jest holomorficzna w $D$ $\Leftrightarrow$ gdy $u$ i $v$ są różniczkowalne i spełniają równania różniczkowe Cauchy'ego - Riemanna:
+\begin{displaymath}
+\left\{\begin{array}{ll}
+\ \ \displaystyle{u_x=v_y}
+\\
+\\\displaystyle{-u_y=v_x}
+\end{array} \right.
+\end{displaymath}
+Wtedy $f'(z)=u_x+iv_x=v_y-iu_y=u_x-iu_y=v_y+iv_x$
+\end{df}
+
+\begin{przyk}{(Funkcja kwadratowa)}\\
+$f(z)=z^2=(x^2-y^2)+2xyi\rightarrow u_x=2x=v_y,\ -u_y=2y=v_x$
+\end{przyk}
+
+\begin{przyk}{(Inwersja)}\\
+$f(z)=\dfrac{1}{z}=\dfrac{x}{x^2+y^2}-\dfrac{iy}{x^2+y^2}\rightarrow u_x=\frac{y^2-x^2}{(x^2+y^2)^2}=v_y$
+$-u_y=\frac{2xy}{(x^2+y^2)^2}=v_x$
+\end{przyk}
+
+\begin{przyk}{(Funkcja wykładnicza)}\\
+$f(z)=e^z=e^x cos(y)+ie^x sin(y)\rightarrow u_x=e^x cos(y)=v_y,\ -u_y=e^x sin(y)=v_x$
+\end{przyk}
+
+\subsection{Twierdzenie podstawowe Cauchy'ego}
+
+\begin{df}{Twierdzenie całkowe Cauchy'ego}
+Niech $G\subseteq \mathbb{C}$ będzie obszarem jednospójnym, $f:G\rightarrow\mathbb{C}$ będzie holomorficzna, oraz niech $\gamma$ będzie kawałkami gładką krzywą zamkniętą leżącą w obszarze $G$. Wówczas:
+$$\oint\limits_{\gamma}f(z)dz=0$$
+\end{df}
+
+\begin{uwg}
+Twierdzenia tego używa się w dowodach wielu twierdzeń z analizy zespolonej m.in. twierdzenia o residuach czy wzoru całkowego Cauchy'ego
+\end{uwg}
+
+\subsection{Punkty regularne i osobliwe}
+
+\begin{df}{(Punkt regularny)}\\
+Mówimy, że $z_0$ jest \textbf{punktem regularnym} funkcji $f(z)$ jeśli jest ona holomorficzna w tym punkcie.
+\end{df}
+
+\begin{df}{(Punkt osobliwy)}\\
+Punkt $z_0$ nazywamy \textbf{punktem osobliwym, odosobnionym (izolowanym)} jeśli istnieje sąsiedztwo $0<|z-z_0|<R$ tego punktu w którym funkcja $f(z)$ jest holomorficzna.
+\end{df}
+
+\begin{przyk}
+$f(z)=\frac{1}{1-z}$ punkt $z=1$ jest punktem osobliwym odosobnionym, pozostałe punkty $\mathbb{C}$ są regularne
+\end{przyk}
+
+\section{Twierdzenia}
+
+\subsection{Twierdzenie o residuach}
+
+\begin{df}{(Definicja residuum)}\\
+Niech $f$ holomorficzna w $G_{z_0}=\lbrace z:\ 0<|z-z_0|<\varepsilon\rbrace$ i $\gamma$ dowolny dodatnio skierowany okrąg $|z-z_0|=r<\varepsilon$. Wówczas $$a_{-1}=\frac{1}{2\pi i} \oint\limits_{\gamma} f(z)\ dz$$ gdzie $a_{-1}$ jest współczynnikiem szeregu Laurenta postaci $$f(z)=\sum_{n=-\infty}^{\infty} a_n z^n$$ Liczbę $a_{-1}$ nazywamy \textbf{residuum} funkcji $f(z)$ w punkcie $z_0$ i oznaczmy przez $Res_{z_0} f(z)$. 
+\end{df}
+
+\begin{tw}
+Jeżeli $f:G\rightarrow\mathbb{C}$ jest holomorficzna w obszarze $G\subseteq \mathbb{C}$ z wyjątkiem co najwyżej sko{\'n}czonej liczby punktów $z_1,\ z_2, \ldots,\ z_n \in G$ zaś $\gamma$ jest krzywą zamkniętą, kawałkami gładką, dodatnio zorientowaną, leżącą w tym obszarze oraz zawierającą wskazane punkty w swoim wnętrzu to:
+$$\oint\limits_{\gamma}f(z)dz=2\pi i \sum_{k=1}^{n}\bigg(\nu_{\gamma}(z_k)\cdot Res_{z_k}f \bigg)$$ gdzie $\nu_{\gamma}(z_k)$ to indeks punktu $z_0$ względem krzywej $\gamma$ (intuicyjnie jest to ilość okrążeń krzywej $\gamma$ dookoła punktu $z_0$).
+\end{tw}
+
+\begin{tw}{Jak liczyć residua z funkcji holomorficznych w $G\setminus\lbrace z_0,\ldots, z_n\rbrace$ ?}
+Niech f będzie holomorficzna w $G$ oraz $z_0\in G$ wówczas: $$Res_{z_0}\bigg(\dfrac{f(z)}{z-z_0}\bigg)=f(z_0)$$
+\end{tw}
+
+\begin{przyk}
+Obliczyć całkę $\int\limits_{C} \frac{dz}{z^2(z+2i)}$ gdzie $C$ jest okręgiem $|z+2i|=1$ dodatnio zorientowanym $$\oint\limits_{|z+2i|=1}\frac{dz}{z^2(z+2i)}=2\pi i \cdot \nu_{\gamma}(-2i)\cdot Res_{-2i}\bigg( \frac{1}{z^2(z+2i)}\bigg)$$ $$\oint\limits_{|z+2i|=1}\frac{dz}{z^2(z+2i)}=2\pi i \cdot 1 \cdot \frac{1}{(-2i)^2}=-\frac{\pi i}{2}$$
+\end{przyk}
+
+\begin{przyk}
+$$\oint\limits_{|z|=3}\frac{e^z}{z^2+2z}\ dz=\frac{1}{2}\oint\limits_{|z|=3}\frac{e^z}{z}\ dz-\frac{1}{2}\oint\limits_{|z|=3}\frac{e^z}{z+2}\ dz=$$ $$=2\pi i \cdot \bigg[\frac{1}{2} Res_0 \bigg(\frac{e^z}{z}\bigg)-\frac{1}{2} Res_{-2} \bigg(\frac{e^z}{z-(-2)}\bigg)\bigg]=2\pi i \cdot \bigg(\frac{1}{2}-\frac{e^{-2}}{2}\bigg)$$ zatem ostatecznie mamy: $$\oint\limits_{|z|=3}\frac{e^z}{z^2+2z}\ dz=\pi i \cdot \big(1-e^{-2}\big)$$
+\end{przyk}
+
+\begin{df}{(Klasyfikacja punktów osobliwych)}\\
+Niech dane będzie rozwinięcie funkcji $f(z)$ w szereg Laurenta w sąsiedztwie punktu osobliwego, odizolowanego $z_0$: $$f(z)=\sum_{n=-\infty}^{\infty} a_n z^n=\sum_{n=0}^{\infty} a_n (z-z_0)^n+\sum_{n=1}^{\infty} \frac{a_{-n}}{(z-z_0)^n}$$ 
+\begin{itemize}
+  \item
+    Jeśli część osobliwa rozwinięcia ''znika'' to punkt $z_0$ nazywamy \textbf{pozornie osobliwym}.
+  \item
+    Jeśli część osobliwa zawiera skończoną liczbę składników to istnieje takie $k\in \mathbb{N}$, że $a_{-k}\neq 0$ oraz $a_{-n}=0$ dla $n>k$ wtedy $z_0$ nazywamy \textbf{biegunem k-krotnym}
+  \item
+    Jeśli część osobliwa zawiera nieskończenie wiele składników to punkt $z_0$ nazywamy \textbf{istotnie osobliwym}.
+\end{itemize}
+\end{df}
+
+\begin{tw}{(Residuum w biegunie k-krotnym)}\\
+Jeśli $z_0$ jest biegunem k-krotnym funkcji $f(z)$ to residuum w punkcie $z_0$ funkcji $f(z)$ wynosi: $$Res_{z_0}f(z)=\frac{1}{(k-1)!}\lim_{z \to z_0}\bigg[\frac{d^{k-1}}{dz^{k-1}}\bigg((z-z_0)^k f(z)\bigg)\bigg]$$
+\end{tw}
+
+\begin{tw}{(Odpowiedniość między biegunami a zerami funkcji)}\\
+\begin{itemize}
+  \item
+    Jeśli $z_0$ jest biegunem k-krotnym funkcji $f(z)$ to dla funkcji:
+	\begin{displaymath}
+	\left\{\begin{array}{ll}
+	\ \ \displaystyle{\frac{1}{f(z)},\quad z\neq z_0}
+	\\
+	\\\displaystyle{\qquad 0,\quad z=z_0}
+	\end{array} \right.
+	\end{displaymath}
+	jest on k-krotnym zerem.
+  \item
+    Jeśli $z_0$ jest k-krotnym zerem funkcji $f(z)$ to jest on biegunem k-krotnym funkcji $\frac{1}{f(z)}$ (bardzo pomocne przy liczeniu residuów w biegunach)
+\end{itemize}
+\end{tw}
+
+\subsection{Wzór całkowy Cauchy'ego}
+
+\begin{tw}
+Niech $f:G\rightarrow\mathbb{C}$ będzie holomorficzna w obszarze $G\subseteq \mathbb{C}$ oraz niech $\{z: |z-z_0|\leq r\}\subset G$. Wtedy dla każdego $z$ takiego, że $|z-z_0|<r$ mamy $$f(z)=\frac{1}{2\pi i}\oint\limits_{|w-z_0|=r}\frac{f(w)}{w-z}\ dw$$ zatem funkcja holomorficzna zdefiniowana na dysku jest całkowicie zdeterminowana przez wartości, które przyjmuje na brzegu tego dysku.
+\end{tw}
+
+\begin{przyk}
+$$\oint\limits_{|z|=2}\frac{z^2}{z^2+2z+2}\ dz=\oint\limits_{C_1}\frac{\frac{z^2}{z-z_2}}{z-z_1}\ dz+\oint\limits_{C_2}\frac{\frac{z^2}{z-z_1}}{z-z_2}\ dz=$$ $$=2\pi i \bigg(\frac{z_{1}^2}{z_1-z_2}+\frac{z_{2}^2}{z_2-z_1}\bigg)=2\pi i (-2)=-4\pi i$$
+gdzie $z_1=-1+i,\ z_2=-1-i$ są punktami osobliwymi funkcji $\frac{z^2}{z^2+2z+2}$
+\end{przyk}
+
+\subsection{Inne zastosowania}
+
+\begin{tw}
+Niech funkcja $f(z)=\frac{p(z)}{q(z)}$ będzie zespoloną funkcją wymierną gdzie $p(z)$ i $q(z)$ są wielomianami o współczynikach rzeczywistych, ponadto niech $\forall x\in \mathbb{R},\ q(x)\neq 0$ oraz $deg\ q\geq 2+deg\ p$ wtedy: $$\int\limits_{-\infty}^{\infty}f(x)\ dx=2\pi i\cdot\Bigg[\sum_{Im (z_k)>0}\bigg(Res_{z_k}f \bigg)\Bigg]$$
+\end{tw}
+
+\begin{przyk}
+$$\int\limits_{-\infty}^{\infty}\frac{dx}{1+x^2}=2\pi i\cdot\Bigg[\sum_{Im (z_k)>0}\bigg(Res_{z_k}\bigg(\frac{1}{1+z^2}\bigg) \bigg)\Bigg]$$
+Stąd miejsca zerowe $1+z^2$ (a zatem bieguny $\frac{1}{1+z^2}$) wynoszą $z_1=i,\ z_2=-i$ zaś residuum wynosi $$Res_{i}\bigg(\frac{1}{1+z^2}\bigg)=Res_{i}\bigg(\frac{1}{(z+i)(z-i)}\bigg)=\frac{1}{i+i}=\frac{1}{2i}$$ więc w ''prosty'' sposób otrzymujemy znany wzór: $$\int\limits_{-\infty}^{\infty}\frac{dx}{1+x^2}=2\pi i\cdot \frac{1}{2i}=\pi$$
+\end{przyk}

@@ -1,0 +1,521 @@
+\chapter{Metody całkowania układu liniowych równań różniczkowych zwyczajnych 1 rzędu.}
+
+\section{Układy równań różniczkowych 1 rzędu}
+
+\begin{df}
+\textbf{Układem normalnym} $n$ równań różniczkowych 1 rzędu o $n$ funkcjach niewiadomych $x_1,\ldots,x_n$ nazywamy układ postaci:
+$$\textrm{(URN)}
+\left\{\begin{array}{c}
+\dfrac{dx_1}{dt}=f_1(t,x_1,\ldots,x_n)\\
+\dfrac{dx_2}{dt}=f_2(t,x_1,\ldots,x_n)\\
+\vdots\\
+\dfrac{dx_n}{dt}=f_n(t,x_1,\ldots,x_n)
+\end{array}\right.$$
+$\begin{array}{ll}
+\textrm{gdzie: } & t\in (a,b)=I,\ t\textrm{ - zmienna niezależna}\\
+& x_1,x_2,\ldots,x_n\ \textrm{ - zmienne zależne}\\
+& D=(a,b)\times D_1\times\ldots\times D_n\subset\mathbb{R}^{n+1},\ D_i\subset\mathbb{R}\\
+& f_i:\mathbb{R}^{n+1}\supset D\rightarrow\mathbb{R}\ \textrm{ - dane}
+\end{array}$\\
+\\
+Warunki początkowe:
+$$\textrm{(WP)}
+\left\{\begin{array}{c}
+x_1(t_0)=\hat{x}_1\\
+x_2(t_0)=\hat{x}_2\\
+\vdots\\
+x_n(t_0)=\hat{x}_n
+\end{array}\right.$$
+gdzie: $t_0\in (a,b)=I,\ \hat{x}_1,\ldots,\hat{x}_n$ - dane stałe. W zapisie macierzowym oznaczając:
+$$x=x(t)=
+\begin{bmatrix}
+x_1(t)\\
+x_2(t)\\
+\vdots\\
+x_n(t)
+\end{bmatrix},\quad f(t,x)=f(t,x_1,x_2,\ldots,x_n)=
+\begin{bmatrix}
+f_1(t,x_1,x_2,\ldots,x_n)\\
+f_2(t,x_1,x_2,\ldots,x_n)\\
+\vdots\\
+f_n(t,x_1,x_2,\ldots,x_n)
+\end{bmatrix}$$
+$$\dot{x}=x'(t)=\dfrac{dx}{dt}=
+\begin{bmatrix}
+\dfrac{dx_1}{dt}\\
+\dfrac{dx_2}{dt}\\
+\vdots\\
+\dfrac{dx_n}{dt}
+\end{bmatrix},\quad \hat{x}=
+\begin{bmatrix}
+\hat{x_1}\\
+\hat{x_2}\\
+\vdots\\
+\hat{x_n}
+\end{bmatrix}$$
+zagadnienie Cauchy'ego układu równań (URN) przyjmuje postać:
+$$\left\{\begin{array}{l}
+\dot{x}=f(t,x)\\
+x(t_0)=\hat{x}
+\end{array}\right.$$
+\end{df}
+
+\begin{df}
+\textbf{Rozwiązaniem} (URN) na przedziale $I$ nazywamy funkcję wektorową $x=x(t)$, różniczkowalną na tym przedziale i spełniającą następujące warunki:
+\begin{enumerate}[\rm 1.]
+\item
+$\forall_{t\in I}\ (t,x_1(t),x_2(t),\ldots,x_n(t))\in D$,
+\item
+$\forall_{t\in I}\ \dot{x}(t)=f(t,x(t))$
+\end{enumerate}
+\end{df}
+
+\begin{df}
+\textbf{Zagadnieniem Cauchy'ego} dla układu (URN) nazywamy wyznaczenie takiego rozwiązania $x=x(t)$ tego układu, które spełnia warunek początkowy (WP).
+\end{df}
+
+\begin{df}{(Ogólna definicja warunku Lipschitza)}\\
+Niech $(X,\varrho),\ (Y,\sigma)$ będą przestrzeniami metrycznymi. Mówimy, że $f:X\rightarrow Y$ spełnia \textbf{warunek Lipschitza} $\Leftrightarrow$ $$\exists_{L>0}\ \forall_{x_1,x_2\in X}\quad\sigma\big(f(x_1),f(x_2)\big)\leqslant L\cdot\varrho(x_1,x_2)$$
+Najmniejszą wartość $L$ (o ile istnieje) dla której nierówność powyższa jest prawdziwa nazywamy \textbf{stała Lipschitza}.
+\end{df}
+
+\begin{df}{(Definicja warunku Lipschitza dla $f(x,t)$)}\\
+Mówimy, że funkcja wektorowa $f(t,x)=f(t,x_1,x_2,\ldots,x_n)$ spełnia \textbf{warunek Lipschitza} względem zmiennych $x_1,x_2,\ldots,x_n$ na zbiorze $D\subset\mathbb{R}^{n+1}$, jeżeli istnieje taka stała dodatnia $L$, zwana \textbf{stałą Lipschitza}, że dla każdych dwóch punktów $\Big(t,x_1^{(1)},x_2^{(1)},\ldots,x_n^{(1)}\Big)$,  $\Big(t,x_1^{(2)},x_2^{(2)},\ldots,x_n^{(2)}\Big)\in D$ spełnione są nierówności: $$\Big|f_i\Big(t,x_1^{(1)},x_2^{(1)},\ldots,x_n^{(1)}\Big)-f_i\Big(t,x_1^{(1)},x_2^{(1)},\ldots,x_n^{(1)}\Big)\Big|\leqslant L\cdot\sum_{k=1}^n\Big|x_k^{(2)}-x_k^{(1)}\Big|\quad\textrm{dla }i=1,2,\ldots,n$$
+\end{df}
+
+\begin{tw}{(Picarda - Lindelofa)}\\
+Jeżeli funkcje $f_i=f_i(t,x_1,x_2,\ldots,x_n),\ i=1,2,\ldots,n$ spełniają warunki:
+\begin{enumerate}[\rm 1)]
+\item
+są ciągłe na obszarze $D\subset\mathbb{R}^{n+1}$ ($f_i$ są funkcjami $n+1$ zmiennych),
+\item
+spełniają warunek Lipschitza względem zmiennych $x_1,x_2,\ldots,x_n$ na obszarze $D$,
+\end{enumerate}
+to wówczas dla każdego punktu $(t_0,\hat{x}_1,\hat{x}_2,\ldots,\hat{x}_n)=(t_0,\hat{x})\in D$ istnieje $h>0$ takie, że na przedziale $[t_0-h,t_0+h]$ układ (URN) ma dokładnie jedno rozwiązanie klasy $C^1$ spełniające warunek początkowy (WP). Jest to rozwiązanie lokalne.
+\end{tw}
+
+\begin{df}{(Układ równań różniczkowych liniowych)}\\
+Układem $n$ równań różniczkowych \textbf{liniowych} 1 rzędu nazywamy układ postaci:
+$$\textrm{(URL)}
+\left\{\begin{array}{c}
+\dfrac{dx_1}{dt}=a_{11}(t)x_1+a_{12}(t)x_2+\ldots+a_{1n}(t)x_n+f_1(t)\\
+\dfrac{dx_2}{dt}=a_{21}(t)x_1+a_{22}(t)x_2+\ldots+a_{2n}(t)x_n+f_2(t)\\
+\vdots\\
+\dfrac{dx_n}{dt}=a_{n1}(t)x_1+a_{n2}(t)x_2+\ldots+a_{nn}(t)x_n+f_n(t)
+\end{array}\right.$$
+gdzie $a_{ij},\ i,j=1,2,\ldots,n$ oraz $f_i,\ i=1,2,\ldots,n$ są danymi funkcjami, ciągłymi na pewnym przedziale $I\subset\mathbb{R}$. Oznaczając (i biorąc pod uwagę poprzednie oznaczenia):
+$$A(t)=
+\begin{bmatrix}
+a_{11}(t) & a_{12}(t) & \ldots & a_{1n}(t)\\
+a_{21}(t) & a_{22}(t) & \ldots & a_{2n}(t)\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1}(t) & a_{n2}(t) & \ldots & a_{nn}(t)
+\end{bmatrix},\quad f(t)=
+\begin{bmatrix}
+f_1(t)\\
+f_2(t)\\
+\vdots\\
+f_n(t)
+\end{bmatrix}$$
+możemy zagadnienie Cauchy'ego dla układu (URL) zapisać w postaci macierzowej:
+$$\left\{\begin{array}{l}
+\dot{x}=A(t)\cdot x+f(t)\\
+x(t_0)=\hat{x}
+\end{array}\right.$$
+Jeżeli $f_i(t)\equiv 0$ na $I$ dla $i=1,2,\ldots,n$ to układ (URL) nazywamy \textbf{układem jednorodnym}, w przeciwnym przypadku układ nazywamy \textbf{niejednorodnym}.
+\end{df}
+
+\begin{tw}
+Jeżeli funkcje $a_{ij},\ i,j=1,2,\ldots,n$ oraz $f_i,\ i=1,2,\ldots,n$ są ciągłe na przedziale $I$, to przez każdy punkt $(t_0,\hat{x}_1,\hat{x}_2,\ldots,\hat{x}_n)\in I\times\mathbb{R}^n$ przechodzi \textbf{jedyne wysycone} rozwiązanie (URL) określone na całym $I$ (\textbf{rozwiązanie wysycone} to rozwiązanie szczególne, określone na pewnym przedziale, które nie daje się rozszerzyć do rozwiązania na żadnym większym przedziale).
+\end{tw}
+
+\begin{df}
+Niech będzie danych $n$ funkcji wektorowych $\overline{x}_1(t),\overline{x}_2(t),\ldots,\overline{x}_n(t)$, które są rozwiązaniami układu jednorodnego $\dot{x}=A(t)\cdot x$. \textbf{Wrońskianem} nazywamy wyznacznik macierzy $W(t)$:
+$$|W(t)|=det
+\begin{bmatrix}
+x_1^{(1)}(t) & x_1^{(2)}(t) & \ldots & x_1^{(n)}(t)\\
+x_2^{(1)}(t) & x_2^{(2)}(t) & \ldots & x_2^{(n)}(t)\\
+\vdots & \vdots & \ddots & \vdots\\
+x_n^{(1)}(t) & x_n^{(2)}(t) & \ldots & x_n^{(n)}(t)\\
+\end{bmatrix}=
+\begin{vmatrix}
+x_1^{(1)}(t) & x_1^{(2)}(t) & \ldots & x_1^{(n)}(t)\\
+x_2^{(1)}(t) & x_2^{(2)}(t) & \ldots & x_2^{(n)}(t)\\
+\vdots & \vdots & \ddots & \vdots\\
+x_n^{(1)}(t) & x_n^{(2)}(t) & \ldots & x_n^{(n)}(t)\\
+\end{vmatrix}$$
+\end{df}
+
+\begin{tw}
+Jeżeli funkcje wektorowe $\overline{x}_1(t),\overline{x}_2(t),\ldots,\overline{x}_n(t)$ są całkami szczególnymi układu jednorodnego $\dfrac{d\overline{x}}{dt}=f(t)\overline{x},\ t\in I$ i $det\ W(t)\neq 0$ dla $t\in I$ to funkcja wektorowa $\overline{x}(t)=c_1\overline{x}_1(t)+c_2\overline{x}_2(t)+\ldots+c_n\overline{x}_n(t),\ c_i\in\mathbb{R},\ i=1,2,\ldots,n$ jest dowolnym rozwiązaniem równania jednorodnego.
+\end{tw}
+
+\begin{tw}
+Przestrzeń rozwiązań równania jednorodnego jest skończenie wymiarowa o wymiarze $n$.
+\end{tw}
+
+\begin{tw}
+Jeżeli $W(t)$ jest \textbf{macierzą fundamentalną} równania jednorodnego to całka ogólna tego układu na przedziale $I$ ma postać: $$\overline{x}_J(t)=W(t)\cdot c,\quad c=[c_1\ \ldots\ c_n]^T$$ $$W(t_0)=E,\ \textrm{gdzie }E\textrm{ - macierz jednostkowa (jest to własność macierzy fundamnetalnej)}$$
+\end{tw}
+
+\begin{tw}
+Całka ogólna $x(t)=\overline{x}(t)$ (wektor) układu liniowego niejednorodnego $\dot{x}=A(t)\cdot x+f(t)$ jest sumą dowolnej całki szczególnej $x_S(t)$ tego układu oraz całki ogólnej $x_J(t)$ odpowiadającego mu układu liniowego jednorodnego tzn. $$x(t)=x_J(t)+x_S(t)\quad (\overline{x}(t)=\overline{x}_J(t)+\overline{x}_S(t))$$
+\end{tw}
+
+\begin{tw}
+Całka ogólna układu liniowego niejednorodnego ma postać: $$x(t)=\underbrace{W(t)\cdot c}_{x_J(t)} +\underbrace{W(t)\int\limits_{t_0}^tW^{-1}(s)f(s)ds}_{x_S(t)}$$ gdzie $f(s)$ - wektor. Zagadnienie Cauchy'ego: $$x(t)=W(t)\cdot \underbrace{W^{-1}(t_0)\cdot\hat{x}}_{c}+W(t)\int\limits_{t_0}^tW^{-1}(s)f(s)ds$$ $$\hat{x}=x(t_0)=W(t_0)\cdot c\quad\Rightarrow\quad c=W^{-1}(t_0)\cdot\hat{x}$$ $$x(t)=W(t-t_0)\cdot\hat{x}+\int\limits_{t_0}^tW(t-s)f(s)ds$$
+\end{tw}
+
+\section{Rozwiązanie układu jednorodnego o stałych współczynnikach}
+
+\begin{df}{(Układ równań różniczkowych liniowych o stałych współczynnikach)}\\
+Układem $n$ równań różniczkowych \textbf{liniowych o stałych współczynnikach} 1 rzędu nazywamy układ postaci:
+$$\left\{\begin{array}{c}
+\dfrac{dx_1}{dt}=a_{11}x_1+a_{12}x_2+\ldots+a_{1n}x_n+f_1(t)\\
+\dfrac{dx_2}{dt}=a_{21}x_1+a_{22}x_2+\ldots+a_{2n}x_n+f_2(t)\\
+\vdots\\
+\dfrac{dx_n}{dt}=a_{n1}x_1+a_{n2}x_2+\ldots+a_{nn}x_n+f_n(t)
+\end{array}\right.$$
+gdzie $a_{ij},\ i,j=1,2,\ldots,n$ są danymi liczbami, zaś $f_i,\ i=1,2,\ldots,n$ są danymi funkcjami, ciągłymi na pewnym przedziale $I\subset\mathbb{R}$. Oznaczając (i biorąc pod uwagę poprzednie oznaczenia):
+$$A=
+\begin{bmatrix}
+a_{11} & a_{12} & \ldots & a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \ldots & a_{nn}
+\end{bmatrix},\quad f(t)=
+\begin{bmatrix}
+f_1(t)\\
+f_2(t)\\
+\vdots\\
+f_n(t)
+\end{bmatrix}$$
+możemy zagadnienie Cauchy'ego dla tego układu zapisać w postaci macierzowej:
+$$\left\{\begin{array}{l}
+\dot{x}=A\cdot x+f(t)\\
+x(t_0)=\hat{x}
+\end{array}\right.$$
+Jeżeli $f_i(t)\equiv 0$ na $I$ dla $i=1,2,\ldots,n$ to układ nazywamy \textbf{układem jednorodnym}, w przeciwnym przypadku układ nazywamy \textbf{niejednorodnym}.
+\end{df}
+
+\begin{df}
+\textbf{Normą macierzy} $A_{n\times n}$ nazywamy liczbę: $$\| A\|_2=\Bigg(\sum_{i=1}^n\sum_{j=1}^na_{ij}^2\Bigg)^{\dfrac{1}{2}}$$ Normę tę (są też inne) nazywamy \textbf{normą Frobeniusa}.
+\end{df}
+
+\section{Metoda bezpośrednia}
+
+\begin{przyk}
+Rozwiążemy zagadnienie Cauchy'ego dla układu równań:
+$$\textrm{(URL)}\left\{\begin{array}{l}
+\dfrac{dx}{dt}=x+y+t\\
+\dfrac{dy}{dt}=4x+y+t^2
+\end{array}\right.\quad
+\textrm{(WP)}\left\{\begin{array}{l}
+x(0)=1\\
+y(0)=1
+\end{array}\right.\quad\hat{x}=
+\begin{bmatrix}
+1\\
+1
+\end{bmatrix}\quad f(t)=
+\begin{bmatrix}
+t\\
+t^2
+\end{bmatrix}$$
+Jest to układ równań różniczkowych 1 rzędu, liniowych o stałych współczynnikach, niejednorodny. Najpierw rozwiązujemy układ jednorodny. W tym celu znajdujemy pierwiastki równania charakterystycznego macierzy (czyli znajdujemy jej wartości własne $\lambda$ z równania postaci $(A-\lambda E)\cdot x=\textbf{0}$):
+$$\left\{\begin{array}{l}
+\dot{x}=x+y\\
+\dot{y}=4x+y
+\end{array}\right.\Rightarrow A=
+\begin{bmatrix}
+1 & 1\\
+4 & 1
+\end{bmatrix}\Rightarrow \textrm{(RCH)}
+\begin{vmatrix}
+1-\lambda & 1\\
+4 & 1-\lambda
+\end{vmatrix}=0\Rightarrow (1-\lambda)^2=4\Rightarrow
+\left\{\begin{array}{l}
+\lambda_1=-1\\
+\lambda_2=3
+\end{array}\right.$$
+Obie wartości własne są rzeczywiste o krotności 1. Wyznaczamy podprzestrzeń $X_1$ odpowiadającą wartości własnej $\lambda_1=-1$ (krotność 1): $$X_1=\big\{x^{(1)}\in\mathbb{R}^2:(A+1\cdot E)\cdot x^{(1)}=\textbf{0}\big\}\quad\Rightarrow\quad A+1\cdot E=
+\begin{bmatrix}
+1 & 1\\
+4 & 1
+\end{bmatrix}+
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}=
+\begin{bmatrix}
+2 & 1\\
+4 & 2
+\end{bmatrix}$$
+$$x^{(1)}=\begin{bmatrix}
+x\\
+y
+\end{bmatrix}\Rightarrow (A+1\cdot E)
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}\Rightarrow
+\begin{bmatrix}
+2 & 1\\
+4 & 2
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}\Rightarrow
+\left\{\begin{array}{l}
+2x+y=0\\
+4x+2y=0
+\end{array}\right.$$
+Jedno z równań jest zależne, więc mamy $x=C_1,\ y=-2C_1$ i zbiór $X_1$ ma postać: $$X_1=
+\left\{\begin{array}{c}
+C_1\cdot
+\begin{bmatrix}
+1\\
+-2
+\end{bmatrix}:C_1\in\mathbb{R}
+\end{array}\right\},\quad 
+\begin{bmatrix}
+1\\
+-2
+\end{bmatrix}e^{-t}$$
+Teraz wyznaczamy podprzestrzeń $X_2$ odpowiadającą wartości własnej $\lambda_2=3$ (krotność 1):$$X_2=\big\{x^{(2)}\in\mathbb{R}^2:(A-3\cdot E)\cdot x^{(1)}=\textbf{0}\big\}\quad\Rightarrow\quad A-3\cdot E=
+\begin{bmatrix}
+1 & 1\\
+4 & 1
+\end{bmatrix}-
+\begin{bmatrix}
+3 & 0\\
+0 & 3
+\end{bmatrix}=
+\begin{bmatrix}
+-2 & 1\\
+4 & -2
+\end{bmatrix}$$
+$$x^{(2)}=\begin{bmatrix}
+x\\
+y
+\end{bmatrix}\Rightarrow (A-3\cdot E)
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}\Rightarrow
+\begin{bmatrix}
+-2 & 1\\
+4 & -2
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}\Rightarrow
+\left\{\begin{array}{l}
+-2x+y=0\\
+4x-2y=0
+\end{array}\right.$$
+Jedno z równań jest zależne, bowiem: $
+\begin{vmatrix}
+-2 & 1\\
+4 & -2
+\end{vmatrix}=0$,
+więc mamy $x=C_2,\ y=2C_2$ i zbiór $X_2$ ma postać: $$X_2=
+\left\{\begin{array}{c}
+C_2\cdot
+\begin{bmatrix}
+1\\
+2
+\end{bmatrix}:C_2\in\mathbb{R}
+\end{array}\right\},\quad 
+\begin{bmatrix}
+1\\
+2
+\end{bmatrix}e^{3t}$$
+Zatem mamy macierz fundamentalną (sprawdzenie $det\neq 0$): $$W(t)=
+\begin{bmatrix}
+1\cdot e^{-t} & 1\cdot e^{3t}\\
+-2\cdot e^{-t} & 2\cdot e^{3t}
+\end{bmatrix}\Rightarrow
+\begin{vmatrix}
+e^{-t} & e^{3t}\\
+-2e^{-t} & 2e^{3t}
+\end{vmatrix}=4e^{2t}\neq 0$$
+Znajdziemy całkę ogólną (URL). W tym celu musimy wyznaczyć macierz odwrotną do macierzy $W(0)$:$$W(0)=
+\begin{bmatrix}
+1 & 1\\
+-2 & 2
+\end{bmatrix}\Rightarrow
+\begin{vmatrix}
+1 & 1\\
+-2 & 2
+\end{vmatrix}=4\neq 0$$
+Możemy posłużyć się gotowym wzorem otrzymanym w następujący sposób:$$M=
+\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}\Rightarrow M^D=
+\begin{bmatrix}
+(-1)^{1+1}d & (-1)^{1+2}c\\
+(-1)^{2+1}b & (-1)^{2+2}a
+\end{bmatrix}=
+\begin{bmatrix}
+d & -c\\
+-b & a
+\end{bmatrix}\Rightarrow (M^D)^T=
+\begin{bmatrix}
+d & -b\\
+-c & a
+\end{bmatrix}$$
+$$|M|=
+\begin{vmatrix}
+a & b\\
+c & d
+\end{vmatrix}=ad-bc\Rightarrow
+M^{-1}=\dfrac{1}{|M|}\cdot (M^D)^T=\dfrac{1}{ad-bc}\cdot
+\begin{bmatrix}
+d & -b\\
+-c & a
+\end{bmatrix}$$
+Zatem w naszym przypadku mamy:$$W(0)=
+\begin{bmatrix}
+1 & 1\\
+-2 & 2
+\end{bmatrix}\Rightarrow W^{-1}(0)=\dfrac{1}{4}\cdot
+\begin{bmatrix}
+2 & -1\\
+2 & 1
+\end{bmatrix}=
+\begin{bmatrix}
+\frac{1}{2} & -\frac{1}{4}\\
+\\
+\frac{1}{2} & \frac{1}{4}
+\end{bmatrix}$$
+$$W_0(t)=W(t)\cdot W^{-1}(0)=
+\begin{bmatrix}
+e^{-t} & e^{3t}\\
+-2e^{-t} & 2e^{3t}
+\end{bmatrix}\cdot \begin{bmatrix}
+\frac{1}{2} & -\frac{1}{4}\\
+\\
+\frac{1}{2} & \frac{1}{4}
+\end{bmatrix}=
+\begin{bmatrix}
+\frac{1}{2}e^{-t}+\frac{1}{2}e^{3t} & -\frac{1}{4}e^{-t}+\frac{1}{4}e^{3t}\\
+\\
+-e^{-t}+e^{3t} & \frac{1}{2}e^{-t}+\frac{1}{2}e^{3t}
+\end{bmatrix}$$
+Całka ogólna (URL) ma postać:
+$$x(t)=\underbrace{W_0(t)\cdot\hat{x}}_{x_J(t)}+\underbrace{\int\limits_{t_0=0}^tW_0(t-s)f(s)ds}_{x_S(t)}$$
+Biorąc pod uwagę, że:$$W_0(t-s)=
+\begin{bmatrix}
+\frac{1}{2}e^{-(t-s)}+\frac{1}{2}e^{3(t-s)} & -\frac{1}{4}e^{-(t-s)}+\frac{1}{4}e^{3(t-s)}\\
+\\
+-e^{-(t-s)}+e^{3(t-s)} & \frac{1}{2}e^{-(t-s)}+\frac{1}{2}e^{3(t-s)}
+\end{bmatrix}\quad\hat{x}=
+\begin{bmatrix}
+1\\
+1
+\end{bmatrix}\quad f(s)=
+\begin{bmatrix}
+s\\
+s^2
+\end{bmatrix}$$
+otrzymujemy ostatecznie $x(t)=x_J(t)+x_S(t)$ gdzie: $$x_J(t)=
+\begin{bmatrix}
+\frac{1}{2}e^{-t}+\frac{1}{2}e^{3t} & -\frac{1}{4}e^{-t}+\frac{1}{4}e^{3t}\\
+\\
+-e^{-t}+e^{3t} & \frac{1}{2}e^{-t}+\frac{1}{2}e^{3t}
+\end{bmatrix}\cdot
+\begin{bmatrix}
+1\\
+1
+\end{bmatrix}$$
+$$x_S(t)=\int\limits_0^t
+\begin{bmatrix}
+\frac{1}{2}e^{-(t-s)}+\frac{1}{2}e^{3(t-s)} & -\frac{1}{4}e^{-(t-s)}+\frac{1}{4}e^{3(t-s)}\\
+\\
+-e^{-(t-s)}+e^{3(t-s)} & \frac{1}{2}e^{-(t-s)}+\frac{1}{2}e^{3(t-s)}
+\end{bmatrix}\cdot
+\begin{bmatrix}
+s\\
+s^2
+\end{bmatrix}ds$$
+Oczywiście ostatnią całkę w $x_S(t)$ należy wyliczyć ze znanych wzorów, ale to już za dużo roboty jak na to opracowanie.
+\end{przyk}
+
+\section{Metoda sprowadzania układu równań do równania rzędu wyższego}
+
+\begin{przyk}
+Rozwiążemy zagadnienie Cauchy'ego dla układu równań:
+$$\textrm{(URL)}\left\{\begin{array}{ll}
+\dfrac{dx}{dt}=x+y+t & (1)\\
+\dfrac{dy}{dt}=4x+y+t^2 & (2)
+\end{array}\right.\quad
+\textrm{(WP)}\left\{\begin{array}{l}
+x(0)=1\\
+y(0)=1
+\end{array}\right.$$
+$$\begin{array}{rl}
+(2)-(1):\quad & \dfrac{dy}{dt}-\dfrac{dx}{dt}=3x+t^2-t\Rightarrow\dfrac{dy}{dt}=\dfrac{dx}{dt}+3x+t^2-t\\
+\\
+\dfrac{d}{dt}(1):\quad & \dfrac{d^2x}{dt^2}=\dfrac{dx}{dt}+\dfrac{dy}{dt}+1
+\end{array}$$
+$$\left\{\begin{array}{l}
+\dfrac{dy}{dt}=\dfrac{dx}{dt}+3x+t^2-t\\
+\dfrac{d^2x}{dt^2}=\dfrac{dx}{dt}+\dfrac{dy}{dt}+1
+\end{array}\right.\quad\Rightarrow\quad\dfrac{d^2x}{dt^2}-2\dfrac{dx}{dt}-3x=t^2-t+1\ (\ast)$$
+$$\begin{array}{ll}
+\textrm{(RCH)}:\quad & \ddot{x}-2\dot{x}-3x=0\\
+& \lambda^2-2\lambda-3=0\\
+& \triangle=16\quad\sqrt{\triangle}=4\\
+& \lambda_1=-1\quad\lambda_2=3\\
+& x_1(t)=e^{-t}\quad x_2(t)=e^{3t}\\
+& x_{RORJ}(t)=C_1e^{-t}+C_2e^{3t}
+\end{array}$$
+Rozwiązanie szczególne równania ($\ast$) znajdziemy metodą przewidywań:
+$$\left\{\begin{array}{l}
+x_S(t)=At^2+Bt+C\\
+\dot{x}_S(t)=2At+B\\
+\ddot{x}_S(t)=2A
+\end{array}\right.\Rightarrow\ (\ast)\ \Rightarrow\ 2A-4At-2B-3At^2-3Bt-3C=t^2-t+1$$
+$$\left\{\begin{array}{l}
+-3A=1\Rightarrow A=-\frac{1}{3}\\
+-4A-3B=-1\Rightarrow B=\frac{1}{3}(4\cdot\frac{1}{3}+1)=\frac{7}{9}\\
+2A-2B-3C=1\Rightarrow C=\frac{1}{3}(-2\cdot\frac{1}{3}-2\cdot\frac{7}{9}-1)=-\frac{29}{27}
+\end{array}\right.\Rightarrow
+\left\{\begin{array}{l}
+A=-\frac{1}{3}\\
+B=\frac{7}{9}\\
+C=-\frac{29}{27}
+\end{array}\right.$$
+Zatem $x_S(t)=-\frac{1}{3}t^2+\frac{7}{9}t-\frac{29}{27}$ i całka ogólna ma postać: $$x(t)=x_{RORJ}(t)+x_S(t)=C_1e^{-t}+C_2e^{3t}-\frac{1}{3}t^2+\frac{7}{9}t-\frac{29}{27}$$
+Rozwiązanie układu równań zaś ma postać :$$\left\{\begin{array}{l}
+x(t)=C_1e^{-t}+C_2e^{3t}-\frac{1}{3}t^2+\frac{7}{9}t-\frac{29}{27}\\
+y(t)=\dfrac{dx}{dt}-x-t
+\end{array}\right.$$
+Ponieważ $\dfrac{dx}{dt}=-C_1e^{-t}+3C_2e^{3t}-\frac{2}{3}t+\frac{7}{9}$, więc $y(t)=-2C_1e^{-t}+2C_2e^{3t}+\frac{1}{3}t^2-\frac{22}{9}t+\frac{50}{27}$ i mamy rozwiąÂzanie ogólne układu w postaci:
+$$\left\{\begin{array}{l}
+x(t)=C_1e^{-t}+C_2e^{3t}-\frac{1}{3}t^2+\frac{7}{9}t-\frac{29}{27}\\
+y(t)=-2C_1e^{-t}+2C_2e^{3t}+\frac{1}{3}t^2-\frac{22}{9}t+\frac{50}{27}
+\end{array}\right.$$
+Uwzględniając warunek początkowy (zagadnienie Cauchy'ego) mamy $x(0)=y(0)=1\Rightarrow C_1=\frac{5}{4},\ C_2=\frac{89}{108}$.
+\end{przyk}

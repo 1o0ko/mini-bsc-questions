@@ -1,0 +1,134 @@
+\chapter{Centralne Twierdzenie Graniczne rachunku prawdopodobieństwa}
+\section{Zbieżność względem rozkładu}
+\subsection{Słaba zbieżność rozkładów}
+	\begin{tw}
+		Niech $(\mu_n)_{n=1}^\infty$ będzie ciągiem rozkładów prawdopodobieństwa na $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$. Powiemy, że jest on \textit{słabo zbieżny} do rozkładu $\mu$ (co będziemy oznaczać poprzez $\mu_n \stackrel{\text{sł}}{\to} \mu$ lub $\mu_n \Rightarrow \mu$), jeśli dla dowolnej funkcji ciągłej i ograniczonej $f:\mathbb{R} \to \mathbb{R}$ zachodzi
+		\begin{equation*}
+			\lim\limits_{n \to \infty} \int_{\mathbb{R}} f \; d\mu_n = \int_{\mathbb{R}} f \; d\mu.
+		\end{equation*}
+	\end{tw}
+	
+	\begin{uwg}
+		Nazwa \textit{słaba zbieżność} nawiązuje tutaj do ogólnych pojęć analizy funkcjonalnej. Każda funkcja ograniczona i ciągła $f$ na prostej definiuje wzorem $ \mu \to \int f \, d\mu$ funkcjonał na przestrzeni miar na $\mathbb{R}$. Żądamy więc, by dla każdego takiego funkcjonału zachodziła zbieżność jego wartości na ciągu $(\mu_n)_{n=1}^\infty$ do wartości na mierze $\mu$.
+		Tego rodzaju zbieżność nazywa się słabą, aby odróżnić ją od mocnej zbieżności, wyznaczonej przez normę.
+	\end{uwg}
+
+	\subsection{Zbieżność względem rozkładu}	
+	\begin{df}[Zbieżność względem rozkładu]
+		Niech $X_1, X_2, X_3, \ldots$ będzie ciągiem zmiennych losowych o rozkładach $\mu_1, \mu_2, \mu_3, \ldots$ Mówimy, że ciąg $(X_n)$ jest \textit{zbieżny według rozkładu} do zmiennej losowej $X$ (oznaczenie $X_n \stackrel{d}{\to} X$) jeśli $\mu_n \Rightarrow \mu$.
+	\end{df}
+	
+	Zbieżność względem rozkładu przekłada się na bardzo ciekawą własność dystrybuant rozważanych zmiennych losowych.
+	
+	\begin{tw}
+	Niech $X_1, X_2, X_3, \ldots$ będzie ciągiem zmiennych losowych, a ciąg $F_1, F_2, F_3, \ldots$ ciągiem odpowiadającym im dystrybuant. Wówczas $X_n \stackrel{d}{\to} X$ wtedy i tylko wtedy, gdy
+		\begin{equation*}
+			\lim\limits_{n \to \infty} F_n(x) = F(x)
+		\end{equation*}
+	w każdym punkcie ciągłości dystrybuanty granicznej $F$.
+	\end{tw}
+
+\section{CTG rachunku prawdopodobieństwa}
+\subsection{Twierdzenie de Moivre’a-Laplace’a}
+\begin{tw}
+	Niech $S_n$ będzie liczbą sukcesów w $n$ próbach Bernoulliego z prawdopodobieństwem sukcesu $p$. Wówczas
+	\begin{equation*}
+		 \frac{S_n - \mathbb{E}S_n}{\sqrt{\text{Var}(S_n)}} = \frac{S_n - np}{\sqrt{np(1-p)}} = \; \stackrel{d}{\to} \; N(0,1). 
+	\end{equation*}
+	Równoważnie, dla dowolnego $t \in \mathbb{R}$ zachodzi
+	\begin{equation*}
+	\lim_{n \to \infty} \textbf{P} 
+	\left(
+		\frac{S_n - np}{\sqrt{np(1-p)}} < t
+	\right)
+	= \Phi(t),
+	\end{equation*}
+	gdzie $\Phi$ jest dystrybuantą standardowego rozkładu normalnego $N(0,1)$.
+\end{tw}
+
+
+\subsection{Twierdzenie Lindeberga-Levy'ego}
+\begin{tw}
+		Niech $(X_n)$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie i parametrach $\mathbb{E}X_i = \mu$, $0 < \text{Var}X_i = \sigma^2 < \infty$. Połóżmy $S_n = X_1 + X_2 \ldots + X_n$, wówczas 
+	\begin{equation*}
+		 \frac{S_n - \mathbb{E}S_n}{\sqrt{\text{Var}(S_n)}} = 
+		 \frac{S_n - n\mu}{\sigma \sqrt{n}} 
+		  \; \stackrel{d}{\to} \; 
+		  N(0,1).
+	\end{equation*}
+	Równoważnie, dla dowolnego $t \in \mathbb{R}$ zachodzi
+	\begin{equation*}
+		\lim_{n \to \infty} \textbf{P} 
+		\left(
+			 \frac{S_n - n\mu}{\sigma \sqrt{n}} < t
+		\right)
+		= \Phi(t),
+	\end{equation*}
+	gdzie $\Phi$ jest dystrybuantą standardowego rozkładu normalnego $N(0,1)$.
+\end{tw}
+\subsection*{Nierówność Berry-Essena}
+\begin{tw}
+	Niech $(X_n)$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie i niezerowej wariancji, ponadto $\mathbb{E}|X_n^3| < \infty$. Połóżmy $S_n = X_1 + X_2 \ldots + X_n$, wówczas:
+
+	\begin{equation}
+		\sup_{x \in \mathbb{R}} 
+		\left| 			
+			\textbf{P} 
+			\left(  
+				\frac{S_n-\mathbb{E}S_n}{\sqrt{\text{Var}S_n}} < t 
+			\right) 
+			- 
+			\Phi(x)
+		 \right| \leq
+			C \frac{\mathbb{E}|X_1 - \mathbb{E}X_1|^3}{ \sigma^3 \sqrt{n}}, 
+	\end{equation}	
+	gdzie $\sigma= \sqrt{\text{Var}X_1}$, a $\frac{1}{\sqrt{2\pi}} \le C  < 0,8$.
+\end{tw}
+
+Poniżej przedstawione zostaną twierdzenia uogólniające twierdzenie Lindeberga-Levy'ego na zmienne losowe o różnych rozkładach.
+
+\subsection{Twierdzenie Lapunowa}
+	\begin{df}[Warunek Lapunowa]
+		Ciąg niezależnych zmiennych losowych $(X_n)$ spełnia warunek Lapunowa, jeśli dla wszystkich $k \in \mathbb{N}$ i dla pewnego $\delta > 0$ zachodzi 
+		$$
+		\mathbb{E}|X_k|^{2 + \delta} < \infty,
+		$$
+		oraz 
+		\begin{equation*}
+			\lim\limits_{n \to \infty} \frac{1}{s_n^{2+\delta}} 
+				\sum_{k=1}^{n} \mathbb{E}|X_k - \mathbb{E}X_k|^{2 +\delta}= 0,
+		\end{equation*}
+		gdzie 
+		\begin{equation*}
+			s_n^2 =  \sum_{k=1}^{n} \text{Var}X_k.
+		\end{equation*}
+	\end{df}
+	
+	\begin{tw}
+		Niech ciąg niezależnych zmiennych losowych $(X_n)$ spełnia warunek Lapunowa, a $S_n$ i $s_n$ są zdefiniowane tak, jak poprzednio. Wówczas
+		\begin{equation*}
+			\frac{S_n -\mathbb{E}S_n}{s_n} \stackrel{d}{\to} \; N(0,1).
+		\end{equation*}
+	\end{tw}
+\subsection{Twierdzenie Lindeberga}
+	\begin{df}[Warunek Lindeberga]
+		Ciąg niezależnych zmiennych losowych $(X_n)$ spełnia warunek Lindeberga, jeśli dla każdego $\epsilon > 0$ zachodzi
+		\begin{equation*}
+			\lim_{n \to \infty} 
+			\frac{1}{s_n^2}\sum_{k = 1}^{n} 
+				\mathbb{E}\big[(X_k - 	\mathbb{E}X_k)^2 \cdot \mathbf{1}_{\{ | X_k - \mu_k | > \varepsilon s_n \}}  \big] = 0,
+		\end{equation*}
+		gdzie 
+		\begin{equation*}
+		s_n^2 =  \sum_{k=1}^{n} \text{Var}X_k.
+		\end{equation*}
+	\end{df}
+	\begin{stw}
+		Jeśli ciąg zmiennych losowych spełnia warunek Lapunowa, to spełnia również warunek Lindeberga. Implikacja odwrotna nie jest prawdziwa.
+	\end{stw}
+	\begin{tw}
+		Niech ciąg niezależnych zmiennych losowych $(X_n)$ spełnia warunek Lindeberga, a $S_n$ i $s_n$ są zdefiniowane tak, jak poprzednio. Wówczas
+		\begin{equation*}
+		\frac{S_n -\mathbb{E}S_n}{s_n} \stackrel{d}{\to} \; N(0,1).
+		\end{equation*}
+	\end{tw}

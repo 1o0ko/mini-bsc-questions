@@ -1,0 +1,459 @@
+\chapter{Całka powierzchniowa. Klasyczne~twierdzenie~Stokesa. Twierdzenie Greena-Gaussa-Ostrogradskiego}
+
+\section{Całka krzywoliniowa}
+
+\subsection{Całka krzywoliniowa niezorientowana}
+
+\begin{df}{(Dyfeomorfizm)}\\
+	Niech $X$ i $Y$ będą przestrzeniami unormowanymi oraz niech $U$ będzie niepustym, otwartym podzbiorem $X$. Przekształcenie $h:U\rightarrow Y$ nazywamy \textbf{dyfeomorfizmem}, gdy spełnia następujące warunki:
+	\begin{enumerate}[\rm 1.]
+		\item
+		$h(U)$ jest otwartym podzbiorem $Y$.
+		\item
+		$h$ jest funkcją różnowartościową.
+		\item
+		$h$ i $h^{-1}$ ($h^{-1}$ rozumiana jako funkcja określona na $h(U)$) są klasy co najmniej $C^1$.
+	\end{enumerate}
+	Z powyższej definicji wynika natychmiast, że każdy dyfeomorfizm jest homeomorfizmem.
+\end{df}
+
+\begin{df}
+	\textbf{Przedstawieniem} klasy $C^{r}$ krzywej w $\mathbb{R}^{n}$ nazywamy dowolną funkcję \mbox{$\alpha:I\rightarrow \mathbb{R}^{n}$}
+	($I\subset \mathbb{R}$ przedział niekoniecznie skończony). Obraz $\alpha(I)$ nazywamy \textbf{krzywą} w $\mathbb{R}^{n}$, zaś wektor $\alpha'(t)=(\alpha'_{1}(t),\ldots,\alpha'_{n}(t))$ nazywamy \textbf{wektorem stycznym} do krzywej. Przedstawienie to nazywamy \textbf{regularnym}, jeśli
+	$(\forall t\in I) \ \alpha'(t)\neq\textbf{0}=(0,\ldots,0)$.
+\end{df}
+
+\begin{df}
+	Jeśli $\alpha:I\rightarrow \mathbb{R}^{n}$ jest przedstawieniem klasy $C^{r}$ krzywej w $\mathbb{R}^{n}$ takim, że:
+	\begin{enumerate}
+		\item $I=[a,b]$ gdzie $a,b\in\mathbb{R}$,
+		\item $\alpha$ jest przedstawieniem regularnym,
+		\item $\alpha$ jest iniekcją (1:1, nie posiada samoprzecięć),
+	\end{enumerate}
+	to zbiór $\alpha(I)=L\subset \mathbb{R}^{n}$ nazywamy \textbf{łukiem} a przedstawienie $\alpha$ o powyższych własnościach nazywamy \textbf{parametryzacją} klasy $C^{r}$ łuku $L$.
+\end{df}
+
+\begin{tw}
+	Jeśli $\alpha:[a,b]\rightarrow \mathbb{R}^{n},\ \beta:[c,d]\rightarrow \mathbb{R}^{n}$ są dwiema parametryzacjami klasy $C^{r}$ tego samego łuku $L$, to istnieje dyfeomorfizm $h:[a,b]\rightarrow [c,d]$ klasy $C^{r}$ taki, że $\alpha(t)=\beta(h(t)),\ t\in [a,b]$.
+\end{tw}
+
+\begin{tw}
+	Niech $\alpha:[a,b]\rightarrow \mathbb{R}^{n}$ będzie parametryzacją klasy $C^{1}$ łuku $L$. Wówczas długością łuku $L$ nazywamy całkę: $$d(L)=\int\limits_{a}^{b}\|\alpha'(t)\|dt$$
+\end{tw}
+
+\begin{df}
+	Niech $\alpha:[a,b]\rightarrow \mathbb{R}^{n}$ będzie parametryzacją klasy $C^{1}$ łuku $L$. Wtedy: $$h(t)=\int\limits_{a}^{t}\|\alpha'(\tau)\|d\tau$$ jest funkcją długości łuku od $\alpha(a)$ do $\alpha(t)$ i parametryzacja
+	$\beta:[0,d(L)]\rightarrow \mathbb{R}^{n}$ zadana przez $\beta(s)=\alpha(h^{-1}(s))$ nazywa się \textbf{parametryzacją po długości łuku} $L$.
+\end{df}
+
+\begin{df}{(Całka krzywoliniowa pierwszego rodzaju)}
+	\begin{enumerate}
+		\item
+		Niech $\alpha:[a,b]\rightarrow \mathbb{R}^{n}$ będzie parametryzacją klasy $C^{1}$ łuku $L$ oraz niech funkcja $f:L\rightarrow \mathbb{R}$ będzie funkcją ciągłą (czyli będzie funkcją klasy $C^{0}$ lub inaczej \textbf{polem skalarnym} klasy $C^{0}$). Wtedy:
+		$$\int\limits_L fds:=\int\limits_{a}^{b}f(\alpha(t))\ \|\alpha'(t)\|dt$$ nazywamy \textbf{całką krzywoliniową pierwszego rodzaju} po łuku $L$ z funkcji $f$ (inaczej \textbf{całką krzywoliniową niezorientowaną}).
+		\item
+		Jeżeli $K=L_1\cup L_2\cup \ldots \cup L_N$ jest łańcuchem łuków (tzn. każde dwa mogą mieć co najwyżej skończoną ilość punktów wspólnych) oraz $f:K\rightarrow \mathbb{R}$ jest funkcją ciągłą, to definicja całki krzywoliniowej z $f$ po $K$ wyraża się wzorem $$\int\limits_K fds:=\sum_{k=1}^{N}\,\int\limits_{L_{i}}fds$$
+	\end{enumerate}
+\end{df}
+
+\begin{uwg}
+	Długość łuku jest całką krzywoliniową pierwszego rodzaju z funkcji $f\equiv1$.
+\end{uwg}
+
+\begin{tw}
+	$$(\forall \lambda, \mu \in \mathbb{R} \quad \forall f,g \in C^{0}) \ \int\limits_L \lambda f+\mu g\ ds=\lambda\int\limits_Lf\ ds+\mu\int\limits_Lg\ ds$$ $$\Big|\int\limits_Lf\ ds\Big|\leq \mathop{sup}_{x\in L}|f(x)|\ d(L)$$
+\end{tw}
+
+\begin{uwg}
+	Całka krzywoliniowa pierwszego rodzaju (czyli całka krzywoliniowa niezorientowana) nie zależy od kierunku przebiegu parametru po zadanym łuku.
+\end{uwg}
+
+\begin{ft}
+	Niech $L\subset\mathbb{R}^{n}$ będzie łukiem klasy $C^{1}$ oraz $f:L\rightarrow \mathbb{R}$ niech będzie funkcją ciągłą, wtedy $\displaystyle\int\limits_{L}f\ ds$ nie zależy od parametryzacji tego łuku.
+\end{ft}
+
+\begin{uwg}
+	Całka krzywoliniowa pierwszego rodzaju (czyli całka krzywoliniowa niezorientowana) zależy od całego łuku, a nie tylko od jego końców, jak to ma czasem miejsce w całkach krzywoliniwych drugiego rodzaju (czyli całkach krzywoliniowych zorientowanych).
+\end{uwg}
+
+\subsection{Całka krzywoliniowa zorientowana}
+
+\begin{df}{(Całka krzywoliniowa drugiego rodzaju)}
+	\begin{enumerate}
+		\item
+		Niech $\Omega\subset\mathbb{R}^{n}$ będzie zbiorem otwartym. \textbf{Polem wektorowym} klasy $C^{r}$ na zbiorze $\Omega$ nazywamy dowolną funkcję $v:\Omega\rightarrow \mathbb{R}^{n}$ klasy $C^{r}$. Wykres takiego odwzorowania wyobrażamy sobie, jako zaczepiony w punkcie $\mathbf{x}=(x_1,\ldots,x_n)\in\Omega$ wektor $v(\mathbf{x})=(v_1(\mathbf{x}),\ldots,v_n(\mathbf{x}))$ (gdzie odwzorowanie \mbox{$v_{i}:\mathbb{R}^{n}\supset\Omega\rightarrow\mathbb{R}$} jest postaci $v_{i}(\mathbf{x})=y_{i}$ jeśli $v(\mathbf{x})=v((x_{1},\ldots,x_{n}))=(y_{1},\ldots,y_{n})$ dla $i=1,\ldots,n$).
+		\item
+		Niech $\alpha:[a,b]\rightarrow \Omega\subset\mathbb{R}^{n}$ będzie $C^{1}$ parametryzacją łuku $L$ oraz $v:\Omega\rightarrow \mathbb{R}^{n}$ niech będzie ciągłym polem wektorowym. Wtedy wyrażenie
+		\begin{gather}
+		\int\limits_{L}v(\mathbf{x})d\mathbf{x}=\int\limits_{L}v_{1}(\mathbf{x})dx_{1}+v_{2}(\mathbf{x})dx_{2}+\ldots+v_{n}(\mathbf{x})dx_{n}=\int\limits_{\alpha}v(\mathbf{x})d\mathbf{x}:=\nonumber\\
+		:=\int\limits_{a}^{b}\langle v(\alpha(t)),\alpha'(t)\rangle dt\nonumber
+		\end{gather}
+		nazywamy \textbf{całką krzywoliniową drugiego rodzaju} (\textbf{zorientowaną}) z pola wektorowego $v$ po łuku $L$.
+		\item
+		Jeżeli $K=L_1\cup L_2\cup \ldots \cup L_N$ jest łańcuchem łuków to całkę po $K$ definiujemy jako sumę całek po kolejnych łukach $$\int\limits_K v(\mathbf{x})d\mathbf{x}:=\sum_{k=1}^{N}\,\int\limits_{L_{i}}v(\mathbf{x})d\mathbf{x}$$
+	\end{enumerate}
+\end{df}
+
+\begin{uwg}
+	\begin{enumerate}
+		\item
+		Całkę krzywoliniową zorientowaną oznacza się czasami inaczej np.
+		$$\int\limits_{L}\langle v(\mathbf{x}),d\mathbf{x}\rangle=\int\limits_{L}v(\mathbf{x})\cdot d\mathbf{x}$$
+		\item
+		Całkę krzywoliniową zorientowaną można wyrazić za pomocą całki niezorientowanej, mamy bowiem
+		$$\int\limits_{L}v(\mathbf{x})d\mathbf{x}=\int\limits_{a}^{b}\langle v(\alpha(t)),\alpha'(t)\rangle dt=\int\limits_{a}^{b}\underbrace{\Big\langle v(\alpha(t)),\frac{\alpha'(t)}{\|\alpha'(t)\|}\Big\rangle}_{\textrm{funkcja skalarna}}\cdot\underbrace{\|\alpha'(t)\|}_{\textrm{elem. dl. łuku}} dt$$
+	\end{enumerate}
+\end{uwg}
+
+\begin{tw}
+	Niech $\alpha:[a,b]\rightarrow \mathbb{R}^{n},\ \beta:[c,d]\rightarrow \mathbb{R}^{n}$ będą dwiema parametryzacjami klasy $C^{1}$ tego samego łuku $L$, oraz niech $h$ będzie $C^{1}$ dyfeomorfizmem takim, że $(\forall t\in [a,b])\quad\alpha(t)=\beta(h(t))$ wtedy dla dowolnego ciągłego pola wektorowego na $L$ mamy:
+	\begin{displaymath}
+	\int\limits_{\alpha}v(\mathbf{x})d\mathbf{x}=\left\{\begin{array}{ll}
+	\quad \displaystyle\int\limits_{\beta}v(\mathbf{x})d\mathbf{x} & \textrm{jeżeli $h'(t)>0$}
+	\\
+	\\\displaystyle-\int\limits_{\beta}v(\mathbf{x})d\mathbf{x} & \textrm{jeżeli $h'(t)<0$}
+	\end{array} \right.
+	\end{displaymath}
+	czyli znak całki zależy od kierunku przebiegu parametru po łuku $L$.
+\end{tw}
+
+\begin{tw}
+	Niech $v,w:\mathbb{R}^{n}\supset\Omega\rightarrow \mathbb{R}^{n}$ będą $C^{0}$ polami wektorowymi, oraz niech $\alpha:[a,b]\rightarrow \mathbb{R}^{n},\ \beta:[c,d]\rightarrow \mathbb{R}^{n}$ będą $C^{1}$ parametryzacjami łuków $L_{1},L_{2}$, ponadto niech $\lambda,\mu\in\mathbb{R}$ wtedy:
+	\begin{enumerate}
+		\item $\displaystyle\int\limits_{\alpha+\beta}v(\mathbf{x})d\mathbf{x}=\int\limits_{\alpha}v(\mathbf{x})d\mathbf{x}+\int\limits_{\beta}v(\mathbf{x})d\mathbf{x}$ gdy $\alpha(b)=\beta(c)$ \\ {\footnotesize(gdzie $\alpha+\beta$ jest łukiem $L_{1}\cup L_{2}$)}
+		\item $\displaystyle\int\limits_{\alpha}(\lambda\ v(\mathbf{x})+\mu\ w(\mathbf{x}))d\mathbf{x}=\lambda\int\limits_{\alpha}v(\mathbf{x})d\mathbf{x}+\mu\int\limits_{\alpha}w(\mathbf{x})d\mathbf{x}$
+		\item $\displaystyle\Big|\int\limits_{\alpha}v(\mathbf{x})d\mathbf{x}\Big|\leq(\mathop{sup}_{x\in L_{1}}|v(\mathbf{x})|)\cdot\int\limits_{a}^{b}\|\alpha'(t)\|=(\mathop{sup}_{x\in L_{1}}|v(\mathbf{x})|)\cdot d(L)$
+		\\
+	\end{enumerate}
+\end{tw}
+
+\begin{ft}
+	Pole obszaru którego brzeg jest krzywą zamkniętą postaci \linebreak[4]$K=L_1\cup L_2\cup \ldots \cup L_N$ (łańcuchem łuków) wynosi (ostatni wzór to tzw. \textbf{wzór Leibniza)}:
+	$$P=\oint\limits_{K}xdy=-\oint\limits_{K}ydx=\frac{1}{2}\Big(\oint\limits_{K}(xdy-ydx)\Big)$$
+	Zatem np. w przypadku wzoru Leibniza liczymy całkę zorientowaną po krzywej zamkniętej $K$ z pola wektorowego $v(x,y)=(-y,x)$ w kierunku dodatnim tzn. przeciwnie do ruchu wskazówek zegara (tak jak zakreślany jest dodatni kąt).
+\end{ft}
+
+\subsection{Pole zachowawcze}
+
+\begin{df}
+	Ciągłe pole wektorowe $v:\mathbb{R}^{n}\supset\Omega\rightarrow \mathbb{R}^{n}$ nazywamy \textbf{zachowawczym} (lub \textbf{zupełnym}) jeżeli całka zorientowana $\displaystyle\int\limits_{K}v(\mathbf{x})d\mathbf{x}$ po krzywej $K\subset\Omega$ będącej łańcuchem $K=L_1\cup L_2\cup \ldots \cup L_N$ łuków klasy $C^{n}$ zależy tylko od punktów końcowych krzywej $K$ a nie od punktów tej krzywej. Jeżeli końce krzywej $K$ oznaczymy jako $\mathbf{x}_{a}, \mathbf{x}_{b}\in \mathbb{R}^{n}$ wówczas całkę zorientowaną po krzywej $K$ oznaczamy również w następujący sposób $$\int\limits_{\mathbf{x}_{a}}^{\mathbf{x}_{b}}v(\mathbf{x})d\mathbf{x}$$
+\end{df}
+
+\begin{uwg}
+	Czasami spotyka się równoważną definicję pola zachowawczego, mianowicie:
+	\\ Ciągłe pole wektorowe $v:\mathbb{R}^{n}\supset\Omega\rightarrow \mathbb{R}^{n}$ nazywamy \textbf{zachowawczym} jeżeli: $$(\forall K\subset\Omega)\quad \oint\limits_{K}v(\mathbf{x})d\mathbf{x}=0$$ gdzie krzywa $K=L_1\cup L_2\cup \ldots \cup L_N$ jest łańcuchem łuków klasy $C^{n}$.
+\end{uwg}
+
+\begin{df}
+	Pole wektorowe $v$ nazywamy \textbf{gradientowym} jeśli istnieje funkcja \linebreak[4]$U:\mathbb{R}^{n}\supset\Omega\rightarrow \mathbb{R}$ klasy $C^{1}(\Omega)$ taka, że $$v(\mathbf{x})=grad \ U(\mathbf{x})=\nabla U(\mathbf{x})=\bigg(\frac{\partial U(\mathbf{x})}{\partial x_{1}},\ldots,\frac{\partial U(\mathbf{x})}{\partial x_{n}}\bigg)$$ Innymi słowy $v$ jest gradientowe jeśli istnieje pole skalarne $U$ (zwane \textbf{potencjałem} pola wektorowego $v$) takie, że gradient $U$ równa się polu $v$ (zauważmy tu, że gradient jest operatorem przyporządkowującym polu skalarnemu pole wektorowe). W związku z powyższym mówimy też, że pole wektorowe $v$ jest gradientowe jeśli posiada potencjał.
+\end{df}
+
+\begin{tw}
+	Ciągłe pole wektorowe $v$ na zbiorze otwartym $\Omega\subset\mathbb{R}^{n}$ jest zachowawcze $\Leftrightarrow$ gdy $v$ jest gradientowym polem wektorowym.
+\end{tw}
+
+\begin{uwg}
+	Powyższe tw. w klasycznych podręcznikach analizy matematycznej można znależć w następującej wersji:
+	\\
+	\\ Ciągłe pole wektorowe $v$ na zbiorze otwartym $\Omega\subset\mathbb{R}^{n}$ jest zachowawcze $\Leftrightarrow$ gdy $v_{1}dx_{1}+\ldots+v_{n}dx_{n}$ jest różniczką zupełną pewnej funkcji $U$, tzn. gdy $$v_{1}(\mathbf{x})=\frac{\partial U(\mathbf{x})}{\partial x_{1}},\ldots,v_{n}(\mathbf{x})=\frac{\partial U(\mathbf{x})}{\partial x_{n}}$$ Jak widać jest to definicja pola gradientowego.
+\end{uwg}
+
+\begin{ft}
+	Pole wektorowe $v$ klasy $C^{1}$ posiada potencjał $\Rightarrow$ zachodzą następujące warunki (tzw. \textbf{warunki całkowalności pola} lub \textbf{warunki zgodności}): $$\forall(i,k=1,\ldots,n)\qquad\frac{\partial v_{i}(\mathbf{x})}{\partial x_{k}}=\frac{\partial v_{k}(\mathbf{x})}{\partial x_{i}}$$
+\end{ft}
+
+\begin{uwg}
+	Zauważmy, że mamy tu implikację $\Rightarrow$ czyli samo spełnienie warunków całkowalności pola $v$ w $\Omega$ nie wystarcza aby stwierdzić, że $v$ jest polem gradientowym.
+\end{uwg}
+
+\begin{df}{(Zbiór gwiaździsty i jednospójny)}\\
+	\begin{enumerate}
+		\item
+		Mówimy, że zbiór otwarty $\Omega\subset\mathbb{R}^{n}$ jest \textbf{gwiaździsty} jeżeli $$\exists(\mathbf{x}_{0}\in\Omega)\quad\forall(\mathbf{x}\in\Omega)\quad[\mathbf{x}_{0},\mathbf{x}]=\{\mathbf{x}_{0}+t(\mathbf{x}-\mathbf{x}_{0}):\ t\in[0,1]\}\subset\Omega$$ Zauważmy, że wg powyższej definicji zbiór gwiaździsty jest uogólnieniem zbioru wypukłego.
+		\item
+		Mówimy, że zbiór otwarty jest \textbf{jednospójny} jeżeli dla dowolnej krzywej $K$ zamkniętej, bez samoprzecięć zawartej w $\Omega$ istnieje punkt $\mathbf{x}\in\Omega$ taki, że krzywą tą możemy w sposób ciągły przekształcić w $\mathbf{x}$ nie opuszczając tego zbioru. Innymi słowy jest to zbiór/przestrzeń łukowo spójna o trywialnej grupie podstawowej.
+	\end{enumerate}
+\end{df}
+
+\begin{tw}
+	Niech $\Omega\subset\mathbb{R}^{n}$ będzie zbiorem gwiaździstym, oraz niech $v:\Omega\rightarrow \mathbb{R}^{n}$ będzie $C^{1}$ polem wektorowym spełniającym warunki zgodności $\Rightarrow$ $v$ posiada w $\Omega$ potencjał.
+\end{tw}
+
+\begin{uwg}
+	\begin{enumerate}
+		\item
+		Twierdzenie powyższe jest prawdziwe dla zbiorów jednospójnych jednakże dowód w tym przypadku jest bardziej skomplikowany.
+		\item
+		Twierdzenie powyższe uogólnia się łatwo na obszar który jest $C^{2}$ - dyfeomorficzny ze zbiorem gwiaździstym (np. na rozcięty pierścień w $\mathbb{R}^{2}$).
+	\end{enumerate}
+\end{uwg}
+
+\subsubsection{Znajdowanie potencjału pola wektorowego}
+
+\subsubsection*{Przypadek $\mathbb{R}^{2}$}
+
+Niech $\Omega=(a,b)\times(c,d)\subset\mathbb{R}^{2}$ (zauważmy, że jest to zbiór gwiażdzisty) i niech $v(\mathbf{x})=v(x_{1},x_{2})=(v_{1}(x_{1},x_{2}),v_{2}(x_{1},x_{2}))$ będzie polem wektorowym klasy $C^{1}$ spełniającym warunki zgodności tzn. $$\frac{\partial v_{1}(\mathbf{x})}{\partial x_{2}}=\frac{\partial v_{2}(\mathbf{x})}{\partial x_{1}}$$
+Wówczas spełnione są założenia twierdzenia i pole $v$ ma potencjał. Zgodnie z definicją szukamy więc funkcji $U(\mathbf{x})=U(x_{1},x_{2})$ takiej, że:
+$$\textrm{(*)}\qquad\frac{\partial U(\mathbf{x})}{\partial x_{1}}=v_{1}(\mathbf{x})=v_{1}(x_{1},x_{2})\qquad \frac{\partial U(\mathbf{x})}{\partial x_{2}}=v_{2}(\mathbf{x})=v_{2}(x_{1},x_{2})$$
+Całkując np. pierwsze z równań (*) po $x_{1}$ otrzymujemy
+$$U(x_{1},x_{2})=\int v_{1}(x_{1},x_{2})\ dx_{1}+f(x_{2})$$
+Musimy znaleźć $f(x_{2})$ w tym celu różniczkujemy otrzymane $U$ po $x_{2}$ i otrzymujemy
+$$\frac{\partial U(x_{1},x_{2})}{\partial x_{2}}=\frac{\partial}{\partial x_{2}}\Big(\int v_{1}(x_{1},x_{2})\ dx_{1}\Big)+f'(x_{2})$$
+a następnie wstawiamy to do drugiego z równań (*) i mamy
+$$v_{2}(x_{1},x_{2})-\frac{\partial}{\partial x_{2}}\Big(\int v_{1}(x_{1},x_{2})\ dx_{1}\Big)=f'(x_{2})$$
+Ponieważ lewa strona ostatniego równania nie zależy od $x_{1}$ mamy bowiem
+$$\frac{\partial}{\partial x_{1}}\Big(v_{2}(x_{1},x_{2})-\frac{\partial}{\partial x_{2}}\Big(\int v_{1}(x_{1},x_{2})\ dx_{1}\Big)\Big)=\frac{\partial}{\partial x_{1}}(f'(x_{2}))=0$$
+więc możemy wyznaczyć $f(x_{2})$ całkując po $x_{2}$
+$$f(x_{2})=\int \Big(v_{2}(x_{1},x_{2})-\frac{\partial}{\partial x_{2}}\Big(\int v_{1}(x_{1},x_{2})\ dx_{1}\Big)\Big)\ dx_{2}$$
+skąd wstawiając do $U(x_{1},x_{2})$ otrzymujemy szukany potencjał.
+
+\subsubsection*{Przypadek $\mathbb{R}^{3}$}
+Niech $\Omega\subset\mathbb{R}^{3}$ będzie prostopadłościanem (zauważmy, że jest to zbiór gwiaździsty) i niech $v(\mathbf{x})=(v_{1}(\mathbf{x}),v_{2}(\mathbf{x}),v_{3}(\mathbf{x}))$ będzie polem wektorowym klasy $C^{1}$ spełniającym warunki zgodności tzn.
+$$\frac{\partial v_{1}(\mathbf{x})}{\partial x_{2}}=\frac{\partial v_{2}(\mathbf{x})}{\partial x_{1}}\qquad \frac{\partial v_{1}(\mathbf{x})}{\partial x_{3}}=\frac{\partial v_{3}(\mathbf{x})}{\partial x_{1}}\qquad \frac{\partial v_{2}(\mathbf{x})}{\partial x_{3}}=\frac{\partial v_{3}(\mathbf{x})}{\partial x_{2}}$$
+Wówczas spełnione są założenia twierdzenia i pole $v$ ma potencjał. Zgodnie z definicją szukamy więc funkcji $U(\mathbf{x})$ takiej, że:
+$$\textrm{(*)}\qquad\frac{\partial U(\mathbf{x})}{\partial x_{1}}=v_{1}(\mathbf{x})\qquad \frac{\partial U(\mathbf{x})}{\partial x_{2}}=v_{2}(\mathbf{x})\qquad \frac{\partial U(\mathbf{x})}{\partial x_{3}}=v_{3}(\mathbf{x})$$
+Całkując np. pierwsze z równań (*) po $x_{1}$ otrzymujemy
+$$U(\mathbf{x})=\int v_{1}(\mathbf{x})\ dx_{1}+g(x_{2},x_{3})$$
+Aby znaleźć $g(x_{2},x_{3})$ postępujemy dalej analogicznie jak w przypadku $\mathbb{R}^{2}$ powyżej (nasze $g(x_{2},x_{3})$ to po prostu $U(x_{2},x_{3})$ z przypadku $\mathbb{R}^{2}$).
+
+\subsection{Twierdzenie Greena}
+
+\begin{tw}
+	Niech $\Omega\subset\mathbb{R}^{2}$ będzie obszarem normalnym względem osi $x$ oraz $y$. Niech $v(x,y)=(P(x,y),Q(x,y))$ będzie $C^{1}$ polem wektorowym takim, że pochodne tego pola są ciągłe aż do brzegu obszaru $\partial\Omega$ włącznie (tzn. $v\in C^{1}(\overline{\Omega})$). Wtedy zachodzi tzw. \textbf{wzór Greena}: $$\int\limits_{\Omega}\Big(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\Big)\ dxdy=\oint\limits_{\partial \Omega}P\ dx + Q\ dy$$
+\end{tw}
+
+\begin{uwg}
+	\begin{enumerate}
+		\item
+		Łatwo zauważyć, że wzór Greena zachodzi dla dowolnego zbioru otwartego $\Omega\subset\mathbb{R}^{2}$, którego domknięcie $\overline{\Omega}$ jest skończoną sumą domkniętych obszarów spełniających założenia twierdzenia.
+		\item
+		Wzór Greena jest prawdziwy dla dowolnego ograniczonego zbioru otwartego $\Omega$ z brzegiem klasy $C^{1}$ (tzn. że lokalnie jest wykresem funkcji klasy $C^{1}$) oraz dowolnego pola wektorowego $v\in C^{1}(\overline{\Omega})$.
+	\end{enumerate}
+\end{uwg}
+
+\begin{wnsk}
+	Niech $\Omega\subset\mathbb{R}^{2}$ będzie zbiorem otwartym, ograniczonym dla którego prawdziwy jest wzór Greena. Wtedy zachodzi tzw. \textbf{wzór Leibniza}:
+	$$|\Omega|=\frac{1}{2}\oint\limits_{\partial \Omega}(xdy-ydx)=\oint\limits_{\partial \Omega}xdy=-\oint\limits_{\partial \Omega}ydx$$
+	wystarczy bowiem przyjąc $v(x,y)=\frac{1}{2}(-y,x)$ wtedy $\displaystyle\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}=\frac{1}{2}+\frac{1}{2}=1$ i z wzoru Greena mamy $\displaystyle|\Omega|=\int\limits_{\Omega}1\ dxdy=\frac{1}{2}\oint\limits_{\partial \Omega}(xdy-ydx)$.
+\end{wnsk}
+
+\subsection{Całka Riemanna w $\mathbb{R}^{n}$ (całki wielokrotne)}
+
+\begin{df}
+	\begin{enumerate}
+		\item
+		Niech $P_{k}\subset\mathbb{R}$ będzie przedziałem ograniczonym o końcach \linebreak[4]$a_{k}\leq b_{k}\quad k=1,\ldots,n$. Zbiór $I=P_{1}\times\ldots\times P_{n}$ nazywamy \textbf{n-wymiarowym} \textbf{prostopadłościanem}. Prostopadłościan nazywamy otwartym (domkniętym) jeśli wszystkie przedziały $P_{k},\: k=1,\ldots,n$ są otwarte (domknięte). Wnętrzem prostopadłościanu $I$ nazywamy prostopadłościan otwarty $\dot{I}=(a_{1},b_{1})\times\ldots\times(a_{n},b_{n})$
+		\item
+		Liczbę $V(I)=(b_{1}-a_{1})\cdot(b_{2}-a_{2})\cdot\ldots\cdot(b_{n}-a_{n})$ nazywamy \textbf{objętością prostopadłościanu} $I$ (zauważmy, że $V(I)=V(\dot{I})$ czyli, że brzeg $I$ ma zerową objętość).
+	\end{enumerate}
+\end{df}
+
+\begin{ft}
+	Jeśli mamy skończoną ilość prostopadłościanów $I_{1},\ldots,I_{m}\subset\mathbb{R}^{n}$ to istnieją prostopadłościany $J_{1},\ldots,J_{p}\subset\mathbb{R}^{n}$ o rozłącznych wnętrzach takie, że $J_{1}\cup\ldots\cup J_{p}=I_{1}\cup\ldots\cup I_{m}$.
+\end{ft}
+
+\begin{df}
+	Niech $A$ będzie dowolnym zbiorem, zaś $B$ jego podzbiorem, $B\subseteq A$. \textbf{Funkcją charakterystyczną} zbioru $B$ lub \textbf{indykatorem} $B$ nazywamy funkcję $f:A\rightarrow \{0,1\}$ określoną następująco:
+	\begin{displaymath}
+	f(x):=\left\{\begin{array}{ll}
+	1  & \textrm{jeżeli $x\in B$}
+	\\
+	\\0 & \textrm{jeżeli $x\notin B$}
+	\end{array} \right.
+	\end{displaymath}
+	Na przykład funkcja Dirichleta jest funkcją charakterystyczną zbioru $\mathbb{Q}$.
+\end{df}
+
+\begin{df}
+	\begin{enumerate}
+		\item
+		Niech $I_{1},\ldots,I_{m}\subset\mathbb{R}^{n}$ będą prostopadłościanami. Funkcję \linebreak[4]$\phi:\mathbb{R}^{n}\ni\mathbf x\rightarrow\phi(\mathbf x)\in\mathbb{R}$ postaci:
+		\begin{displaymath}
+		\phi(\mathbf x)=\phi=\sum_{i=1}^{m}\alpha_{i}\ X_{I_{i}}(\mathbf x)\qquad\textrm{gdzie}\ \alpha_{i}\in\mathbb{R},\quad X_{I_{i}}(\mathbf x)=\left\{\begin{array}{ll}
+		1  & \textrm{jeżeli $\mathbf x\in I_{i}$}
+		\\
+		\\0 & \textrm{jeżeli $\mathbf x\notin I_{i}$}
+		\end{array} \right.
+		\end{displaymath}
+		nazywamy \textbf{funkcją prostą}. Jeśli $I_{1},\ldots,I_{m}\subset I$ - prostopadłościan to mówimy, że $\phi$ jest funkcją prostą w $I$. Zbiór funkcji prostych w $I$ oznaczamy $P(I)$.
+		\item
+		Funkcje proste $\phi_{1},\phi_{2}\in P(I)$ nazywają się równoważnymi $(\phi_{1}\sim\phi_{2})$ jeśli różnią się co najwyżej na brzegach definiujących je prostopadłościanów.
+		\item
+		Jeśli $\phi\in P(I)$ i $\displaystyle\phi=\sum_{i=1}^{m}\alpha_{i}\ X_{I_{i}}(\mathbf x)$ to:
+		$$\int\limits_{I}\phi(\mathbf x)d\mathbf x:=\sum_{i=1}^{m}\alpha_{i}\ V(I_{i})$$
+	\end{enumerate}
+\end{df}
+
+\begin{uwg}
+	Każda funkcja prosta $\phi\in P(I)$ posiada przedstawienie rozłączne tzn. istnieje taki skończony układ prostopadłościanów $J_{1},\ldots,J_{p}\subset\mathbb{R}^{n},\ (\forall i\neq k)\ J_i\cap J_k=\emptyset$, że: $$\displaystyle\phi=\sum_{i=1}^{p}\alpha_{i}\ X_{J_{i}}(\mathbf x)$$
+\end{uwg}
+
+\begin{ft}
+	Jeśli $\phi_1,\phi_2\in P(I)$ i $\phi_1\sim\phi_2$ to $\displaystyle\int\limits_I\phi_1(\mathbf x)\:d\mathbf x=\int\limits_I\phi_2(\mathbf x)\:d\mathbf x$.
+\end{ft}
+
+\section{Całka powierzchniowa}
+
+\begin{df}
+	Zbiór $M\subset\mathbb{R}^3$ nazywamy \textbf{gładkim płatem} ($C^r$ - płatem), jeśli $M$ jest obrazem pewnej funkcji gładkiej (klasy $C^r$) $\phi:U\rightarrow\mathbb{R}^3$ zdefiniowanej na zbiorze otwartym $U\subset\mathbb{R}^2$ takiej, że:
+	\begin{enumerate}[\rm 1.]
+		\item
+		$\phi$ jest funkcją różnowartościową (brak samo przecięć powierzchni).
+		\item
+		Wektory $\dfrac{\partial \phi}{\partial u_1}=\partial_{u_1}\phi,\ \dfrac{\partial \phi}{\partial u_2}=\partial_{u_2}\phi$ są w każdym punkcie zbioru $M$ liniowo niezależne (czyli zbiór $M$ jest dwuwymiarowy).
+		\item
+		$\phi^{-1}$ jest funkcją ciągłą (czyli wykluczamy samo przecięcia na brzegu).
+	\end{enumerate}
+	Każdą funkcję $\phi$ spełniającą punkty 1$\div$3 nazywa się \textbf{parametryzacją płata} $M$.
+\end{df}
+
+\begin{przyk}{(Parametryzacje)}\\
+	\begin{enumerate}[\rm 1.]
+		\item
+		Niech $f:\mathbb{R}^2\supset U\rightarrow\mathbb{R}$ gdzie $U$ jest zbiorem otwartym, będzie funkcją gładką (klasy $C^r$). Określmy $\phi:U\rightarrow\mathbb{R}^3$ wzorem $\phi(u_1,u_2)=(u_1,u_2,f(u_1,u_2))\in\mathbb{R}^3$. Jest to tzw. \textbf{parametryzacja po wykresie}. $\phi$ istotnie jest parametryzacją bowiem:
+		\begin{itemize}
+			\item
+			$\phi$ jest gładka, gdyż jej współrzędne są funkcjami gładkimi,
+			\item
+			$\phi$ jest różnowartościowa (spójrzmy na dwie pierwsze współrzędne - będą zawsze różne dla różnego argumentu),
+			\item
+			wektory styczne do $M$ w punkcie $\phi(u_1,u_2)$ są postaci: $$\phi_{u_1}=\bigg(1,0,f_{u_1}=\dfrac{\partial f}{\partial u_1}\bigg)\quad \phi_{u_2}=\bigg(0,1,f_{u_2}=\dfrac{\partial f}{\partial u_2}\bigg)$$
+			widać, że są one zawsze liniowo niezależne,
+			\item
+			$\phi^{-1}$ jest ciągła, bo mamy tu rzutowanie wykresu funkcji na płaszczyznę a z topologii wiadomo, że rzutowania są odwzorowaniami ciągłymi.
+		\end{itemize}
+	\end{enumerate}
+\end{przyk}
+
+\begin{tw}
+	Niech $\phi:U\rightarrow\mathbb{R}^3$ oraz $\tau:V\rightarrow\mathbb{R}^3$ będą dwiema parametryzacjami $C^r$ tego samego płata $M$. Wtedy istnieje $C^r$ dyfeomorfizm $h:U\rightarrow V$ taki, że $\phi=\tau\circ h$ ($h$ jest transformacją parametrów).
+\end{tw}
+
+\begin{df}
+	Jeżeli $U\subset\mathbb{R}^2$ jest zbiorem otwartym i ograniczonym oraz $\phi:U\rightarrow\mathbb{R}^3$ jest parametryzacją płata $M$, to liczbę: $$A(M)=A(\phi(U))=\int\limits_U\|\partial_{u_1}\phi\times\partial_{u_2}\phi\|du_1du_2$$ nazywamy \textbf{polem powierzchni} płata $M$.
+\end{df}
+
+\begin{uwg}
+	Zauważmy, że (jesteśmy w przestrzeni Hilberta): $$\|a\times b\|^2=\|a\|^2\cdot\|b\|^2\cdot sin^2\sphericalangle(a,b)=\|a\|^2\cdot\|b\|^2\cdot(1-cos^2\sphericalangle(a,b))=\|a\|^2\cdot\|b\|^2-\langle a,b\rangle^2$$ gdzie $\langle a,b\rangle$ jest iloczynem skalarnym punktów $a$ i $b$. Ostatnie wyrażenie, jest równe wyznacznikowi z \textbf{macierzy Grama} tzn.: 
+	$$\|a\|^2\cdot\|b\|^2-\langle a,b\rangle^2=det\begin{bmatrix}
+	\langle a,a\rangle & \langle a,b\rangle \\
+	\langle b,a\rangle & \langle b,b\rangle \end{bmatrix}=
+	\begin{vmatrix}
+	\langle a,a\rangle & \langle a,b\rangle \\
+	\langle b,a\rangle & \langle b,b\rangle \end{vmatrix}$$
+	zatem możemy całkę pola powierzchni płata równoważnie przedstawić jako:
+	$$A(\phi(U))=\int\limits_U\sqrt{g(\textbf{u})}du_1du_2,\quad g(\textbf{u})=det\big[\langle\partial_{u_i}\phi,\partial_{u_j}\phi\rangle\big]_{i,j=1,2}=
+	\begin{vmatrix}
+	\langle\partial_{u_1}\phi,\partial_{u_1}\phi\rangle & \langle\partial_{u_1}\phi,\partial_{u_2}\phi\rangle \\
+	\langle\partial_{u_2}\phi,\partial_{u_1}\phi\rangle & \langle\partial_{u_2}\phi,\partial_{u_2}\phi\rangle\end{vmatrix}$$
+\end{uwg}
+
+\begin{df}{(Całka powierzchniowa pierwszego rodzaju (niezorientowana))}\\
+	Niech $M$ będzie gładkim płatem i niech $\phi:U\rightarrow\mathbb{R}^3$ będzie parametryzacją tego płata. Ponadto niech $f:M\rightarrow\mathbb{R}$ będzie funkcją ciągłą. Wówczas: $$\int\limits_Mf(\textbf{x})dS(\textbf{x}):=\int\limits_Uf(\phi(\textbf{u}))\sqrt{g(\textbf{u})}d\textbf{u}$$ nazywa się \textbf{całką powierzchniową pierwszego rodzaju} z funkcji $f$ po płacie $M$ (\textbf{całką niezorientowaną}).
+\end{df}
+
+\begin{przyk}
+	Całki powierzchniowe pierwszego rodzaju opisują wielkości fizyczne typu:
+	\begin{itemize}
+		\item
+		masa o zadanej funkcją $f$ gęstości na powierzchni zadanego płata $M$,
+		\item
+		ładunek elektryczny o zadanej funkcją $f$ gęstości rozłożony na powierzchni zadanego płata $M$,
+		\item
+		środek ciężkości płata i geometryczny środek ciężkości płata.
+	\end{itemize}
+\end{przyk}
+
+\begin{tw}
+	Całka powierzchniowa pierwszego rodzaju nie zależy od parametryzacji płata $M$.
+\end{tw}
+
+\begin{uwg}
+	Jeśli $\phi:U\rightarrow\mathbb{R}^3$ jest gładką parametryzacją płata $M$ to w dowolnym punkcie $\phi(\textbf{u})\in M$ możemy zdefiniować wektor normalny $n(\phi(\textbf{u}))=\dfrac{\partial_{u_1}\phi\times\partial_{u_2}\phi}{\|\partial_{u_1}\phi\times\partial_{u_2}\phi\|}$ do płata $M$. Jeżeli $\psi:V\rightarrow\mathbb{R}^3$ jest inną parametryzacją $M$, wówczas $\partial_{u_1}\phi\times\partial_{u_2}\phi=det(\nabla h)\cdot\partial_{v_1}\phi\times\partial_{v_2}\phi$ (gdzie $\nabla h=Dh=\begin{bmatrix} \nabla h_1 \\ \nabla h_2\end{bmatrix}$ jest macierzą Jacobiego) co oznacza, że $n(\phi(\textbf{u}))=\pm n(\psi(h(\textbf{u})))$ w zależności od tego czy $det(\nabla h)>0$, czy $det(\nabla h)<0$. Z tego, że $h$ jest dyfeomorfizmem wynika, że $det(\nabla h)$ ma stały znak w całym obszarze $M$. Stąd mamy następującą definicję:
+\end{uwg}
+
+\begin{df}{(Orientacja)}
+	\begin{enumerate}[\rm 1.]
+		\item
+		Dwie parametryzacje płata $M$ nazywają się \textbf{jednakowo (zgodnie) zorientowane}, jeżeli dla transformacji parametrów $h$ zachodzi $det(\nabla h)>0$ w $U$. W przeciwnym przypadku ($det(\nabla h)<0$) $\phi$ i $\psi$ nazywają się \textbf{przeciwnie zorientowane}. Wszystkie parametryzacje $M$ rozbijają się więc na dwie rozłączne klasy (bo nie może zachodzić $det(\nabla h)=0$, gdyż wtedy nie istniała by funkcja odwrotna).
+		\item
+		Niech $n$ będzie ciągłym polem wektorowym kierunku normalnego na płacie $M$. Wówczas płat $M$ nazywa się \textbf{dwustronnym}, jeżeli $\forall p\in M$ i dla każdej krzywej zamkniętej na $M$, nie przecinającej brzegu $M$ zachodzi: biegnąc po krzywej z punktu $p$ wektorm normalnym $n(p)$ wracamy do $p$ z tym samym kierunku normalnym pola $n$.
+	\end{enumerate}
+\end{df}
+
+\begin{uwg}
+	\textbf{Płat zorientowany} posiada pole wektorowe kierunków normalnych: $$n(\phi(\textbf{u}))=\pm\dfrac{\partial_{u_1}\phi\times\partial_{u_2}\phi}{\|\partial_{u_1}\phi\times\partial_{u_2}\phi\|}$$ gdzie wybieramy ,,$+$'' jeśli $\phi$ jest zorientowana zgodnie z ustaloną parametryzacją (dodatnio zorientowana) oraz ,,$-$'' jeśli $\phi$ jest zorientowana przeciwnie do ustalonej parametryzacji.
+\end{uwg}
+
+\begin{df}{(Całka powierzchniowa drugiego rodzaju (zorientowana))}\\
+	Niech $M$ będzie dwustronnym płatem zorientowanym, oraz niech $n:M\rightarrow\mathbb{R}^3$ będzie dodatnim polem kierunków normalnych. Ponadto niech $v:M\rightarrow\mathbb{R}^3$ będzie ciągłym polem wektorowym. Wtedy wyrażenie: $$\int\limits_Mv\cdot dS:=\int\limits_M\langle v(\textbf{x}), n(\textbf{x})\rangle dS=\pm\int\limits_U\langle v\circ \phi,\partial_{u_1}\phi\times\partial_{u_2}\phi\rangle d\textbf{u}$$ (gdzie znak wybieramy zgodnie z orientacją $\phi$ w stosunku do $U$) nazywamy \textbf{całką powierzchniową drugiego rodzaju (zorientowaną)} pola $v$ po płacie $M$.
+\end{df}
+
+\begin{uwg}{(Inne oznaczenie)}\\
+	\begin{enumerate}[\rm 1.]
+		\item
+		Całkę powierzchniową drugiego rodzaju nazywamy też \textbf{strumieniem pola wektorowego} $v$
+		przez powierzchnię $M$.
+		\item
+		Zauważmy, że: $$\partial_{u_1}\phi\times\partial_{u_2}\phi=
+		\begin{pmatrix}
+		\begin{vmatrix}
+		\partial_{u_1}\phi_2 & \partial_{u_2}\phi_2\\
+		\partial_{u_1}\phi_3 & \partial_{u_2}\phi_3
+		\end{vmatrix},
+		&
+		\begin{vmatrix}
+		\partial_{u_1}\phi_3 & \partial_{u_2}\phi_3\\
+		\partial_{u_1}\phi_1 & \partial_{u_2}\phi_1
+		\end{vmatrix},
+		&
+		\begin{vmatrix}
+		\partial_{u_1}\phi_1 & \partial_{u_2}\phi_1\\
+		\partial_{u_1}\phi_2 & \partial_{u_2}\phi_2
+		\end{vmatrix}
+		\end{pmatrix}=$$
+		$$=\begin{pmatrix}
+		\dfrac{\partial(y,z)}{\partial u_1\partial u_2}, & \dfrac{\partial(z,x)}{\partial u_1\partial u_2}, & \dfrac{\partial(x,y)}{\partial u_1\partial u_2}
+		\end{pmatrix}$$
+		Stąd wynika alternatywny zapis całki powierzchniowej zorientowanej: $$\int\limits_Mv_1dydz+v_2dzdx+v_3dxdy$$
+		\item
+		Bezpośrednio z definicji wynika, że $\int\limits_MV\cdot dS$ zależy od parametryzacji płata $M$. Gdy dwie parametryzacje są przeciwnie zorientowane to otrzymujemy przeciwne wyniki.
+	\end{enumerate}
+\end{uwg}
+
+\begin{przyk}
+	\begin{enumerate}[\rm 1.]
+		\item
+		Całka powierzchniowa zorientowana przedstawia (np. w prawie Gaussa dla elektryczności, magnetyzmu) strumień $\Phi$ natężenia pola elektrycznego (magnetycznego) danego przez pole wektorowe $\vec{E}$, przenikającego przez powierzchnię $S$ tzn.: $\int\limits_S\vec{E}\cdot d\vec{S}$
+	\end{enumerate}
+\end{przyk}
+
+\section{Twierdzenie Stokesa}
+
+\begin{df}
+	Niech $v:\Omega\rightarrow\mathbb{R}^n$ będzie polem wektorowym klasy co najmniej $C^1$, gdzie $\Omega\subset\mathbb{R}^n$ jest zbiorem otwartym. Wówczas:
+	\begin{enumerate}[\rm 1.]
+		\item
+		\textbf{Dywergencją} pola wektorowego $v$ nazywamy wyrażenie skalarne: $$div\ v(x_1,\ldots,x_n)=\dfrac{\partial v_1}{\partial x_1}+\ldots+\dfrac{\partial v_n}{\partial x_n}=trace(Dv)$$ czyli jest to ślad macierzy Jacobiego pola wektorowego $v$.
+		\item
+		\textbf{Rotacją} pola wektorowego $v$ nazywamy wyrażenie wektorowe: $$rot\ v(x_1,\ldots,x_n)=\Bigg(\dfrac{\partial v_i}{\partial x_j}-\dfrac{\partial v_j}{\partial x_i}\Bigg)_{i\neq j,\ i,j=1,\ldots,n}$$ Na przykład dla $n=3$ mamy wzór na rotację: $$rot\ v(x_1,x_2,x_3)=\Bigg(\dfrac{\partial v_3}{\partial x_2}-\dfrac{\partial v_2}{\partial x_3},\ \dfrac{\partial v_1}{\partial x_3}-\dfrac{\partial v_3}{\partial x_1},\ \dfrac{\partial v_2}{\partial x_1}-\dfrac{\partial v_1}{\partial x_2}\Bigg)$$ Pole $v$ nazywamy \textbf{bezwirowym}, jeśli $rot\ v=0$.
+	\end{enumerate}
+\end{df}
+
+\begin{tw}{(Wzór całkowy Stokesa)}\\
+	Niech $M\subset\mathbb{R}^3$ będzie zorientowanym płatem z kawałkami gładkim brzegiem $\partial M$. Niech $\phi:\overline{U}\rightarrow M$ ($\overline{U}$ to domknięcie $U$) będzie parametryzacją tego płata taką, że $\phi(\partial U)=\partial M$. Ponadto zakładamy, że dodatni kierunek obiegu $\partial U$ odpowiada dodatniemu kierunkowi $\partial M$ związanemu z orientacją $M$. Niech $v$ będzie $C^1$ polem wektorowym zdefiniowanym w otoczeniu $M$. Wówczas ma miejsce następujący \textbf{wzór całkowy Stokesa}: $$\int\limits_M rot\ v\cdot dS=\int\limits_{\partial M}v\cdot dx$$ czyli strumień pola rotacji przez płat $M$ jest równy cyrkulacji pola $v$ po brzegu tego płata (po lewej mamy całkę powierzchniową zorientowaną a po lewej całkę krzywoliniową zorientowaną).
+\end{tw}
+
+\begin{wnsk}{(Wzór Greena)}\\
+	Wzór Greena (łączący całkę podwójną z całką krzywoliniową), czyli: $$\int\limits_\Omega\Bigg(\dfrac{\partial Q}{\partial x}-\dfrac{\partial P}{\partial y}\Bigg)dxdy=\int\limits_{\partial\Omega}Pdx+Qdy$$ jest szczególnym przypadkiem wzoru Stokesa.
+\end{wnsk}
+
+\section{Twierdzenie Gaussa-Ostrogradskiego}
+
+\begin{tw}{(Wzór całkowy Gaussa - Ostrogradskiego)}\\
+	Niech $V\subset\mathbb{R}^3$ będzie obszarem ograniczonym w $\mathbb{R}^3$ normalnym w każdym kierunku osi współrzędnych. Niech $\partial V$ będzie kawałkami gładkim płatem zorientowanym na zewnątrz $V$. Wtedy dla dowolnego pola wektorowego $v:\overline{V}\rightarrow\mathbb{R}^3$ klasy $C^1$ zachodzi \textbf{wzór całkowy Gaussa - Ostrogradskiego}: $$\int\limits_V div\ v\ d^3(x,y,z)=\int\limits_{\partial V}v\cdot dS=\int\limits_{\partial V}\langle v,n\rangle\ dS=\int\limits_{\partial V} v_1\ dydz+v_2\ dzdx+v_3\ dxdy$$
+\end{tw}
+
+\begin{uwg}
+	Wzór Gaussa - Ostrogradskiego zachodzi dla dowolnego obszaru $V\subset\mathbb{R}^n$ ograniczonego z kawałkami gładkim brzegiem. Jest on wnioskiem z ogólnego twierdzenia Stokesa.
+\end{uwg}

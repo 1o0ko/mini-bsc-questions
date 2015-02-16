@@ -1,0 +1,156 @@
+\chapter{Słabe i mocne prawa wielkich liczb}
+\section{Słabe prawa wielkich liczb}
+Omówimy najpierw serię twierdzeń znanych pod nazwą słabych praw wielkich liczb. Nazwa ta związana jest z typem zbieżności ciągów zmiennych losowych występujących w tych twierdzeniach, zwanym zbieżnością według prawdopodobieństwa. 
+\subsection{Zbieżność względem prawdopodobieństwa}
+	\begin{df}
+		Mówimy, że ciąg zmiennych losowych $(X_n)$ określonych na tej samej przestrzeni probabilistycznej $(\Omega, \mathcal{F}, \textbf{P})$ jest zbieżny według prawdopodobieństwa do zmiennej losowej $X$ (oznaczenie: $X_n \stackrel{P}{\rightarrow} X$), jeśli dla dowolnego $\epsilon > 0$ zachodzi
+		\begin{equation}
+		\lim_{n\rightarrow \infty} \textbf{P} \{ \omega : |X_n(\omega) - X(\omega)| < \epsilon  \} =1.
+		\end{equation}
+	\end{df}
+	
+	\begin{przyk}
+		Aby zrozumieć dlaczego tak zdefiniowana zbieżność nie jest zbyt mocna, rozważmy następujący przykład: $\Omega = [0,1]$, \textbf{P} jest unormowana miarą Lebesque'a na $\Omega$, a ciąg zmiennych losowych $X_n$ jest określony wzorem:
+		\begin{equation*}
+			X_n(\omega) = \textbf{1}_{(0, \frac{1}{n})}(\{ n\pi + \omega \}),
+		\end{equation*}
+		gdzie $\{a\}$ oznacza ułamkową część liczby $a$. Łatwo zauważyć, że $X_n$ przyjmuje wartość 1 na odcinku o długości $
+		\frac{1}{n}$, a na pozostałej części odcinka $[0,1]$ przyjmuje wartość zero. Otrzymujemy więc:
+		\begin{equation*}
+			\textbf{P} \{ \omega: | X_n - 0| < \epsilon \} \ge 1 - \frac{1}{n} \; \stackrel{n \to \infty}{\longrightarrow} 1.
+		\end{equation*}
+		Stąd wynika, że $X_n \stackrel{P}{\rightarrow} 0$. Jeżeli jednak ustalimy $\omega \in \Omega$, to wiadomo, że dla dowolnego $n \in \mathbb{N}$ istnieje $k > n$, dla którego
+		\begin{equation*}
+			\{ k \pi + \omega \} \in (0, \frac{1}{k}), \text{ więc } X_k(\omega) = 1.
+		\end{equation*}
+		Oznacza to, że ciąg $X_n(\omega), n \in \mathbb{N}$ jest ciągiem rozbieżnym dla każdego ustalonego $\omega$.
+	\end{przyk}
+
+\subsection{Słabe prawa wielkich liczb}	
+	\begin{tw}[Słabe prawo wielkich liczb Bernoulliego]
+		Niech $S_n$ będzie zmienną losową oznaczającą liczbę sukcesów w $n$ próbach Bernoulliego z prawdopodobieństwem sukcesu w pojedynczej próbie równym $p$. Wtedy dla każdego $\epsilon > 0$ zachodzi
+		\begin{equation*}
+			\lim_{n \to \infty} \textbf{P} \left\{ 
+			\omega : \left| 
+			\frac{S_n}{n} - p
+			\right| < \epsilon
+			\right\} = 1.
+		\end{equation*}
+	\end{tw}
+	
+	\begin{tw}[Słabe prawo wielkich liczb Czebyszewa]
+		Jeśli $(X_n)$ jest ciągiem parami niezależnych zmiennych losowych, dla których dla każdego $n$ istnieje skończona wariancja $\text{Var}X_n$, przy czym dla pewnego $c \; \text{Var}X_n \leq c < \infty$ dla wszystkich $n$, to dla każdego $\epsilon > 0$ zachodzi
+		\begin{equation*}
+			\lim_{n \to \infty} \textbf{P} \left\{ 
+			\omega : \left| 
+			\frac{1}{n} \sum_{k=1}^{n} \left( X_k - \textbf{E}X_k\right)		
+			\right| < \epsilon
+			\right\} = 1.
+		\end{equation*}
+	\end{tw}
+
+	\begin{tw}[Słabe prawo wielkich liczb Markowa]
+		Jeśli $(X_n)$ jest ciągiem zmiennych losowych takich, że
+		\begin{equation}
+			\lim_{n \to \infty} \frac{1}{n^2} \text{Var}\left( \sum_{k=1}^n X_k \right) = 0, 
+		\end{equation}
+		to dla każdego $\epsilon > 0$ zachodzi
+		\begin{equation*}
+			\lim_{n \to \infty} \textbf{P} \left\{ 
+				\omega : \left| 
+							\frac{1}{n} \sum_{k=1}^{n} \left( X_k - \textbf{E}X_k\right)		
+						\right| < \epsilon
+			\right\} = 1.
+		\end{equation*}
+	\end{tw}
+	Powyższe twierdzenie nie zakłada identyczności rozkładów tylko wymaga, aby istniały i były skończone wariancje rozważanych zmiennych. Podamy teraz inną postać prawa wielkich liczb, w którym rezygnujemy z tego założenia kosztem założenia o jednakowych rozkładach zmiennych losowych.
+	\begin{tw}[Słabe prawo wielkich liczb Chinczyna]
+		Jeśli $(X_n)$ jest ciągiem niezależnych zmiennych losowych o jednakowych rozkładach i skończonej wartości oczekiwanej $m=\textbf{E}X_i$, to dla każdego $\epsilon > 0$ zachodzi
+		\begin{equation*}
+		\lim_{n \to \infty} \textbf{P}
+		 \left\{ 
+			\omega : \left|  \frac{1}{n} \sum_{k=1}^{n} \left( X_k - m \right) \right|
+		\right\} = 1.
+		\end{equation*}
+	\end{tw}
+\newpage	
+\section{Mocne prawa wielkich liczb}
+Innym typem zbieżności zmiennych losowych jest \textit{zbieżność z prawdopodobieństwem 1}, którą nazywamy również \textit{zbieżnością prawie na pewno} lub \textit{zbieżnością prawie wszędzie}.
+\subsection{Zbieżność prawie wszędzie}
+	\begin{df}
+		Mówimy, że ciąg zmiennych losowych $(X_n)$ określonych na tej samej przestrzeni probabilistycznej $(\Omega, \mathcal{F}, \textbf{P})$ jest prawie na pewno zbieżny do zmiennej losowej $X$ (oznaczenie: $X_n \stackrel{p.n.}{\rightarrow} X$), jeśli 
+		\begin{equation}
+			\textbf{P} \{ \omega : \lim_{n\rightarrow \infty} X_n(\omega) = X(\omega) \} =1.
+		\end{equation}
+	\end{df}
+	\begin{uwg}
+		Niech $(X_n)$ będzie ciągiem zmiennych losowych określonych na tej samej przestrzeni probabilistycznej  $(\Omega, \mathcal{F}, \textbf{P})$. Wtedy
+		\begin{equation*}
+			X_n  \stackrel{p.n.}{\rightarrow} X \implies X_n  \stackrel{P}{\rightarrow} X.
+		\end{equation*}
+		Widzimy zatem, iż zbieżność z prawdopodobieństwem 1 jest rzeczywiście "mocniejsza" od zbieżności według prawdopodobieństwa.
+	\end{uwg}
+
+\subsection{Mocne prawa wielkich liczb}
+Pierwszy wariant silnego prawa wielkich został sformułowany i wykazany przez Emila Borela w kontekście schematu Bernoulliego
+	\begin{tw}[Mocne prawo wielkich liczb Borela]
+		Niech $S_n$ będzie zmienną losową oznaczającą liczbę sukcesów w $n$ próbach Bernoulliego z prawdopodobieństwem sukcesu w~pojedynczej próbie równym $p$. Wtedy dla każdego $\epsilon > 0$ zachodzi
+		\begin{equation*}
+			\textbf{P} \left\{ 
+				\omega : 
+					\left| \;
+						\lim_{n \to \infty} \frac{S_n}{n} = p
+					\; \right|
+		\right\} = 1.
+		\end{equation*}
+	\end{tw}
+
+
+\begin{tw}[Pierwsze prawo wielkich liczb Kołmogorowa]
+	Jeśli $(X_n)$ jest ciągiem zmiennych losowych o skończonych wariancjach, oraz 
+	\[
+		\sum_{n=1}^{\infty} \frac{1}{n^2} \text{Var}X_n < \infty,
+	\]
+	to
+	\[
+		\textbf{P} \left\{ \omega : \lim_{n \to \infty}  \frac{1}{n} \sum_{k=1}^{n}(X_k - \textbf{E}X_k) = 0  \right\} = 1.
+	\]	
+\end{tw}
+
+\begin{tw}[Drugie prawo wielkich liczb Kołmogorowa]
+	Jeśli $(X_n)$ jest ciągiem niezależnych zmiennych losowych o jednakowych rozkładach i skończonej wartości oczekiwanej $m = \textbf{E}X_k$, to 
+	\[
+	\textbf{P} \left\{ \omega : \lim_{n \to \infty}  \frac{1}{n} \sum_{k=1}^{n}X_k = m  \right\} = 1.
+	\]	
+\end{tw}
+
+\section{Zastosowania}
+	\subsection{Metoda Monte Carlo obliczania całek}
+		\begin{tw}
+			Niech $\varphi: \mathbb{R}^n \to \mathbb{R}$ będzie funkcją borelowską, a $X$ zmienną losową o~wartościach w $\mathbb{R}^n$. Wtedy
+			\begin{equation*}
+				\textbf{E}\varphi(X) = \int_{\mathbb{R}^n} \varphi(x) \mu_X(dx),
+			\end{equation*}
+			przy czym równość należy rozumieć tak: jeśli całka po jednej stronie istnieje, to istnieje także całka po drugiej stronie i są one równe.
+		\end{tw}
+		\begin{wnsk}\label{expected-falue-of-real-function}
+			Jeśli zmienna losowa $X$ o wartościach w $\mathbb{R}^n$ ma rozkład ciągły o gęstości $g$, a~funkcja  $\varphi: \mathbb{R}^n \to \mathbb{R}$ jest borelowska, to
+			\begin{equation*}
+				\textbf{E}\varphi(X) = \int_{\mathbb{R}^n} \varphi(x) g(x)dx.
+			\end{equation*}
+		\end{wnsk}
+		
+		\begin{tw}
+			Niech $X_1, X_2, \ldots X_n$ będzie ciągiem niezależnych zmiennych losowych o jednakowych rozkładach i skończonej wartości oczekiwanej, dodatkowo niech powyższe zmienne losowe przyjmują wartości w $(0,1)$ i mają funkcję gęstości $g$.  Niech $f$ będzie funkcją rzeczywistą taką, że $\int_{0}^{1}f(x)dx$ istnieje i jest skończona. Wtedy
+			\begin{equation}
+				\frac{1}{n} \sum_{k=1}^{n} \frac{f(X_k)}{g(X_k)}  \stackrel{p.n.}{\longrightarrow} \int_{0}^{1} f(x) dx.
+			\end{equation}
+		\end{tw}
+		\begin{proof}
+			Na mocy drugiego prawa wielkich liczb Kołgomorowa i wniosku \ref{expected-falue-of-real-function} otrzymujemy:
+			\begin{equation}
+			\frac{1}{n} \sum_{k=1}^{n} \frac{f(X_k)}{g(X_k)}  \stackrel{p.n.}{\longrightarrow} \textbf{E}\left( \frac{f(X_k)}{g(X_k)}\right) =
+			\int_{0}^{1} \frac{f(x)}{g(x)} g(x)dx = \int_{0}^{1} f(x) dx.
+			\end{equation}
+		\end{proof}
+		

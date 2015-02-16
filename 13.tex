@@ -1,0 +1,312 @@
+\chapter{Przestrzenie liniowe, bazy, homomorfizmy przestrzeni liniowych i ich reprezentacje macierzowe}
+\section{Przestrzenie wektorowe}
+	\begin{df}
+		Czwórka $(V, +, \mathbb{K}, \cdot)$ nazywa się \textit{przestrzenią wektorową nad $\mathbb{K}$}, jeśli $V$ jest zbiorem, $+$ działaniem dwuargumentowym w zbiorze $V$, $\mathbb{K}$ jest ciałem, a $\cdot: \mathbb{K} \times V \to V$ jest działaniem $\mathbb{K}$ na $V$ oraz spełnione są następujące warunki:
+		\begin{enumerate}
+			\item $(V, +)$ jest grupą abelową,
+			\item $a \cdot (b \cdot \textbf{v}) = (ab) \cdot \textbf{v}$,
+			\item 1$ \cdot \textbf{v} =  \textbf{v}$, gdzie 1 jest \textit{jedynką} ciała $\mathbb{K}$,
+			\item $(a + b) \cdot \textbf{v} = a \cdot \textbf{v} + b \cdot \textbf{v}$,
+			\item $a \cdot (\textbf{u} + \textbf{\textbf{v}}) =  a \cdot \textbf{u} + a \cdot \textbf{v}$,
+		\end{enumerate}
+		dla dowolnych $a,b \in \mathbb{K}$, $\textbf{u}, \textbf{v} \in V$.
+	\end{df}
+	\begin{uwg}
+		Elementy zbioru $V$ będziemy nazywali \textit{wektorami} przestrzeni wektorowej  $(V, +, \mathbb{K}, \cdot)$,
+		elementy ciała $\mathbb{K}$ - \textit{skalarami}. Poza przypadkami, gdy mogłoby to prowadzić do nieporozumień przestrzeń wektorową $(V, +, \mathbb{K}, \cdot)$ i zbiór V będziemy oznaczać tym samym symbolem \textbf{V}. Element neutralny grupy $(V, +)$ nazywamy \textit{wektorem zerowym} i oznaczamy symbolem $\textbf{o}$.
+	\end{uwg}
+	
+	\begin{przyk}
+		Dowolne ciało $\textbf{K}$ może być traktowane jako przestrzeń wektorowa nad $\mathbb{K}$.
+	\end{przyk}
+
+	\begin{przyk}
+		Jeśli w produkcje kartezjańskim
+		\begin{equation*}
+			\mathbb{K}^n = \{(x_1, \ldots, x_n) : x_i \in \mathbb{K} \; \text{dla} \; i = 1, \ldots, n  \}
+		\end{equation*}
+		określimy dodawanie i mnożenie przez skalary wzorami 
+		\begin{align}
+			(x_1, \ldots, x_n)  + (y_1, \ldots, y_n)  &= (x_1 + y_1, \ldots, x_n + y_n), \\
+			a \cdot (x_1, \ldots, x_n)  &= (ax_1, \ldots, ax_n),
+		\end{align} 
+		to otrzymamy przestrzeń wektorową nad $\textbf{K}$
+	\end{przyk}
+	
+	\begin{df}
+		Przestrzeń wektorowa $(W, +, \mathbb{K}, \cdot)$ nazywa się \textit{podprzestrzenią} przestrzeni wektorowej $(V, +, \mathbb{K}, \cdot)$, jeśli grupa $(W, +)$ jest podgrupą grupy $(V, +)$, a działanie $\cdot$ ciała $\mathbb{K}$ na zbiór $W$ jest indukowane przez działanie $\cdot$ ciała $\mathbb{K}$ na zbiór $V$.
+	\end{df}
+	
+	\section{Układy wektorów}
+	\begin{df}
+		\textit{Układem wektorów} w przestrzeni wektorowej $\textbf{V}$ będziemy nazywali dowolny skończony ciąg $\mathcal{A} =(\textbf{v}_1, \ldots, \textbf{v}_m)$  wektorów przestrzeni \textbf{V}.
+	\end{df}
+	
+	\begin{df}
+		Jeśli $\mathcal{A} =(\textbf{v}_1, \ldots, \textbf{v}_m)$ i $1 \leq i_1 < \ldots < i_k \leq m$, to układ $(\textbf{v}_{i_1}, \ldots, \textbf{v}_{i_k})$ będziemy nazywali \textit{podukładem} układu $\mathcal{A}$.
+	\end{df}
+	
+	\begin{df}
+		Niech $\mathcal{A} =(\textbf{v}_1, \ldots, \textbf{v}_m)$ będzie układem wektorów przestrzeni wektorowej $\mathbb{V}$ na ciałem $\mathbb{K}$. Każde wyrażenie postaci
+		\begin{equation}\label{komb-lin}
+			x_1 \cdot \textbf{v}_1 + \cdots + x_m \cdot \textbf{v}_m,
+		\end{equation}
+		gdzie $x_1,\ldots, x_m \in \textbf{K}$ będziemy nazywali \textit{kombinacją liniową układu} $\mathcal{A}$ lub \textit{kombinacją liniową wektorów} $\textbf{v}_1, \ldots, \textbf{v}_m$. Skalary $x_1,\ldots, x_m$ nazywają się współczynnikami kombinacji liniowej \ref{komb-lin}.
+	\end{df}
+	
+	\begin{uwg}
+		Zbiór wszystkich kombinacji liniowych układu  $\mathcal{A} =(\textbf{v}_1, \ldots, \textbf{v}_m)$ oznaczamy przez 
+		\begin{equation*}
+			\mathcal{L}(\mathcal{A}) = \{ x_1 \cdot \textbf{v}_1 + \cdots + x_m \cdot \textbf{v}_m, \quad x_i \in \mathbb{K}, \; i = 1, \ldots, m \}.
+		\end{equation*}
+	\end{uwg}
+
+	\begin{tw}
+	 Jeśli  $\mathcal{A} =(\textbf{v}_1, \ldots, \textbf{v}_m)$ jest układem wektorów z przestrzeni wektorowej $\textbf{V}$ nad ciałem $\mathbb{K}$, to $\mathcal{L}(\mathcal{A})$ jest podprzestrzenią przestrzeni \textbf{V}.
+ 	\end{tw}
+
+ 	\begin{df}
+ 	Niech  $\mathcal{A} =(\textbf{v}_1, \ldots, \textbf{v}_m)$ będzie układem wektorów z przestrzeni wektorowej $\textbf{V}$ nad ciałem $\mathbb{K}$. Podprzestrzeń $\mathcal{L}(\mathcal{A})$ przestrzeni \textbf{V} nazywamy \textit{przestrzenią generowaną przez układ} $\mathcal{A}$, a układ $\mathcal{A}$ nazywamy \textit{układem generatorów} podprzestrzeni $\mathcal{L}(\mathcal{A})$.
+ 	\end{df}
+ 	
+ 	\begin{df}
+ 		Niech \textbf{V} będzie przestrzenią wektorową na ciałem $\mathbb{K}$ i niech $\mathcal{A} =(\textbf{v}_1, \ldots, \textbf{v}_m)$ będzie układem wektorów w przestrzeni \textbf{V}. Mówimy, że układ $\mathcal{A}$ jest \textit{liniowo niezależny} (lub, że wektory $\textbf{v}_1, \ldots, \textbf{v}_m$ są \textit{liniowo niezależne}), jeśli z równości
+ 		\begin{equation*}
+	 			x_1 \cdot \textbf{v}_1 + \cdots + x_m \cdot \textbf{v}_m = \textbf{o}
+ 		\end{equation*}
+ 		wynika, że $x_1 = 0, \ldots, x_m = 0$. Jeżeli układ $\mathcal{A}$ nie jest liniowo niezależny, to mówimy, że jest \textit{liniowo zależny} (lub, że wektory $\textbf{v}_1, \ldots, \textbf{v}_m$ są \textit{liniowo zależne}).
+ 	\end{df}
+ 	
+ 	\begin{uwg}
+ 		Układ wektorów $\mathcal{A} =(\textbf{v}_1, \ldots, \textbf{v}_m)$ w przestrzeni \textbf{V} jest liniowo zależny wtedy i~tylko wtedy, gdy co najmniej jeden z wektorów $\textbf{v}_i$ można zapisać jako kombinację liniową pozostałych.
+ 	\end{uwg}
+ 	
+ 	\begin{uwg}
+ 		Jeżeli układ $\mathcal{A}$ jest liniowo niezależny, to każdy jego podukład jest liniowo niezależny.
+ 	\end{uwg}
+ 	
+ 	\begin{uwg}
+ 		 	W wielu sytuacjach wygodnie jest traktować niepuste układy wektorów jako macierze jednowierszowe. Jeśli traktujemy układ $\mathcal{A} = (\textbf{u}_1, \ldots, \textbf{u}_m)$ jako macierz jednowierszową, to dla dowolnej macierzy 
+ 		 	\begin{equation*}
+ 		 		A = \begin{bmatrix}
+ 		 		\; a_{11} & \ldots & a_{1n} \; \\
+ 		 		\hdotsfor{3}  \\
+ 		 		\; a_{m1} & \ldots & a_{mn} \; \\
+ 		 		\end{bmatrix}
+ 		 	\end{equation*}
+ 	możemy utworzyć iloczyn 
+ 	\begin{equation*}
+ 		\mathcal{A} \cdot A = 
+	 		(\textbf{u}_1, \ldots, \textbf{u}_m) \cdot
+	 		\begin{bmatrix}
+	 		\; a_{11} & \ldots & a_{1n} \; \\
+	 		\hdotsfor{3}  \\
+	 		\; a_{m1} & \ldots & a_{mn} \; \\
+	 		\end{bmatrix} 
+	 		= (\textbf{v}_1, \ldots, \textbf{v}_n),	 		
+ 	\end{equation*}
+ 	gdzie
+ 	\begin{equation*}
+	 	\begin{matrix}
+		 	\textbf{v}_1  = a_{11}\textbf{u}_1 + \ldots + a_{m1}\textbf{u}_m  = \mathcal{A} \cdot A^{(1)} \\
+		 	\hdotsfor{1} \\
+		 	\textbf{v}_n  = a_{1n}\textbf{u}_1 + \ldots + a_{mn}\textbf{u}_m   = \mathcal{A} \cdot A^{(n)}.
+	 	\end{matrix}
+ 	\end{equation*}
+
+	Otrzymany układ będziemy nazywali \textit{iloczynem układu $\mathcal{A}$ przez macierz $A$}. \\
+	W szczególności wektor $\textbf{v} = x_1\textbf{u}_1 + \ldots + x_m\textbf{u}_m$ może być przedstawiony w postaci iloczynu
+	\begin{equation*}
+		\textbf{v} = (\textbf{u}_1, \ldots, \textbf{u}_m) \begin{bmatrix} x_1 \\ \cdots \\ x_m \end{bmatrix} = \mathcal{A}X,
+		\quad \text{ gdzie }  X = \begin{bmatrix} x_1 \\ \cdots \\ x_m \end{bmatrix}\\
+	\end{equation*}
+	i w konsekwencji 
+	\begin{equation*}
+		\mathcal{L}(\mathcal{A}) = \{\mathcal{A}X: X \in \mathbb{K}^1_{m} \}.
+	\end{equation*}
+ 	\end{uwg}
+
+ 	 
+ 	\section{Baza i wymiar przestrzeni wektorowej}
+ 	\begin{df}
+ 		Niech \textbf{V} będzie przestrzenią wektorową nad $\mathbb{K}$, \, $\mathcal{B} =(\textbf{v}_1, \ldots, \textbf{v}_n)$ wektorów z przestrzeni \textbf{V} nazywa się \textit{bazą przestrzeni wektorowej} V, jeśli
+ 		\begin{itemize}
+ 			\item jest liniowo niezależny,
+ 			\item $\mathcal{L}(\mathcal{B}) = \textbf{V}$.
+ 		\end{itemize}
+ 		Jako bazę przestrzeni zerowej przyjmujemy układ pusty.
+ 	\end{df}
+ 	
+ 	\begin{przyk}
+ 		Wielomiany $1, x, \ldots, x^n$ tworzą bazę przestrzeni $\mathbb{K}_n[x]$.
+ 	\end{przyk}
+ 	
+ 	\begin{uwg}
+ 		Przestrzeń wektorową mającą (skończoną) bazę nazywa się \textit{przestrzenią skończenie wymiarową}.
+ 	\end{uwg}
+	
+	Jeśli \textbf{V} jest skończenie wymiarową przestrzenią wektorową, to liczbę elementów bazy przestrzeni \textbf{V} 	nazywamy \textit{wymiarem} przestrzeni \textbf{V} i oznaczamy symbolem dim\textbf{V}.
+	
+ 	\begin{tw}
+ 		Jeśli $\text{dim} \textbf{V} = n$ i $\mathcal{A}=( \textit{v}_1, \ldots, \textit{v}_n)$, to następujące warunki są równoważne:
+ 		\begin{enumerate}
+ 			\item $\mathcal{A}$ jest bazą przestrzeni $V$, 
+ 			\item $\mathcal{A}$ jest liniowo niezależny,
+ 			\item $\mathcal{L}(\mathcal{A}) = \textbf{V}$.
+ 		\end{enumerate}
+ 	\end{tw}
+
+	\begin{tw}
+		Jeśli $A$ jest macierzą typu $m \times n$ nad $\mathbb{K}$, to
+		\begin{enumerate}
+			\item rz $A$ równy jest wymiarowi podprzestrzeni $\mathbb{K}^1_m$ generowanej przez kolumny macierzy $A$,
+			\item rz $A$ równy jest wymiarowi podprzestrzeni $\mathbb{K}^n_1$ generowanej przez wiersze macierzy $A$.
+		\end{enumerate}
+	\end{tw}
+	
+	\begin{df}
+		Niech $\mathcal{B} =(\textbf{v}_1, \ldots, \textbf{v}_n)$ będzie bazą przestrzeni linowej \textbf{V} nad ciałem $\mathbb{K}$, oraz niech $\textbf{v} \in \textbf{V}$.
+		Skalary $x_1, \ldots, x_n \in \mathbb{K}$ nazywamy współrzędnymi wektora $\textbf{v}$ w bazie $\mathcal{B}$, gdy
+		\begin{equation*}
+			\textbf{v} =  x_1 \cdot \textbf{v}_1 + \cdots + x_m \cdot \textbf{v}_m.
+		\end{equation*}
+		Jednokolumnową macierz utworzoną ze współrzędnych wektora \textbf{v} w bazie $\mathcal{B}$ będziemy oznaczali symbolem $M_{\mathcal{B}}(\textbf{v})$, tzn.
+		\begin{equation*}
+			M_{\mathcal{B}}(\textbf{v}) = 
+			\begin{bmatrix}
+				\; x_1 \; \\
+				\ldots \\
+				x_n \\
+			\end{bmatrix}.
+		\end{equation*}
+	\end{df}
+	
+ 	Nietrudno zauważyć, że 
+ 	\begin{equation*}
+ 	X = M_{\mathcal{B}}(\textbf{v}) \Longleftrightarrow \textbf{v} = \mathcal{B}X.
+ 	\end{equation*}
+ 	
+ 	\begin{df} 		
+	 	Niech $\mathcal{A} = (\textbf{u}_1, \ldots, \textbf{u}_k)$ będzie układem wektorów w \textbf{V} nad ciałem $\mathbb{K}$, wtedy \textit{współrzędnymi układu $\textbf{A}$} w bazie $\mathcal{B}$, będziemy nazywać $k$-kolumnową macierz nad $\mathbb{K}$, oznaczaną poprzez $M_{\mathcal{B}}(\mathcal{A})$,  taką, że $(M_{\mathcal{B}}(\mathcal{A}))^{(j)} = M_{\mathcal{B}}(\textbf{u}_j)$ dla $ j = 1, \ldots, k$. Jeśli więc 
+	 	\begin{equation*}
+	 		\begin{matrix}
+				\textbf{u}_1 = a_{11}\textbf{v}_1 + \ldots + a_{n1}\textbf{v}_n, \\
+				\hdotsfor{1} \\
+				\textbf{u}_k = a_{1k}\textbf{v}_1 + \ldots + a_{nk}\textbf{v}_n, \\
+	 		\end{matrix}, 
+	 		\quad \text{to} \quad 		
+	 		M_{\mathcal{B}}(\mathcal{A}) = A = 
+	 		\begin{bmatrix}
+		 		a_{11} & \ldots & a_{1k} \\ 
+		 		\hdotsfor{3} \\ 
+		 		a_{n1} & \ldots & a_{nk} \\ 
+	 		\end{bmatrix}. 		
+	 	\end{equation*} 	
+ 	 \end{df}
+ 	Podobnie, jak poprzednio mamy 	
+ 	\begin{equation*}
+ 		A = M_{\mathcal{B}}(\mathcal{A}) \Longleftrightarrow \mathcal{A} = \mathcal{B}A.
+ 	\end{equation*}
+ 	
+ 	\begin{tw}
+ 		Jeśli  $\mathcal{A} =(\textbf{u}_1, \ldots, \textbf{u}_n)$ i  $\mathcal{B} =(\textbf{v}_1, \ldots, \textbf{v}_n)$ są bazami przestrzeni wektorowej \textbf{V}, to macierze
+ 		\begin{equation*}
+ 			A = M_{\mathcal{B}}(\mathcal{A}) \quad \text{i} \quad B = M_{\mathcal{A}}(\mathcal{B})
+ 		\end{equation*}
+ 		są względem siebie odwrotne.
+ 	\end{tw}
+ 	
+ 	\begin{proof}
+ 		$\mathcal{A} = \mathcal{B}A$ i $\mathcal{B} = \mathcal{A}B$. Stąd $\mathcal{B} = \mathcal{B}AB$, a stąd $I = AB$.
+ 	\end{proof}
+ 	
+ 	\begin{df}
+	 	Jeśli  $\mathcal{A} =(\textbf{u}_1, \ldots, \textbf{u}_n)$ i  $\mathcal{B} =(\textbf{v}_1, \ldots, \textbf{v}_n)$ są bazami przestrzeni wektorowej \textbf{V}, to macierze $A = M_{\mathcal{B}}(\mathcal{A})$ i $B = M_{\mathcal{A}}(\mathcal{B})$ będziemy nazywali \textit{macierzami zmiany bazy}.
+	 \end{df}
+ 	
+ 	\begin{tw}
+ 		Jeśli $\mathcal{A}$ i $\mathcal{B}$ są bazami przestrzeni wektorowej \textbf{V} i $\textbf{v} \in \textbf{V}$, to
+ 		\begin{equation*}
+ 			M_{\mathcal{B}}(\textbf{v}) = M_{\mathcal{B}}(\mathcal{A})M_{\mathcal{A}}(\textbf{v}) \quad \text{i} \quad
+			M_{\mathcal{A}}(\textbf{v}) = M_{\mathcal{A}}(\mathcal{B})M_{\mathcal{B}}(\textbf{v}).
+ 		\end{equation*}
+ 	\end{tw}
+	 	
+
+ 	\section{Odwzorowanie liniowe}
+ 	\begin{df} Niech  $(\textbf{V}, +)$ i $(\textbf{V}', \oplus)$ będą przestrzeniami wektorowymi na tym samym ciałem $\mathbb{K}$. Odwzorowanie $F:\textbf{V} \to \textbf{V}'$ nazywa się \textit{odwzorowaniem liniowym} (lub \textit{homomorfizmem przestrzeni wektorowych}), jeśli jest addytywne i jednorodne, tzn.:
+ 		\begin{description}
+ 			\item[Addytywne] $F(\textbf{u} +  \textbf{v}) = F(\textbf{u}) \oplus F(\textbf{v})$,
+ 			\item[Jednorodne] $F(a\textbf{v})$ = aF(\textbf{v})
+		\end{description} 		
+		dla dowolnych $\textbf{u},\textbf{v} \in \textbf{V}, \; a \in \mathbb{K}$.
+ 	\end{df}
+ 	
+	\begin{uwg}
+		Zbiór wszystkich odwzorowań liniowych z przestrzeni \textbf{V} do przestrzeni \textbf{V}' będzie oznaczany symbolem hom(\textbf{V},\textbf{V}'). Odwzorowania linowe z przestrzeni \textbf{V} w siebie będziemy nazywać \textit{operatorami liniowymi} (lub krótko, \textit{operatorami}) na przestrzeni \textbf{V}. Zbiór wszystkich operatorów liniowych na $\textbf{V}$ będziemy oznaczali symbolem op(\textbf{V}).
+	\end{uwg}
+	
+	\begin{przyk}
+		Jeśli \textbf{V} jest przestrzenią wektorową, to odwzorowanie $I_{\textbf{V}} : \textbf{V} \to \textbf{V}$ zdefiniowane przez $I_{\textbf{V}}(\textbf{v}) = \textbf{v}$ dla każdego $\textbf{v} \in \textbf{V}$, jest operatorem liniowym na \textbf{V}. Odwzorowanie $I_{\textbf{V}}$ będziemy nazywali operatorem \textit{identycznościowym} na przestrzeni \textbf{V}. 
+	\end{przyk}
+	
+	\begin{przyk}
+		Niech $V = \mathbb{R}[x]$ i niech odwzorowania $F:\textbf{V} \to \textbf{V}$, $G:\textbf{V} \to \textbf{V}$ będą zdefiniowane wzorami
+		\begin{equation*}
+			(Ff)(x) = \frac{df}{dx}(x) \quad \text{i} \quad (Gf)(x) = \int\limits_{0}^{x} f(t)dt
+		\end{equation*}
+		dla $f(x) \in \mathbb{R}[x]$, gdzie $\mathbb{R}[x]$ oznacza pierścień wielomianów nad ciałem liczb rzeczywistych. Ze znanych właściwości pochodnych i całek wynika, że $F$ i $G$ są operatorami liniowymi na przestrzeni $V$.
+	\end{przyk}
+	
+	\begin{tw}
+		Niech \textbf{V} i \textbf{V}' będą przestrzeniami liniowymi nad $\mathcal{K}$ i niech $F$ będzie odwzorowaniem z \textbf{V} do \textbf{V}'. $F$ jest odwzorowaniem liniowym wtedy i tylko wtedy, gdy
+		\begin{equation*}
+			F(a\textbf{u} +\hfill) = aF(\textbf{u}) + F(\textbf{u})
+		\end{equation*}
+		dla dowolnych $\textbf{u},\textbf{v} \in \textbf{V}, \; a \in \mathbb{K}$.
+	\end{tw}
+	
+	\begin{tw}
+		Niech $\textbf{V}, \textbf{V}', \textbf{V}''$ będą przestrzeniami wektorowymi nad $\mathbb{K}$. Wówczas
+		\begin{enumerate}
+			\item Jeśli $F \in \hom(\textbf{V},\textbf{V}')$ i $F' \in \hom(\textbf{V}',\textbf{V}'')$, to $F' \circ F \in \hom(\textbf{V},\textbf{V}'')$.
+			\item  Jeśli $F \in \hom(\textbf{V},\textbf{V}')$ i $F$ jest odwzorowaniem odwracalnym, to $F^{-1} \in \hom(\textbf{V}',\textbf{V})$.
+		\end{enumerate}
+	\end{tw}
+	
+	\begin{df}
+		Niech $F \in \hom(\textbf{V},\textbf{V}')$. Zbiór
+		\begin{equation*}
+			F^{-1}(\textbf{O}) = \{ \textbf{v} \in \textbf{V} : F\textbf{v} = \textbf{o} \}
+		\end{equation*}
+		nazywamy \textit{jądrem} odwzorowania $F$ i oznaczamy symbolem $\ker F$. Zbiór 
+		\begin{equation*}
+			F(\textbf{V}) = \{ \textbf{v}' \in \textbf{V}' : (\exists \textbf{v} \in \textbf{V}) \textbf{v}' = F\textbf{v} \}
+		\end{equation*}
+		nazywamy \textit{obrazem} odwzorowania $F$ i oznaczamy $\text{im} F$. 
+	\end{df}
+	
+	\begin{df}
+		Niech $F \in \hom(\textbf{V}, \textbf{V}')$ i niech będą ustalone bazy $\mathcal{B}$ i $\mathcal{B}'$ przestrzeni $\textbf{V}$ i $\textbf{V}'$. Macierz $M_{\mathcal{B}'}(F(\mathcal{B}))$ będziemy nazywali \textit{macierzą odwzorowania $F$ w bazach $\mathcal{B}$ i $\mathcal{B}'$} i~oznaczali symbolem $M_{\mathcal{B}'}^{\mathcal{B}}(F)$.
+	\end{df}
+	
+	\begin{tw}
+			Niech $F \in \hom(\textbf{V}, \textbf{V}')$ i niech będą ustalone bazy $\mathcal{B}$ i $\mathcal{B}'$ przestrzeni $\textbf{V}$ i $\textbf{V}'$ i niech $A \in \mathbb{K}_m^n$. Wówczas $A = M_{\mathcal{B}'}^{\mathcal{B}}(F)$ wtedy i tylko wtedy, gdy dla każdego $\textbf{v} \in \textbf{V}$
+			\begin{equation}
+				M_{\mathcal{B}'}(F\textbf{v}) = A M_{\mathcal{B}}(\textbf{v}).
+			\end{equation}
+	\end{tw}
+	
+	\begin{wnsk}
+		Jeśli $\mathcal{A}$ jest układem wektorów w przestrzeni $V$, to 
+		\begin{equation*}
+				M_{\mathcal{B}'}(F(\mathcal{A})) = M_{\mathcal{B}'}^{\mathcal{B}}(F) M_{\mathcal{B}}(F(\mathcal{A})).
+		\end{equation*}
+	\end{wnsk}
+	
+	\begin{tw}
+		Niech $\textbf{V}, \textbf{V}', \textbf{V}''$ będą przestrzeniami wektorowymi i niech $\mathcal{B}, \mathcal{B}', \mathcal{B}''$ będą bazami w przestrzeniach  $\textbf{V}, \textbf{V}', \textbf{V}''$ . Jeśli $F \in \hom(\textbf{V}, \textbf{V}')$ i $F' \in \hom(\textbf{V'}, \textbf{V}'')$, to
+		\begin{equation*}
+			 M_{\mathcal{B}''}^{\mathcal{B}}(F' \circ F) =  M_{\mathcal{B}''}^{\mathcal{B}'}(F') \cdot M_{\mathcal{B}'}^{\mathcal{B}}(F).
+		\end{equation*}
+	\end{tw}

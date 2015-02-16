@@ -1,0 +1,269 @@
+\chapter{Podstawowe struktury algebraiczne - grupy, pierścienie, ciała, kraty.}
+\section{Grupy}
+Niech będzie dany niepusty zbiór $G$ wraz z wewnętrznym działaniem dwuargumentowym \linebreak $\cdot:G\times G\rightarrow G$.
+
+\begin{df}
+\textbf{Półgrupą} nazywamy parę $(G,\cdot)$, czyli zbiór $G$ wraz z działaniem $\cdot:G\times G\rightarrow G$ spełniającym następujący warunek:
+\begin{enumerate}[\rm(1)]
+\item 
+$\forall_{a,b,c\in G}\ (ab)c=a(bc)$ \textbf{łączność}.
+\end{enumerate}
+Jeżeli dodatkowo półgrupa spełnia warunek:
+\begin{enumerate}[\rm(2)]
+\item 
+$\exists_{e\in G}\ \forall_{a\in G}\ ea=ae=a$ istnienie elementu \textbf{neutralnego e},
+\end{enumerate}
+wówczas nazywamy ją \textbf{monoidem} lub \textbf{pó{l}grupą z jedynką}. Półgrupa lub monoid, które spełniają dodatkowo warunek:
+\begin{enumerate}[\rm(3)]
+\item 
+$\forall_{a,b\in G}\ ab=ba$ \textbf{przemienność},
+\end{enumerate}
+nazywamy \textbf{przemiennymi}.
+\end{df}
+
+\begin{przyk}
+\begin{enumerate}[\rm(1)]
+\item 
+Niech $\Omega$ będzie dowolnym zbiorem, a $M(\Omega)$ rodziną wszystkich przekształceń zbioru $\Omega$ (wszystkich odwzorowań $\Omega$ w $\Omega$). $(M(\Omega),\circ,e_\Omega)$ jest monoidem, gdzie $\circ$ jest działaniem składania przekształceń. Ogólnie monoid ten nie jest przemienny.
+\item 
+Niech $\Omega$ będzie dowolnym zbiorem, a $P(\Omega)$ zbiorem wszystkich jego podzbiorów. Ponieważ $A\cap(B\cap C)=(A\cap B)\cap C$ oraz $A\cup(B\cup C)=(A\cup B)\cup C$, więc mamy w $P(\Omega)$ dwa naturalne działania łączne. Ponadto $\emptyset\cup A=A$ i $A\cap\Omega=A$. Mamy więc dwa przemienne monoidy $(P(\Omega),\cup,\emptyset)$ i $(P(\Omega),\cap,\Omega)$.
+\end{enumerate}
+\end{przyk}
+
+\begin{df}
+\textbf{Grupą} nazywamy parę $(G,\cdot)$, czyli zbiór $G$ wraz z działaniem $\cdot:G\times G\rightarrow G$ spełniającym następujące warunki $1\div 3$:
+\begin{enumerate}[\rm(1)]
+\item 
+$\forall_{a,b,c\in G}\ (ab)c=a(bc)$ \textbf{łączność},
+\item 
+$\exists_{e\in G}\ \forall_{a\in G}\ ea=ae=a$ istnienie elementu \textbf{neutralnego e},
+\item 
+$\forall_{a\in G}\ \exists_{b\in G}\ ab=ba=e$ istnienie elementu \textbf{odwrotnego do a} oznaczanego $a^{-1}$.
+\end{enumerate}
+Jeżeli dodatkowo działanie $\cdot$ spełnia warunek:
+\begin{enumerate}[\rm(4)]
+\item 
+$\forall_{a,b\in G}\ ab=ba$ \textbf{przemienność},
+\end{enumerate}
+wówczas grupę $(G,\cdot)$ nazywamy grupą przemienną lub \textbf{abelową}.
+\end{df}
+
+\begin{przyk}
+\begin{enumerate}[\rm(1)]
+\item 
+Abelowe: $(\{0\},+),\ (\mathbb{Z},+),\ (\mathbb{Q}\setminus \{0\},\cdot)$
+\item 
+$(S_n,\circ)$ - grupa symetryczna stopnia $n$ (\textbf{twierdzenie Cayleya} - każdą grupę można utożsamiać z pewną podgrupą permutacji zbioru składającego się z elementów tej grupy), $(GL_n(\mathbb{R}),\cdot)$ - zbiór wszystkich macierzy kwadratowych stopnia $n$ o wyrazach rzeczywistych i wyznaczniku różnym od zera, z działaniem mnożenia macierzy, $\pi_1(X, x_0)$
+\end{enumerate}
+\end{przyk}
+
+\begin{df}
+Niech $G$ będzie grupą, niepusty podzbiór $H\subseteq G$ nazywamy \textbf{podgrupą} grupy $G$ ze względu na działanie określone na $G$ jeśli:
+\begin{enumerate}[\rm(1)]
+\item
+$\forall_{a,b\in H}\ ab\in H$,
+\item
+$\forall_{a\in H}\ a^{-1}\in H$.
+\end{enumerate}
+\end{df}
+W przypadku gdy $G$ jest skończona, wówczas wystarczy warunek $\forall_{a,b\in H}\ ab\in H$.
+
+\begin{przyk}
+Podgrupa trywialna $(e,\cdot)$, podgrupa niewłaściwa $(G,\cdot)$, $(SL_n(\mathbb{R}),\cdot)$ - zbiór wszystkich macierzy kwadratowych stopnia $n$ o wyrazach rzeczywistych i wyznaczniku równym $1$ - jest to podgrupa grupy $(GL_n(\mathbb{R}),\cdot)$.
+\end{przyk}
+
+\begin{df}
+Niech $G$ będzie dowolną grupą, zaś $H$ dowolną jej pogrupą. Podzbiory grupy $G$ dane dla dowolnego $a\in G$ jako:
+$$\begin{array}{ll}
+aH=\{ah:h\in H\}, & Ha=\{ha:h\in H\}
+\end{array}$$
+nazywamy odpowiednio \textbf{warstwami lewostronnymi} i \textbf{prawostronnymi} grupy $G$ względem $H$ wyznaczonymi przez element $a\in G$. Jeżeli $aH=Ha$ wówczas mówi się po prostu o \textbf{warstwach} (obustronnych). Zbiór wszystkich warstw lewostronnych oznaczamy przez $G/H=\{aH:a\in G\}$, zaś zbiór warstw prawostronnych przez $G\setminus H=\{Ha:a\in G\}$ (nie mylić z oznaczeniem różnicy zbiorów). W przypadku zbioru warstw obustronnych używamy po prostu pierwszego oznaczenia.
+\end{df}
+
+\begin{przyk}
+\begin{enumerate}[\rm(1)]
+\item
+We"zmy grupę $S_3$ permutacji zbioru $3$ elementowego postaci $S_3=\{e,\tau_1,\tau_2,\tau_3,\sigma_1,\sigma_2\}$, gdzie:
+$$\begin{array}{ll}
+e=(1), & \tau_1=(1\ 2),\\
+\sigma_1=(1\ 2\ 3), & \tau_2=(1\ 3),\\
+\sigma_2=(1\ 3\ 2), & \tau_3=(2\ 3).
+\end{array}$$
+Ma ona cztery podgrupy właściwe (tzn. różne od podgrupy trywialnej i niej samej), wszystkie cykliczne. Trzy (izomorficzne) rzędu $2$, są to: $\langle\tau_1\rangle,\ \langle\tau_2\rangle,\ \langle\tau_3\rangle$, oraz jedną rzędu $3$, jest to $\langle\sigma_1\rangle=\langle\sigma_2\rangle$. Znajdziemy warstwy lewostronne i prawostronne grupy $S_3$ względem podgrupy $\langle\sigma_1\rangle=\{e,\sigma_1,\sigma_2\}$. Mamy:
+$$\begin{array}{llll}
+e\langle\sigma_1\rangle=\{e,\sigma_1,\sigma_2\}, & \langle\sigma_1\rangle e=\{e,\sigma_1,\sigma_2\}, & \tau_1\langle\sigma_1\rangle=\{\tau_1,\tau_2,\tau_3\}, & \langle\sigma_1\rangle\tau_1=\{\tau_1,\tau_3,\tau_2\},\\
+\tau_2\langle\sigma_1\rangle=\{\tau_2,\tau_3,\tau_1\}, & \langle\sigma_1\rangle\tau_2=\{\tau_2,\tau_1,\tau_3\}, & \tau_3\langle\sigma_1\rangle=\{\tau_3,\tau_1,\tau_2\}, & \langle\sigma_1\rangle\tau_3=\{\tau_3,\tau_2,\tau_1\},\\
+\sigma_1\langle\sigma_1\rangle=\{\sigma_1,\sigma_2,e\}, & \langle\sigma_1\rangle\sigma_1=\{\sigma_1,\sigma_2,e\}, & \sigma_2\langle\sigma_1\rangle=\{\sigma_2,e,\sigma_1\}, & \langle\sigma_1\rangle\sigma_2=\{\sigma_2,\sigma_1,e\}.
+\end{array}$$
+Widzimy, że:
+$$\begin{array}{ll}
+e\langle\sigma_1\rangle=\langle\sigma_1\rangle e, & \tau_1\langle\sigma_1\rangle=\langle\sigma_1\rangle\tau_1,\\
+\tau_2\langle\sigma_1\rangle=\langle\sigma_1\rangle\tau_2, & \tau_3\langle\sigma_1\rangle=\langle\sigma_1\rangle\tau_3,\\
+\sigma_1\langle\sigma_1\rangle=\langle\sigma_1\rangle\sigma_1, & \sigma_2\langle\sigma_1\rangle=\langle\sigma_1\rangle\sigma_2.
+\end{array}$$
+Nie jest to jednak regułą, że $aH=Ha$. Dla przykładu znajd"zmy jeszcze warstwy lewostronne i pawostronne grupy $S_3$ względem podgrupy $\langle\tau_1\rangle=\{e,\tau_1\}$:
+$$\begin{array}{llll}
+e\langle\tau_1\rangle=\{e,\tau_1\}, & \langle\tau_1\rangle e=\{e,\tau_1\}, & \tau_1\langle\tau_1\rangle=\{\tau_1,e\}, & \langle\tau_1\rangle\tau_1=\{\tau_1,e\},\\
+\tau_2\langle\tau_1\rangle=\{\tau_2,\sigma_2\}, & \langle\tau_1\rangle\tau_2=\{\tau_2,\sigma_1\}, & \tau_3\langle\tau_1\rangle=\{\tau_3,\sigma_1\}, & \langle\tau_1\rangle\tau_3=\{\tau_3,\sigma_2\},\\
+\sigma_1\langle\tau_1\rangle=\{\sigma_1,\tau_3\}, & \langle\tau_1\rangle\sigma_1=\{\sigma_1,\tau_2\}, & \sigma_2\langle\tau_1\rangle=\{\sigma_2,\tau_2\}, & \langle\tau_1\rangle\sigma_2=\{\sigma_2,\tau_3\}.
+\end{array}$$
+Widzimy, że w tym przypadku mamy:
+$$\begin{array}{llll}
+e\langle\tau_1\rangle=\langle\tau_1\rangle e, & \tau_1\langle\tau_1\rangle=\langle\tau_1\rangle\tau_1,\\
+\tau_2\langle\tau_1\rangle\neq\langle\tau_1\rangle\tau_2, & \tau_3\langle\tau_1\rangle\neq\langle\tau_1\rangle\tau_3,\\
+\sigma_1\langle\tau_1\rangle\neq\langle\tau_1\rangle\sigma_1, & \sigma_2\langle\tau_1\rangle\neq\langle\tau_1\rangle\sigma_2,
+\end{array}$$
+zatem nie zawsze $aH=Ha$. Oczywistym jest natomiast, że jeśli $G$ jest abelowa to oczywiście $aH=Ha$ dla dowolnej jej podgrupy.
+\item
+Wyznaczymy podział na warstwy lewostronne grupy $\mathbb{Z}_8$ względem podgrupy $H=\{0,4\}$. Ponieważ $\mathbb{Z}_8$ jest abelowa, więc warstwy prawostronne będą takie same jak lewostronne. Mamy następujące $4$ warstwy lewostronne:
+$$\begin{array}{ll}
+0+H=[0]_H=\{0,4\}=H, & 1+H=[1]_H=\{1,5\},\\
+2+H=[2]_H=\{2,6\}, & 3+H=[3]_H=\{3,7\}.
+\end{array}$$
+\end{enumerate}
+\end{przyk}
+
+\begin{df}
+Podgrupę $N$ grupy $G$ nazywa się \textbf{podgrupą normalną}, jeśli wszystkie jej warstwy lewostronne równają się odpowiadającym im warstwom prawostronnym, tzn. gdy $\forall_{g\in G}\ gN=Ng$. Fakt ten oznacza się symbolem $N\unlhd G$. Jeżeli $N$ jest podgrupą właściwą $G$ (tzn. jest różna od podgrupy trywialnej i samej $G$) wówczas piszemy $N\lhd G$.
+\end{df}
+
+\begin{przyk}
+Oczywiście każda grupa ma zawsze co najmniej dwie podgrupy normalne tzn. podgrupę trywialną $\{e\}\unlhd G$ i samą siebie $G\unlhd G$. Jak widać z poprzedniego przykładu $\langle\sigma_1\rangle\lhd S_3$ jest podgrupą normalną w $S_3$. Natomiast $\langle\tau_1\rangle$ nie jest podgrupą normalną w $S_3$.
+\end{przyk}
+
+\begin{df}
+Jeśli $H\unlhd G$ to w zbiorze warstw $G/H$ można wprowadzić \textbf{działanie indukowane}. Niech $xH=[x]_H,\ yH=[y]_H$ będą dwiema warstwami, zdefiniujmy działanie: $$xH\cdot yH=(x\cdot y)H,\ \textrm{czyli}\ [x]_H\cdot [y]_H=[x\cdot y]_H$$ wówczs zbiór warstw $G/H$ z tak określonym działaniem tworzy grupę $(G/H,\cdot)$, zwaną \textbf{grupą ilorazową}.
+\end{df}
+
+\begin{przyk}
+W nawiązniu do omawianych wcześniej przykładów mamy, że:
+\begin{enumerate}[\rm(1)]
+\item
+$S_3/\langle\sigma_1\rangle$ jest grupą ilorazową, dwuelementową, izomorficzną z grupami $S_3/\langle\sigma_1\rangle\simeq\langle\tau_1\rangle\simeq\langle\tau_2\rangle\simeq\langle\tau_3\rangle\simeq\mathbb{Z}_2$.
+\item
+$\mathbb{Z}_8/\{0,4\}$ jest grupą ilorazową izomorficzną z $\mathbb{Z}_4$. Działanie na warstwach w $\mathbb{Z}_8/\{0,4\}$ wygląda następująco:
+\begin{center}
+\begin{tabular}{c|cccc}
+$+$ & $[0]$ & $[1]$ & $[2]$ & $[3]$\\
+\hline
+$[0]$ & $[0]$ & $[1]$ & $[2]$ & $[3]$\\
+$[1]$ & $[1]$ & $[2]$ & $[3]$ & $[0]$\\
+$[2]$ & $[2]$ & $[3]$ & $[0]$ & $[1]$\\
+$[3]$ & $[3]$ & $[0]$ & $[1]$ & $[2]$
+\end{tabular}
+\end{center}
+czyli analogicznie do tabelki działania $+$ w $\mathbb{Z}_4$.
+\end{enumerate}
+\end{przyk}
+
+\begin{df}
+Odwzorowanie $f:G\rightarrow G'$ grupy $(G,\ast)$ w grupę $(G',\circ)$ nazywamy \textbf{homomorfizmem}, jeśli: $$\forall_{a,b\in G}\ f(a\ast b)=f(a)\circ f(b).$$
+\textbf{Jądrem} homomorfizmu $f$ nazywamy zbiór: $$Ker\ f=\{g\in G:f(g)=e'\}$$ gdzie $e'$ jest elementem neutralnym (jedynką) grupy $(G',\circ)$. Mamy następujące określenia poszczególnych rodzajów homomorfizmów:
+\begin{itemize}
+\item
+\textbf{Endomorfizm} - jest to homomorfizm grupy w tę samą grupę,
+\item
+\textbf{Epimorfizm} - jest to homomorfizm ,,na'' będący surjekcją,
+\item
+\textbf{Monomorfizm} - jest to homomorfizm różnowartościowy będący injekcją,
+\item
+\textbf{Izomorfizm} - jest to homomorfizm różnowartościowy i ,,na'' będący bijekcją,
+\item
+\textbf{Automorfizm} - jest to izomorfizm grupy w tę samą grupę, czyli izomorfizm będący endomorfizmem.
+\end{itemize}
+\end{df}
+
+\begin{przyk}
+\begin{itemize}
+\item
+Epimorfizm $f(\pi)=\varepsilon_\pi$ grup $(S_n,\circ)\rightarrow (C_2,\cdot)$ przypisujący permutacji jej znak, gdzie $C_2$ jest grupą cykliczną rzędu $2$ postaci $C_2=\langle -1\rangle=(\{-1,1\},\cdot)$ (zauważmy że $Ker\ f=A_n$, gdzie $A_n$ jest zbiorem permutacji parzystych, nazywany \textbf{grupą alternującą}),
+\item
+Epimorfizm $f(A)=det(A)$ grup $(GL_n(\mathbb{R}),\cdot)\rightarrow(\mathbb{R}^{\ast},\cdot)$ przypisujący macierzom kwadratowym stopnia $n$ o wyrazach rzeczywistych i niezerowym wyznaczniku ich wyznacznik, gdzie $\mathbb{R}^{\ast}$ jest zbiorem elementów odwracalnych w $\mathbb{R}$ czyli $\mathbb{R}^{\ast}=\mathbb{R}\setminus\{0\}$ (zauważmy, że $Ker\ f=SL_n(\mathbb{R})$),
+\item
+Izomorfizm $f(x)=e^x$ grup $(\mathbb{R},+)\rightarrow(\mathbb{R}^{+},\cdot)$,
+\item
+Izomorfizm $f(k)=nk$ grup $(\mathbb{Z},+)\rightarrow(n\mathbb{Z},+)$, gdzie $n\mathbb{Z}=\{nk:k\in\mathbb{Z}\}$ jest podgrupą właściwą grupy $\mathbb{Z}$.
+\end{itemize}
+\end{przyk}
+
+\section{Pierścienie}
+\begin{df}
+Niech $R$ będzie pewnym niepustym zbiorem, w którym określone są dwa działania dwuargumentowe, które nazywać będziemy dodawaniem $+$ i mnożeniem $\cdot$ spełniające następujące aksjomaty $1\div 3$:
+\begin{enumerate}[\rm(1)]
+\item
+$(R,+)$ jest grupą abelową,
+\item
+$(R,\cdot)$ jest grupą półgrupą (tzn. działanie $\cdot$ jest łączne),
+\item
+$\forall_{a,b,c\in R}\ (a+b)c=ac+bc\wedge c(a+b)=ca+cb$.
+\end{enumerate}
+Wówczas system algebraiczny $(R,+,\cdot,0)$ nazywamy \textbf{pierścieniem}. Grupę $(R,+)$ nazywamy grupą \textbf{addytywną} pierścienia, zaś półgrupę $(R,\cdot)$ nazywamy półgrupą \textbf{multiplikatywną} pierścienia. Jeśli $(R,\cdot)$ jest monoidem (tzn. ma jedynkę) to mówimy, że $(R,+,\cdot,0,1)$ jest \textbf{pierścieniem z jedynką}. Pierścień nazywamy \textbf{przemiennym} jeśli:
+\begin{enumerate}[\rm(4)]
+\item
+$\forall_{a,b\in R}\ ab=ba$.
+\end{enumerate}
+\end{df}
+
+\begin{przyk}
+$(\mathbb{Z},+,\cdot)$ jest pierścieniem liczb całkowitych ze zwykłymi działaniami dodawania i mnożenia (przemienny z jedynką). Analogicznie pierścieniami przemiennymi z jedynką są $(\mathbb{Q},+,\cdot)$ i $(\mathbb{R},+,\cdot)$ oraz pierścień $(\mathbb{Z}_m,+,\cdot)$ liczb całkowitych modulo $m$. Przykładem pierścienia nieprzemiennego z jedynką (dla $n>1$) jest $(M_n(\mathbb{R}),+,\cdot)$ pierścień macierzy kwdratowych stopnia $n$, w którym jedynką jest macierz jednostkowa $E$.
+\end{przyk}
+
+\section{Ciała}
+
+\begin{df}
+\textbf{Ciałem} nazywamy pierścień przemienny $K$ z jedynką $1\neq 0$, w którym każdy niezerowy element jet odwracalny. Grupę $K^\ast=K\setminus\{0\}=U(K)$ elementów odwracalnych ciała nazywamy \textbf{grupą multiplikatywną ciała}.
+\end{df}
+
+\begin{przyk}
+Ciała klasyczne, nieskończone: $(\mathbb{Q},+,\cdot),\ (\mathbb{R},+,\cdot),\ (\mathbb{C},+,\cdot)$. Przykład ciała skończonego: $F_m$ - pierścień $(\mathbb{Z}_m,+,\cdot)$ liczb całkowitych modulo $m$, dla $m$ będącego licbą pierwszą.
+\end{przyk}
+
+\section{Kraty}
+
+\begin{df}
+\textbf{Kratą} nazywamy strukturę matematyczną, którą można opisywać albo algebraicznie, albo w sensie częściowych porządków (jako \textbf{poset}).
+
+Z algebraicznego punktu widzenia krata to struktura algebraiczna $(A,\wedge,\vee)$, gdzie $A$ jest niepustym zbiorem, zaś $\wedge$ i $\vee$ są działaniami dwuargumentowymi $A\times A\rightarrow A$ spełniającymi dla dowolnych $x,y,z\in A$ następujące warunki:
+$$\begin{array}{lll}
+1.\quad x\wedge x=x & x\vee x=x\\
+\\
+2.\quad (x\wedge y)\wedge z=x\wedge (y\wedge z) & (x\vee y)\vee z=x\vee(y\vee z) & \textrm{łączność}\\
+\\
+3.\quad x\wedge y=y\wedge x & x\vee y=y\vee x & \textrm{przemienność}\\
+\\
+4.\quad (x\wedge y)\vee y=y & (x\vee y)\wedge y=y & \textrm{absorpcja}\\
+\\
+\end{array}$$
+Aksjomat $1$ podaje się tradycyjnie w definicji kraty, ale nie jest to konieczne, bowiem wynika on z aksjomatu $4$. W każdej kracie spełniona jest równoważność: $x\vee y=y\Leftrightarrow x\wedge y=x$. Relacja $\leq$ zdefiniowana za pomocą równoważności: $$x\leq y\Leftrightarrow x\vee y=y$$ jest relacją częściowego porządku (tzn. jest zwrotna, antysymetryczna i przechodnia), w którym każda para $x,y$ ma kres górny i dolny:
+$$\begin{array}{ll}
+sup(x,y)=x\vee y & inf(x,y)=x\wedge y
+\end{array}$$
+Krata w sensie porządków to niepusty, częściowy porządek $(A,\leq)$ w którym każda para $x,y$ ma kres górny $sup(x,y)$ i dolny $inf(x,y)$. Jeśli zdefiniujemy:
+$$\begin{array}{ll}
+x\vee y:=sup(x,y) & x\wedge y:=inf(x,y)
+\end{array}$$
+to dostaniemy kratę w sensie algebraicznym (tzn. jako strukturę algebraiczną).
+\end{df}
+
+\begin{przyk}
+\begin{enumerate}[\rm(1)]
+\item
+Kratą jest algerba Boole'a tzn. struktura algebraiczna $\mathbb{B}:=(B,\wedge,\vee,\neg,0,1)$ w której $\wedge$ i $\vee$ są działaniami dwuargumentowymi, $\neg$ jest operacją jednoargumentową, a $0$ i $1$ są wyróżnionymi, różnymi elementami zbioru $B$. Stosuje się też notację $\mathbb{B}:=(B,\cap,\cup,\sim,0,1)$ dla algerby Boole'a podzbiorów ustalonego zbioru.
+\item
+,,Pięciokąt'' lub krata $N_5$ to krata pięciu elementów $a,b,c,d,e$ spełniających relacje:
+\begin{itemize}
+\item $\forall_{x\in N_5}\quad c\leq x\leq a$
+\item $d\wedge b=e\wedge b=c$
+\item $d\vee b=e\vee b=a$
+\end{itemize}
+\item
+,,Diament'' lub krata $M_3$ to krata pięciu elementów $a,b,c,d,e$ spełniających relacje:
+\begin{itemize}
+\item $\forall_{x\in M_3}\quad c\leq x\leq a$
+\item $x\wedge y=c$ dla każdych $x\neq y$ w zbiorze $\{b,d,e\}$
+\item $x\vee y=a$ dla każdych $x\neq y$ w zbiorze $\{b,d,e\}$
+\end{itemize}
+\end{enumerate}
+\end{przyk}
+
+\clearpage

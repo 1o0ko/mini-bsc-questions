@@ -1,0 +1,66 @@
+\chapter{Liczba chromatyczna grafu, twierdzenie Brooksa, twierdzenie o 4-kolorach}		
+\section{Definicja grafu}
+	 \begin{df}
+	 	\textbf{Grafem prostym} nazywamy parę uporządkowaną $\mathbf{G} = (V,E)$ taką, że:
+	 	\begin{itemize}
+	 		\item V jest niepustym zbiorem
+	 		\item E jest rodziną dwuelementowych podzbiorów zbioru wierzchołków V:
+	 		$$E\subseteq \{ \{u,v\} : u,v \in V,u \neq v\},$$
+	 		dalej zwanych \textbf{krawędziami}.
+	 	\end{itemize}
+	 \end{df}
+	 %
+	 \begin{df}
+	 	\textbf{Grafem skierowanym} nazywamy parę uporządkowaną $\mathbf{G} = (V,E)$ taką, że:
+	 	\begin{itemize}
+	 		\item V jest niepustym zbiorem
+	 		\item E jest zbiorem uporządkowanych par różnych wierzchołków ze zbioru V: $E\subseteq V \times V,$ dalej zwanych \textbf{krawędziami}.
+	 	\end{itemize}
+	 \end{df}
+	 %
+	 \begin{df}[Krawędzie incydentne]
+	 	Jeśli istnieje krawędź $vw$ to mówimy, że $v$ i  $w$ są sąsiadami; oraz że krawędź $vw$ jest incydentna do $v$ ($w$).
+	 \end{df}
+	 %
+	 \begin{df}[Stopień wierzchołka]
+	 	Stopień wierzchołka $v$ w grafie $\mathbf{G}$ to liczba krawędzi incydentnych z $v$. Stopień wierzchołka  $v$ oznaczany jest jako $\deg(v)$.
+	 \end{df}
+	 
+	 \subsection*{Przykłady}
+		\begin{itemize}
+			\item \textbf{Graf spójny} to graf, w którym dla każdej pary wierzchołków istnieje ścieżka,
+			która je łączy.
+			\item \textbf{Graf pełny} to graf, w którym dla każdej pary węzłów istnieje krawędź je łącząca. \\Równoważnie nazywany kliką. 
+			\item \textbf{Graf pusty} to graf bez krawędzi. Równoważnie nazywany antykliką.
+			\item Graf planarny, to graf, który można narysować na płaszczyźnie tak, by krzywe obrazujące krawędzie
+			grafu nie przecinały się ze sobą. 
+		\end{itemize}	  
+
+	\section{Kolorowanie grafu}		
+	 \begin{df} [Kolorowanie grafu]
+		 	Kolorowanie grafu $\mathbf{G} = (E,V)$  to funkcja $c:V\rightarrow N$ taka, że 
+		 	$c(v) \neq c(w)$ ilekroć $vw$ jest krawędzią grafu $\mathbf{G}$.
+	 \end{df}
+	 
+	 \begin{df}[Liczba chromatyczna grafu]
+		 	Liczba chromatyczna grafu $\chi (\mathbf{G}) $ to najmniejsza liczba barw,
+		 	którymi można pokolorować graf $\mathbf{G}$.
+	 \end{df}
+	 
+	 \begin{df}
+		 	Graf k-kolorowalny (k-barwny) to graf dający się pokolorować k barwami.
+	 \end{df}
+		 		
+	\begin{tw}[Tw. Brooksa] 
+    	Niech $\mathbf{G} = (E,V)$ będzie spójnym grafem o największym stopniu
+    	wierzchołka równym $d$. 
+    	\begin{itemize}
+    		\item Jeżeli $\mathbf{G}$ jest grafem pełnym lub składa się z
+    		pojedynczego cyklu o nieparzystej liczbie krawędzi, to $\chi(G) = d + 1$.
+    		\item We wszystkich pozostałych przypadkach wystarcza $\chi(G) < d$.
+    	\end{itemize}
+	\end{tw}
+	
+	\begin{tw}[Twierdzenie o czterech barawach]
+    	Jeżeli $\mathbf{G}$ jest grafem planarnym, to $\chi(G) < 4$.
+	\end{tw}
